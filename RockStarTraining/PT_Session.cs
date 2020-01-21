@@ -1149,6 +1149,9 @@ namespace RockStar.Training
                 PT_formEnd pt_formEnd = new PT_formEnd(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start);
                 if (pt_formEnd.ShowDialog() == DialogResult.OK)
                 {
+                    Report rv = new Report(counter_Session);
+                    rv.Show();
+
                     load_PrivateSession();
                     alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
                 }
