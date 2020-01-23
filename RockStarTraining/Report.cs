@@ -28,6 +28,7 @@ namespace RockStar.Training
                 reportViewer1.Dock = DockStyle.Fill;
 
                 reportViewer1.ProcessingMode = ProcessingMode.Remote;
+                
 
                 ServerReport serverReport = reportViewer1.ServerReport;
 
@@ -47,7 +48,7 @@ namespace RockStar.Training
                     new Uri("http://192.168.1.27/reportserver/");
                 serverReport.ReportPath =
                     "/HcRockstar/HC_TrainingUsage";
-
+                
                 //// Create the sales order number report parameter  
                 ReportParameter reportParam1 = new ReportParameter();
                 reportParam1.Name = "pCounter";
@@ -58,6 +59,8 @@ namespace RockStar.Training
                 ReportParameter reportParam3 = new ReportParameter();
                 reportParam3.Name = "pWordsId";
                 reportParam3.Values.Add(null);
+
+                reportViewer1.ShowParameterPrompts = false;
 
                 // Set the report parameters for the report  
                 reportViewer1.ServerReport.SetParameters(

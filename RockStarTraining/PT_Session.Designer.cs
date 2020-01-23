@@ -44,6 +44,12 @@
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -61,8 +67,10 @@
             this.columnSelectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureEdit_PI_Start = new DevExpress.XtraEditors.PictureEdit();
-            this.pictureEdit_PI_End = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_PI_Start_Finger = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_PI_End_Finger = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_PI_Start_Card = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_PI_End_Card = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_Print = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_Sheet = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_Exit = new DevExpress.XtraEditors.PictureEdit();
@@ -79,8 +87,10 @@
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Finger.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Finger.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Card.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Card.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Print.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Sheet.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Exit.Properties)).BeginInit();
@@ -258,63 +268,107 @@
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_Start);
-            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_End);
+            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_Start_Finger);
+            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_End_Finger);
+            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_Start_Card);
+            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_End_Card);
             this.flowLayoutPanel1.Controls.Add(this.pictureEdit_Print);
             this.flowLayoutPanel1.Controls.Add(this.pictureEdit_Sheet);
             this.flowLayoutPanel1.Controls.Add(this.pictureEdit_Exit);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(215, 3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(144, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(355, 69);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(497, 69);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // pictureEdit_PI_Start
+            // pictureEdit_PI_Start_Finger
             // 
-            this.pictureEdit_PI_Start.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureEdit_PI_Start.EditValue = global::RockStar.Training.Properties.Resources.startPI;
-            this.pictureEdit_PI_Start.Location = new System.Drawing.Point(3, 3);
-            this.pictureEdit_PI_Start.Name = "pictureEdit_PI_Start";
-            this.pictureEdit_PI_Start.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit_PI_Start.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit_PI_Start.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit_PI_Start.Properties.ShowMenu = false;
-            this.pictureEdit_PI_Start.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit_PI_Start.Size = new System.Drawing.Size(65, 65);
+            this.pictureEdit_PI_Start_Finger.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_PI_Start_Finger.EditValue = global::RockStar.Training.Properties.Resources.startPI;
+            this.pictureEdit_PI_Start_Finger.Location = new System.Drawing.Point(3, 3);
+            this.pictureEdit_PI_Start_Finger.Name = "pictureEdit_PI_Start_Finger";
+            this.pictureEdit_PI_Start_Finger.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_PI_Start_Finger.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_PI_Start_Finger.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_PI_Start_Finger.Properties.ShowMenu = false;
+            this.pictureEdit_PI_Start_Finger.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_PI_Start_Finger.Size = new System.Drawing.Size(65, 65);
             toolTipTitleItem1.Text = "Start Private Training (F7)";
             toolTipItem1.LeftIndent = 6;
             toolTipItem1.Text = "Start Private Training";
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
-            this.pictureEdit_PI_Start.SuperTip = superToolTip1;
-            this.pictureEdit_PI_Start.TabIndex = 4;
-            this.pictureEdit_PI_Start.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit_PI_Start_MouseClick);
+            this.pictureEdit_PI_Start_Finger.SuperTip = superToolTip1;
+            this.pictureEdit_PI_Start_Finger.TabIndex = 4;
+            this.pictureEdit_PI_Start_Finger.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit_PI_Start_Finger_MouseClick);
             // 
-            // pictureEdit_PI_End
+            // pictureEdit_PI_End_Finger
             // 
-            this.pictureEdit_PI_End.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureEdit_PI_End.EditValue = global::RockStar.Training.Properties.Resources.finishPI;
-            this.pictureEdit_PI_End.Location = new System.Drawing.Point(74, 3);
-            this.pictureEdit_PI_End.Name = "pictureEdit_PI_End";
-            this.pictureEdit_PI_End.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit_PI_End.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit_PI_End.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit_PI_End.Properties.ShowMenu = false;
-            this.pictureEdit_PI_End.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit_PI_End.Size = new System.Drawing.Size(65, 65);
+            this.pictureEdit_PI_End_Finger.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_PI_End_Finger.EditValue = global::RockStar.Training.Properties.Resources.finishPI;
+            this.pictureEdit_PI_End_Finger.Location = new System.Drawing.Point(74, 3);
+            this.pictureEdit_PI_End_Finger.Name = "pictureEdit_PI_End_Finger";
+            this.pictureEdit_PI_End_Finger.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_PI_End_Finger.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_PI_End_Finger.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_PI_End_Finger.Properties.ShowMenu = false;
+            this.pictureEdit_PI_End_Finger.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_PI_End_Finger.Size = new System.Drawing.Size(65, 65);
             toolTipTitleItem2.Text = "Finish Private Training (F8)";
             toolTipItem2.LeftIndent = 6;
             toolTipItem2.Text = "Finish Private Training";
             superToolTip2.Items.Add(toolTipTitleItem2);
             superToolTip2.Items.Add(toolTipItem2);
-            this.pictureEdit_PI_End.SuperTip = superToolTip2;
-            this.pictureEdit_PI_End.TabIndex = 5;
-            this.pictureEdit_PI_End.Click += new System.EventHandler(this.pictureEdit_PI_End_Click);
+            this.pictureEdit_PI_End_Finger.SuperTip = superToolTip2;
+            this.pictureEdit_PI_End_Finger.TabIndex = 5;
+            this.pictureEdit_PI_End_Finger.Click += new System.EventHandler(this.pictureEdit_PI_End_Finger_Click);
+            // 
+            // pictureEdit_PI_Start_Card
+            // 
+            this.pictureEdit_PI_Start_Card.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_PI_Start_Card.EditValue = global::RockStar.Training.Properties.Resources.startPI_Card;
+            this.pictureEdit_PI_Start_Card.Location = new System.Drawing.Point(145, 3);
+            this.pictureEdit_PI_Start_Card.Name = "pictureEdit_PI_Start_Card";
+            this.pictureEdit_PI_Start_Card.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_PI_Start_Card.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_PI_Start_Card.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_PI_Start_Card.Properties.ShowMenu = false;
+            this.pictureEdit_PI_Start_Card.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_PI_Start_Card.Size = new System.Drawing.Size(65, 65);
+            toolTipTitleItem3.Text = "Start Private Training (F8)";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Start Private Training";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.pictureEdit_PI_Start_Card.SuperTip = superToolTip3;
+            this.pictureEdit_PI_Start_Card.TabIndex = 6;
+            this.pictureEdit_PI_Start_Card.Click += new System.EventHandler(this.pictureEdit_PI_Start_Card_Click);
+            // 
+            // pictureEdit_PI_End_Card
+            // 
+            this.pictureEdit_PI_End_Card.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_PI_End_Card.EditValue = global::RockStar.Training.Properties.Resources.finishPI_Card;
+            this.pictureEdit_PI_End_Card.Location = new System.Drawing.Point(216, 3);
+            this.pictureEdit_PI_End_Card.Name = "pictureEdit_PI_End_Card";
+            this.pictureEdit_PI_End_Card.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_PI_End_Card.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_PI_End_Card.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_PI_End_Card.Properties.ShowMenu = false;
+            this.pictureEdit_PI_End_Card.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_PI_End_Card.Size = new System.Drawing.Size(65, 65);
+            toolTipTitleItem4.Text = "Finish Private Training (F9)";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Finish Private Training";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.pictureEdit_PI_End_Card.SuperTip = superToolTip4;
+            this.pictureEdit_PI_End_Card.TabIndex = 7;
+            this.pictureEdit_PI_End_Card.Click += new System.EventHandler(this.pictureEdit_PI_End_Card_Click);
             // 
             // pictureEdit_Print
             // 
             this.pictureEdit_Print.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureEdit_Print.EditValue = global::RockStar.Training.Properties.Resources.Print_f;
-            this.pictureEdit_Print.Location = new System.Drawing.Point(145, 3);
+            this.pictureEdit_Print.Location = new System.Drawing.Point(287, 3);
             this.pictureEdit_Print.Name = "pictureEdit_Print";
             this.pictureEdit_Print.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit_Print.Properties.Appearance.Options.UseBackColor = true;
@@ -322,12 +376,12 @@
             this.pictureEdit_Print.Properties.ShowMenu = false;
             this.pictureEdit_Print.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit_Print.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem3.Text = "Print (Ctrl + P)";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Print Table";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.pictureEdit_Print.SuperTip = superToolTip3;
+            toolTipTitleItem5.Text = "Print (Ctrl + P)";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Print Table";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.pictureEdit_Print.SuperTip = superToolTip5;
             this.pictureEdit_Print.TabIndex = 1;
             this.pictureEdit_Print.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit2_MouseClick);
             // 
@@ -335,7 +389,7 @@
             // 
             this.pictureEdit_Sheet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureEdit_Sheet.EditValue = global::RockStar.Training.Properties.Resources.Sheet_f;
-            this.pictureEdit_Sheet.Location = new System.Drawing.Point(216, 3);
+            this.pictureEdit_Sheet.Location = new System.Drawing.Point(358, 3);
             this.pictureEdit_Sheet.Name = "pictureEdit_Sheet";
             this.pictureEdit_Sheet.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit_Sheet.Properties.Appearance.Options.UseBackColor = true;
@@ -343,13 +397,13 @@
             this.pictureEdit_Sheet.Properties.ShowMenu = false;
             this.pictureEdit_Sheet.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit_Sheet.Size = new System.Drawing.Size(65, 65);
-            superToolTip4.AllowHtmlText = DevExpress.Utils.DefaultBoolean.False;
-            toolTipTitleItem4.Text = "Sheet (Ctrl + T)";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Save Table into Worksheet";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.pictureEdit_Sheet.SuperTip = superToolTip4;
+            superToolTip6.AllowHtmlText = DevExpress.Utils.DefaultBoolean.False;
+            toolTipTitleItem6.Text = "Sheet (Ctrl + T)";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "Save Table into Worksheet";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.pictureEdit_Sheet.SuperTip = superToolTip6;
             this.pictureEdit_Sheet.TabIndex = 2;
             this.pictureEdit_Sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit3_MouseClick);
             // 
@@ -357,7 +411,7 @@
             // 
             this.pictureEdit_Exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureEdit_Exit.EditValue = global::RockStar.Training.Properties.Resources.close_f;
-            this.pictureEdit_Exit.Location = new System.Drawing.Point(287, 3);
+            this.pictureEdit_Exit.Location = new System.Drawing.Point(429, 3);
             this.pictureEdit_Exit.Name = "pictureEdit_Exit";
             this.pictureEdit_Exit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.pictureEdit_Exit.Properties.Appearance.Options.UseBackColor = true;
@@ -365,12 +419,12 @@
             this.pictureEdit_Exit.Properties.ShowMenu = false;
             this.pictureEdit_Exit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit_Exit.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem5.Text = "Exit (Ctrl + Q)";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Close Form";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.pictureEdit_Exit.SuperTip = superToolTip5;
+            toolTipTitleItem7.Text = "Exit (Ctrl + Q)";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "Close Form";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.pictureEdit_Exit.SuperTip = superToolTip7;
             this.pictureEdit_Exit.TabIndex = 3;
             this.pictureEdit_Exit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit4_MouseClick);
             // 
@@ -489,8 +543,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Finger.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Finger.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Card.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Card.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Print.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Sheet.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Exit.Properties)).EndInit();
@@ -532,8 +588,10 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit_Logo;
         private DevExpress.XtraEditors.LabelControl lb_Version;
         private DevExpress.XtraEditors.LabelControl lb_UserClub;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_Start;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_End;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_Start_Finger;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_End_Finger;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_Start_Card;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_End_Card;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

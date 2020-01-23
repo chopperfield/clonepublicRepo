@@ -1,6 +1,6 @@
 ﻿namespace RockStar.Training
 {
-    partial class PT_formEnd
+    partial class PT_formEnd2
     {
         /// <summary>
         /// Required designer variable.
@@ -204,7 +204,7 @@
             this.lb_productName.TabIndex = 89;
             this.lb_productName.Text = "Jump Start - Welcome";
             // 
-            // PT_formEnd
+            // PT_formEnd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -219,16 +219,16 @@
             this.Controls.Add(this.lb_ClubName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Name = "PT_formEnd";
+            this.Name = "PT_formEnd2";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PT_formEnd";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PT_formEnd_FormClosed);
-            this.Load += new System.EventHandler(this.PT_formEnd_Load);
-            this.Shown += new System.EventHandler(this.PT_formEnd_Shown);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_formEnd_Paint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_formEnd_KeyDown);
-            this.Resize += new System.EventHandler(this.PT_formEnd_Resize);
+            this.Text = "PT_formEnd2";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PT_formEnd2_FormClosed);
+            this.Load += new System.EventHandler(this.PT_formEnd2_Load);
+            this.Shown += new System.EventHandler(this.PT_formEnd2_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_formEnd2_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_formEnd2_KeyDown);
+            this.Resize += new System.EventHandler(this.PT_formEnd2_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();

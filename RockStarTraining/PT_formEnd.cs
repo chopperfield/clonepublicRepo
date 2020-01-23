@@ -10,10 +10,13 @@ using FastCodeSDK;
 
 namespace RockStar.Training
 {
+    /// <summary>
+    /// Process in one windows (no popupwindow)
+    /// </summary>
     public partial class PT_formEnd : Form
     {
         SqlConnection myConnection = new SqlConnection(Partner.configConnection);
-     
+
         Bitmap gbr_inf = new Bitmap(Properties.Resources.info_icon, 25, 25);
         Bitmap gbr_warn = new Bitmap(Properties.Resources.warning, 25, 25);
         Bitmap gbr_error = new Bitmap(Properties.Resources.close, 25, 25);
@@ -22,7 +25,7 @@ namespace RockStar.Training
         Utils utils;
 
         private string Img_member_Url;
-        
+
         DataTable dt_finger_employees;
 
         private string clubName;
@@ -36,9 +39,9 @@ namespace RockStar.Training
         FastCodeSDK.FPReader myReader;
         fingerPrint_Device fingerPrint_Device = new fingerPrint_Device();
 
-        public PT_formEnd(string clubName, string counter_PTSession, string student_Name, string student_RGP ,string product_Name, DataTable dt_finger_employees, string employee_Start)
+        public PT_formEnd(string clubName, string counter_PTSession, string student_Name, string student_RGP, string product_Name, DataTable dt_finger_employees, string employee_Start)
         {
-            InitializeComponent();        
+            InitializeComponent();
             this.dt_finger_employees = new DataTable();
             this.dt_finger_employees = dt_finger_employees;
 
@@ -70,8 +73,7 @@ namespace RockStar.Training
             foreach (Control ctl in this.Controls)
             {
                 ctl.Enabled = false;
-            }
-
+            }            
         }
 
         private void PT_formEnd_Shown(object sender, EventArgs e)
@@ -145,7 +147,7 @@ namespace RockStar.Training
                 tick1 = 2;
                 timer1.Start();
             }
-        }        
+        }
 
         //======= agar form yang muncul, bisa di drag
         private const int WM_NCHITTEST = 0x84;
@@ -157,7 +159,7 @@ namespace RockStar.Training
             if (m.Msg == WM_NCHITTEST)
                 m.Result = (IntPtr)(HT_CAPTION);
         }
-  
+
         private void textBox1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             //textbox can't mask, tapi bisa prevent shortcut           
@@ -179,18 +181,18 @@ namespace RockStar.Training
                 {
                     string RGP = dt.Rows[0]["RGP"].ToString().Trim();
 
-                    if( RGP.Trim() == student_RGP.Trim())
+                    if (RGP.Trim() == student_RGP.Trim())
                     {
                         timer1.Stop();
                         lb_Info.Text = "Please Scan Your Finger";
                         textBox1.Enabled = false;
-                        setup_fingerPrint();                       
+                        setup_fingerPrint();
                     }
                     else
                     {
                         alertControl1.Show(this, "Data center", "Miss match student !", gbr_error);
                         MessageBox.Show("Student does not match with RFID card", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }             
+                    }
                 }
                 else if (dt.Rows.Count == 0)
                 {
@@ -209,7 +211,7 @@ namespace RockStar.Training
 
         private void setup_fingerPrint()
         {
-           
+
             try
             {
                 myReader = new FastCodeSDK.FPReader();
@@ -248,7 +250,7 @@ namespace RockStar.Training
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }           
+            }
             timer2.Start();
         }
 
@@ -325,11 +327,11 @@ namespace RockStar.Training
             {
                 if (!string.IsNullOrEmpty(instructor_FingerID))
                 {
-                    check_Instructor();                    
+                    check_Instructor();
                 }
             }
             if (Status == FPReader.IdentificationStatus.NoCandidate)
-            {               
+            {
                 MessageBox.Show("Fingerprint does not match with any candidate", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -347,7 +349,7 @@ namespace RockStar.Training
         bool berhasil_insert = false; //alasan kasi ini karena, threading si alertcontrol dan indikasi berhasil update
         private void check_Instructor()
         {
-            if(employee_Start.Trim() == instructor_FingerID.Trim())
+            if (employee_Start.Trim() == instructor_FingerID.Trim())
             {
                 if (MessageBox.Show("Finish Training ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -377,7 +379,7 @@ namespace RockStar.Training
                 }
             }
             else
-            {               
+            {
                 //alertControl1.Show(this, "Data center", "Miss match instructor !", gbr_error);
                 MessageBox.Show("Instructor does not match fingerprint", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -398,8 +400,8 @@ namespace RockStar.Training
                 command.CommandText = "update module.trainingUsage set memberEnd=@memberEnd, employeeEnd=@employeeEnd, note=@note where counter=@counter";
                 command.Parameters.AddWithValue("@memberEnd", student_RGP);
                 command.Parameters.AddWithValue("@employeeEnd", instructor_FingerID);
-                command.Parameters.AddWithValue("@note","");                
-                command.Parameters.AddWithValue("@counter", counter_PTSession);                
+                command.Parameters.AddWithValue("@note", "");
+                command.Parameters.AddWithValue("@counter", counter_PTSession);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)

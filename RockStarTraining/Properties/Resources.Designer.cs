@@ -163,6 +163,16 @@ namespace RockStar.Training.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap finishPI_Card {
+            get {
+                object obj = ResourceManager.GetObject("finishPI_Card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap info_icon {
             get {
                 object obj = ResourceManager.GetObject("info_icon", resourceCulture);
@@ -273,6 +283,16 @@ namespace RockStar.Training.Properties {
         internal static System.Drawing.Bitmap startPI {
             get {
                 object obj = ResourceManager.GetObject("startPI", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap startPI_Card {
+            get {
+                object obj = ResourceManager.GetObject("startPI_Card", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

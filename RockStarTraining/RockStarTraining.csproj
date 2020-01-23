@@ -186,11 +186,29 @@
       <DependentUpon>form_Wait.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PT_cardEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PT_cardEnd.Designer.cs">
+      <DependentUpon>PT_cardEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PT_fingerEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PT_fingerEnd.Designer.cs">
+      <DependentUpon>PT_fingerEnd.cs</DependentUpon>
+    </Compile>
     <Compile Include="PT_fingerStart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PT_fingerStart.Designer.cs">
       <DependentUpon>PT_fingerStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PT_formEnd2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PT_formEnd2.Designer.cs">
+      <DependentUpon>PT_formEnd2.cs</DependentUpon>
     </Compile>
     <Compile Include="PT_formEnd.cs">
       <SubType>Form</SubType>
@@ -216,6 +234,12 @@
     </Compile>
     <Compile Include="PT_formStart.Designer.cs">
       <DependentUpon>PT_formStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PT_cardStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PT_cardStart.Designer.cs">
+      <DependentUpon>PT_cardStart.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Cst_Form_Long.resx">
@@ -244,8 +268,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="PT_cardEnd.resx">
+      <DependentUpon>PT_cardEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PT_fingerEnd.resx">
+      <DependentUpon>PT_fingerEnd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PT_fingerStart.resx">
       <DependentUpon>PT_fingerStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PT_formEnd2.resx">
+      <DependentUpon>PT_formEnd2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PT_formEnd.resx">
       <DependentUpon>PT_formEnd.cs</DependentUpon>
@@ -258,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PT_cardStart.resx">
+      <DependentUpon>PT_cardStart.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -283,6 +319,7 @@
     <Content Include="Resources\color-filters.png" />
     <Content Include="Resources\Default_Image.jpg" />
     <Content Include="Resources\filter.png" />
+    <None Include="Resources\finishPI_Card.png" />
     <None Include="Resources\finishPI.png" />
     <Content Include="Resources\info-icon.png" />
     <Content Include="Resources\minus.png" />
@@ -294,6 +331,7 @@
     <Content Include="Resources\search.png" />
     <Content Include="Resources\Sheet_f.png" />
     <Content Include="Resources\sigma.png" />
+    <None Include="Resources\startPI_Card.png" />
     <None Include="Resources\startPI.png" />
     <Content Include="Resources\table.png" />
     <Content Include="Resources\void_f.png" />

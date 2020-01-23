@@ -89,15 +89,25 @@ namespace RockStar.Training
 
             _isSingleClub = System.Text.RegularExpressions.Regex.IsMatch(Partner.FormParameter, @"\bclub\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
      
-            if (Partner.AllowOther1 == false)//start PI
+            if (Partner.AllowOther1 == false)//start PI Finger
             {
-                pictureEdit_PI_Start.Visible = false;
-                pictureEdit_PI_Start.Enabled = false;
+                pictureEdit_PI_Start_Finger.Visible = false;
+                pictureEdit_PI_Start_Finger.Enabled = false;
             }
-            if (Partner.AllowOther2 == false)//finish PI
+            if (Partner.AllowOther2 == false)//finish PI Finger
             {
-                pictureEdit_PI_End.Visible = false;
-                pictureEdit_PI_End.Enabled = false;
+                pictureEdit_PI_End_Finger.Visible = false;
+                pictureEdit_PI_End_Finger.Enabled = false;
+            }
+            if (Partner.AllowOther3 == false)//start PI Card
+            {
+                pictureEdit_PI_Start_Card.Visible = false;
+                pictureEdit_PI_Start_Card.Enabled = false;
+            }
+            if (Partner.AllowOther4 == false)//finish PI Card
+            {
+                pictureEdit_PI_End_Card.Visible = false;
+                pictureEdit_PI_End_Card.Enabled = false;
             }
             if (Partner.AllowPrint == false)
             {
@@ -371,13 +381,21 @@ namespace RockStar.Training
         private void PT_Session_KeyDown(object sender, KeyEventArgs e)
         {
             GridView view = sender as GridView;        
-            if(e.KeyCode == Keys.F7 && pictureEdit_PI_Start.Visible == true)
+            if(e.KeyCode == Keys.F7 && pictureEdit_PI_Start_Finger.Visible == true)
             {
-                startPI();
+                startPI_Finger();
             }
-            if(e.KeyCode == Keys.F8 && pictureEdit_PI_End.Visible == true)
+            if(e.KeyCode == Keys.F8 && pictureEdit_PI_End_Finger.Visible == true)
             {
-                endPI();
+                endPI_Finger();
+            }
+            if (e.KeyCode == Keys.F9 && pictureEdit_PI_Start_Card.Visible == true)
+            {
+                startPI_Card();
+            }
+            if (e.KeyCode == Keys.F10 && pictureEdit_PI_End_Card.Visible == true)
+            {
+                endPI_Card();
             }
             if (e.Control && e.KeyCode == Keys.T && pictureEdit_Print.Visible == true)
             {
@@ -1116,51 +1134,96 @@ namespace RockStar.Training
             e.AlertForm.OpacityLevel = 3;
         }
 
-        private void pictureEdit_PI_Start_MouseClick(object sender, MouseEventArgs e)
+        private void pictureEdit_PI_Start_Finger_MouseClick(object sender, MouseEventArgs e)
         {
-            startPI();  
+            startPI_Finger();  
         }
 
-        private void startPI()
+        private void pictureEdit_PI_Start_Card_Click(object sender, EventArgs e)
         {
-            PT_formStart pt_formStart = new PT_formStart(code_UserClubName, code_UserClub, dt_ins_fingerPrint);
-            if (pt_formStart.ShowDialog() == DialogResult.OK)
+            startPI_Card();
+        }
+
+        private void pictureEdit_PI_End_Finger_Click(object sender, EventArgs e)
+        {
+            endPI_Finger();
+        }
+        private void pictureEdit_PI_End_Card_Click(object sender, EventArgs e)
+        {
+            endPI_Card();
+        }
+
+        private void startPI_Finger()
+        {
+            using (PT_formStart pt_formStart = new PT_formStart(code_UserClubName, code_UserClub, dt_ins_fingerPrint, true))
             {
-                load_PrivateSession();
-                alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
-            }
-        }
-
-        private void pictureEdit_PI_End_Click(object sender, EventArgs e)
-        {
-            endPI();
-        }
-
-        private void endPI()
-        {
-            try
-            {
-                string counter_Session = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
-                string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
-                string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
-                string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
-                string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
-
-                PT_formEnd pt_formEnd = new PT_formEnd(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start);
-                if (pt_formEnd.ShowDialog() == DialogResult.OK)
+                if (pt_formStart.ShowDialog() == DialogResult.OK)
                 {
-                    Report rv = new Report(counter_Session);
-                    rv.Show();
-
                     load_PrivateSession();
+                    alertControl1.Show(this, "Data center", "Training has start", gbr_inf);
                     alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
                 }
             }
-            catch (Exception ex)
+        }
+        private void startPI_Card()
+        {
+            using (PT_formStart pt_formStart = new PT_formStart(code_UserClubName, code_UserClub, null, false))
             {
-                MessageBox.Show(ex.Message);
+                if (pt_formStart.ShowDialog() == DialogResult.OK)
+                {
+                    load_PrivateSession();
+                    alertControl1.Show(this, "Data center", "Training has start", gbr_inf);
+                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
+                }
             }
         }
+
+  
+        private void endPI_Finger()
+        {
+            if (gridView1.RowCount == 0) { return; }
+            string counter_Session = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
+            string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
+            string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
+            string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
+            string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
+
+            //PT_formEnd pt_formEnd = new PT_formEnd(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start);
+            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start, true))
+            {
+                if (pt_formEnd.ShowDialog() == DialogResult.OK)
+                {
+                    load_PrivateSession();
+                    alertControl1.Show(this, "Data center", "Training has end", gbr_inf);
+                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
+                    Report rv = new Report(counter_Session);
+                    rv.Show();
+                }
+            }
+        }
+
+        private void endPI_Card()
+        {
+            if (gridView1.RowCount == 0) { return; }
+            string counter_Session = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
+            string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
+            string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
+            string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
+            string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
+
+            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, null, employee_Start, false))
+            {
+                if (pt_formEnd.ShowDialog() == DialogResult.OK)
+                {
+                    load_PrivateSession();
+                    alertControl1.Show(this, "Data center", "Training has end", gbr_inf);
+                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
+                    Report rv = new Report(counter_Session);
+                    rv.Show();
+                }
+            }
+        }
+
 
 
     }

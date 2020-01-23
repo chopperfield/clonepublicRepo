@@ -26,13 +26,22 @@ namespace RockStar.Training
         private string code_clubUser;
         private string student_RGP;
 
-        public PT_formStart(string clubName, string code_clubUser,DataTable dt_finger_employees)
+        private bool isFinger;
+
+        /// <summary>
+        /// Input Datatable if using finger, if not null
+        /// </summary>
+        /// <param name="clubName"></param>
+        /// <param name="code_clubUser"></param>
+        /// <param name="dt_finger_employees"></param>        
+        public PT_formStart(string clubName, string code_clubUser,DataTable dt_finger_employees, bool isFinger)
         {
             InitializeComponent();        
             lb_ClubName.Text = clubName;
             this.dt_finger_employees = new DataTable();
             this.dt_finger_employees = dt_finger_employees;
             this.code_clubUser = code_clubUser;
+            this.isFinger = isFinger;
         }
         private void PT_formStart_Load(object sender, EventArgs e)
         {
@@ -69,7 +78,7 @@ namespace RockStar.Training
                 }
                 textBox1.Focus();
                 timer1.Start();
-                //timer2.Start();
+                timer2.Start();
             }
             catch (Exception ex)
             {
@@ -219,16 +228,16 @@ namespace RockStar.Training
             Invalidate();
         }
 
-        //private int tick2 = 2 * 60;// 2 meenit;
+        private int tick2 = 2 * 60;// 2 meenit;
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            //tick2 = tick2 - 1;
-            //if (tick2 == 0)
-            //{
-            //    timer2.Stop();
-            //    this.Close();
-            //}
+            tick2 = tick2 - 1;
+            if (tick2 == 0)
+            {
+                timer2.Stop();
+                this.Close();
+            }
         }
 
         private void arrangeCol()
@@ -293,12 +302,37 @@ namespace RockStar.Training
             if(gridView1.RowCount != 0)
             {
                 if(e.KeyCode == Keys.Enter)
-                {                    
-                    PT_fingerStart pt_fingerstart = new PT_fingerStart(dt_finger_employees,lb_ClubName.Text,code_clubUser,gridView1.GetFocusedRowCellDisplayText("productName"),gridView1.GetFocusedRowCellDisplayText("remain"), gridView1.GetFocusedRowCellDisplayText("counter"), student_RGP, lb_Student_Name.Text);
-                    if(pt_fingerstart.ShowDialog() == DialogResult.OK)
+                {
+                    timer1.Stop();
+                    timer2.Stop();
+                    if (isFinger)
                     {
-                        this.DialogResult = DialogResult.OK;
-                    }                   
+                        PT_fingerStart pt_fingerstart = new PT_fingerStart(dt_finger_employees, lb_ClubName.Text, code_clubUser, gridView1.GetFocusedRowCellDisplayText("productName"), gridView1.GetFocusedRowCellDisplayText("remain"), gridView1.GetFocusedRowCellDisplayText("counter"), student_RGP, lb_Student_Name.Text);
+                        if (pt_fingerstart.ShowDialog() == DialogResult.OK)
+                        {
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
+                        else
+                        {
+                            this.DialogResult = DialogResult.Cancel;
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        PT_cardStart pt_cardstart = new PT_cardStart(lb_ClubName.Text, code_clubUser, gridView1.GetFocusedRowCellDisplayText("productName"), gridView1.GetFocusedRowCellDisplayText("remain"), gridView1.GetFocusedRowCellDisplayText("counter"), student_RGP, lb_Student_Name.Text);
+                        if (pt_cardstart.ShowDialog() == DialogResult.OK)
+                        {
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
+                        else
+                        {
+                            this.DialogResult = DialogResult.Cancel;
+                            this.Close();
+                        }
+                    }
                 }
             }
             else { e.Handled = true; }
