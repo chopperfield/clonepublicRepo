@@ -216,6 +216,12 @@
     <Compile Include="PT_formEnd.Designer.cs">
       <DependentUpon>PT_formEnd.cs</DependentUpon>
     </Compile>
+    <Compile Include="PT_formMultiStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PT_formMultiStart.Designer.cs">
+      <DependentUpon>PT_formMultiStart.cs</DependentUpon>
+    </Compile>
     <Compile Include="PT_Session.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PT_formEnd.resx">
       <DependentUpon>PT_formEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PT_formMultiStart.resx">
+      <DependentUpon>PT_formMultiStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PT_Session.resx">
       <DependentUpon>PT_Session.cs</DependentUpon>
