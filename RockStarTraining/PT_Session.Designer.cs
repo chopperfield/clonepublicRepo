@@ -334,7 +334,7 @@
             this.pictureEdit_PI_Start_Card.Properties.ShowMenu = false;
             this.pictureEdit_PI_Start_Card.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit_PI_Start_Card.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem3.Text = "Start Private Training (F8)";
+            toolTipTitleItem3.Text = "Start Private Training (F9)";
             toolTipItem3.LeftIndent = 6;
             toolTipItem3.Text = "Start Private Training";
             superToolTip3.Items.Add(toolTipTitleItem3);
@@ -355,7 +355,7 @@
             this.pictureEdit_PI_End_Card.Properties.ShowMenu = false;
             this.pictureEdit_PI_End_Card.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit_PI_End_Card.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem4.Text = "Finish Private Training (F9)";
+            toolTipTitleItem4.Text = "Finish Private Training (F10)";
             toolTipItem4.LeftIndent = 6;
             toolTipItem4.Text = "Finish Private Training";
             superToolTip4.Items.Add(toolTipTitleItem4);
