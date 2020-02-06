@@ -186,7 +186,7 @@ namespace RockStar.Training
         }
 
         /// <summary>
-        /// Retrieve list Private of student
+        /// Retrieve list student's Private instruction 
         /// </summary>
         /// <param name="RGP"></param>
         /// <returns></returns>
