@@ -1224,8 +1224,23 @@ namespace RockStar.Training
             }
         }
 
+        private void startPI_Finger_Multi()
+        {
+            using (PT_formMultiList pt_formStart = new PT_formMultiList(code_UserClubName, code_UserClub, dt_ins_fingerPrint, true))
+            {
+                if (pt_formStart.ShowDialog() == DialogResult.OK)
+                {
+                    load_PrivateSession();
+                    alertControl1.Show(this, "Data center", "Training has start", gbr_inf);
+                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
+                }
+            }
+        }
 
-
+        private void pictureEdit_PI_Start_Finger_Multi_Click(object sender, EventArgs e)
+        {
+            startPI_Finger_Multi();
+        }
     }
 
     

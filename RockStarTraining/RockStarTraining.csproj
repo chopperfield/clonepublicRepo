@@ -198,6 +198,12 @@
     <Compile Include="PT_fingerEnd.Designer.cs">
       <DependentUpon>PT_fingerEnd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Multi\PT_fingerMultiStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multi\PT_fingerMultiStart.Designer.cs">
+      <DependentUpon>PT_fingerMultiStart.cs</DependentUpon>
+    </Compile>
     <Compile Include="PT_fingerStart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,10 +222,16 @@
     <Compile Include="PT_formEnd.Designer.cs">
       <DependentUpon>PT_formEnd.cs</DependentUpon>
     </Compile>
-    <Compile Include="PT_formMultiStart.cs">
+    <Compile Include="Multi\PT_formMultiList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PT_formMultiStart.Designer.cs">
+    <Compile Include="Multi\PT_formMultiList.Designer.cs">
+      <DependentUpon>PT_formMultiList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Multi\PT_formMultiStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multi\PT_formMultiStart.Designer.cs">
       <DependentUpon>PT_formMultiStart.cs</DependentUpon>
     </Compile>
     <Compile Include="PT_Session.cs">
@@ -280,6 +292,9 @@
     <EmbeddedResource Include="PT_fingerEnd.resx">
       <DependentUpon>PT_fingerEnd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Multi\PT_fingerMultiStart.resx">
+      <DependentUpon>PT_fingerMultiStart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PT_fingerStart.resx">
       <DependentUpon>PT_fingerStart.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,7 +304,10 @@
     <EmbeddedResource Include="PT_formEnd.resx">
       <DependentUpon>PT_formEnd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PT_formMultiStart.resx">
+    <EmbeddedResource Include="Multi\PT_formMultiList.resx">
+      <DependentUpon>PT_formMultiList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multi\PT_formMultiStart.resx">
       <DependentUpon>PT_formMultiStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PT_Session.resx">
@@ -346,5 +364,6 @@
     <Content Include="Resources\void_f.png" />
     <Content Include="Resources\warning.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
