@@ -204,7 +204,7 @@ namespace RockStar.Training
             {
                 instructor_Name = dr[0]["employeeName"].ToString();
             }
-           
+            timer1.Stop();
             string msg = "Start using <b><color=red>" + studentName + " - " + productName+"</color></b> 's private session, teach by <b><color=red>"+instructor_Name+"</color></b> ?";
             Cst_Form_Long form = new Cst_Form_Long(msg);
             if (form.ShowDialog() == DialogResult.Yes)
