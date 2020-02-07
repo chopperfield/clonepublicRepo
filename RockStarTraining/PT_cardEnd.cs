@@ -129,6 +129,7 @@ namespace RockStar.Training
             {
                 if (employee_Start.Trim() == dt.Rows[0]["employeeStart"].ToString().Trim())
                 {
+                    timer1.Stop();
                     if (MessageBox.Show("Finish Training ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         update_Signin();                       

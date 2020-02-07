@@ -244,6 +244,7 @@ namespace RockStar.Training
         {
             if (employee_Start.Trim() == instructor_FingerID.Trim())
             {
+                timer1.Stop();
                 if (MessageBox.Show("Finish Training ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     update_Signin();                                
