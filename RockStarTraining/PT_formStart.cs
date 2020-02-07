@@ -252,9 +252,9 @@ namespace RockStar.Training
                 gridView1.Columns["productName"].Caption = "Product Name";
                 gridView1.Columns["productName"].Width = 200;
 
-                gridView1.Columns["instructorName"].VisibleIndex = 2;
-                gridView1.Columns["instructorName"].Caption = "Instructor Name";
-                gridView1.Columns["instructorName"].Width = 150;
+                gridView1.Columns["instructorCode"].VisibleIndex = 2;
+                gridView1.Columns["instructorCode"].Caption = "Instructor Code";
+                gridView1.Columns["instructorCode"].Width = 150;
 
                 gridView1.Columns["instructorName"].VisibleIndex = 3;
                 gridView1.Columns["instructorName"].Caption = "Instructor Name";

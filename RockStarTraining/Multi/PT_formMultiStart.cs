@@ -240,21 +240,25 @@ namespace RockStar.Training
                 gridView1.Columns["productName"].Caption = "Product Name";
                 gridView1.Columns["productName"].Width = 200;
 
-                gridView1.Columns["instructorName"].VisibleIndex = 2;
+                gridView1.Columns["instructorCode"].VisibleIndex = 2;
+                gridView1.Columns["instructorCode"].Caption = "Instructor Code";
+                gridView1.Columns["instructorCode"].Width = 150;
+
+                gridView1.Columns["instructorName"].VisibleIndex = 3;
                 gridView1.Columns["instructorName"].Caption = "Instructor Name";
                 gridView1.Columns["instructorName"].Width = 150;
 
-                gridView1.Columns["remain"].VisibleIndex = 3;
+                gridView1.Columns["remain"].VisibleIndex = 4;
                 gridView1.Columns["remain"].Caption = "Remain";
                 gridView1.Columns["remain"].Width = 50;
 
-                gridView1.Columns["expired"].VisibleIndex = 4;
+                gridView1.Columns["expired"].VisibleIndex = 5;
                 gridView1.Columns["expired"].Caption = "Expired Date";
                 gridView1.Columns["expired"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
                 gridView1.Columns["expired"].DisplayFormat.FormatString = "dd MMM yyyy";
                 gridView1.Columns["expired"].Width = 100;
 
-                gridView1.Columns["note"].VisibleIndex = 5;
+                gridView1.Columns["note"].VisibleIndex = 6;
                 gridView1.Columns["note"].Caption = "Note";
                 gridView1.Columns["note"].Width = 200;
 
