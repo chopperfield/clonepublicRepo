@@ -26,13 +26,14 @@ namespace RockStar.Training
         fingerPrint_Device fingerPrint_Device = new fingerPrint_Device();
 
 
-        string clubName;
-        string productName;
-        string employee_Start;
-        string trainingCounter;
-        string studentRGP;
+        string _clubName;
+        string _productName;
+        string _employee_Start;
+        string _employee_StartName;
+        string _trainingCounter;
+        string _studentRGP;
 
-        public PT_fingerEnd(DataTable dt_finger,string clubName,string productName, string employeeStart,string trainingCounter, string studentRGP)
+        public PT_fingerEnd(DataTable dt_finger,string clubName,string productName, string employeeStart, string employeeStartName, string trainingCounter, string studentRGP)
         {
 
             InitializeComponent();
@@ -40,11 +41,12 @@ namespace RockStar.Training
             
             _dt_ins_fingerPrint = dt_finger;
 
-            this.clubName = clubName;
-            this.productName = productName;
-            this.employee_Start = employeeStart;
-            this.trainingCounter = trainingCounter;
-            this.studentRGP = studentRGP;
+            _clubName = clubName;
+            _productName = productName;
+            _employee_Start = employeeStart;
+            _employee_StartName = employeeStartName;
+            _trainingCounter = trainingCounter;
+            _studentRGP = studentRGP;
         }
 
         private void PT_fingerEnd_Load(object sender, EventArgs e)
@@ -52,8 +54,10 @@ namespace RockStar.Training
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
             pictureEdit_Logo.Image = logo;
 
-            lb_clubName.Text = clubName;
-            lb_productName.Text = productName;
+            lb_clubName.Text = _clubName;
+            lb_productName.Text = _productName;
+            lb_Instructor_Name.Text = _employee_StartName;
+            lb_PT_use.Text = "";
 
             try //cuman buat getFileCode (pakai throw) karena pada event load execute tiap code sblom di close)
             {
@@ -242,7 +246,7 @@ namespace RockStar.Training
     
         private void check_Instructor()
         {
-            if (employee_Start.Trim() == instructor_FingerID.Trim())
+            if (_employee_Start.Trim() == instructor_FingerID.Trim())
             {
                 timer1.Stop();
                 if (MessageBox.Show("Finish Training ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -275,10 +279,10 @@ namespace RockStar.Training
 
                 command.Connection = myConnection;
                 command.CommandText = "update module.trainingUsage set memberEnd=@memberEnd, employeeEnd=@employeeEnd, note=@note where counter=@counter";
-                command.Parameters.AddWithValue("@memberEnd", studentRGP);
+                command.Parameters.AddWithValue("@memberEnd", _studentRGP);
                 command.Parameters.AddWithValue("@employeeEnd", instructor_FingerID);
                 command.Parameters.AddWithValue("@note", "");
-                command.Parameters.AddWithValue("@counter", trainingCounter);
+                command.Parameters.AddWithValue("@counter", _trainingCounter);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)

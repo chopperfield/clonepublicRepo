@@ -18,29 +18,32 @@ namespace RockStar.Training
         Bitmap gbr_warn = new Bitmap(Properties.Resources.warning, 25, 25);
 
 
-        string clubCode;
-        string trainingCounter;
-        string studentRGP;
-        string studentName;
+        string _clubCode;
+        string _trainingCounter;
+        string _studentRGP;
+        string _studentName;
 
-        string clubName;
-        string productName;
-        string PT_remain;
+        string _clubName;
+        string _productName;
+        string _PT_remain;
 
-
-        public PT_cardStart(string clubName, string clubCode, string productName, string PT_remain, string trainingCounter, string studentRGP, string studentName)
+        string _instructorCode;
+        string _instructorName;
+        public PT_cardStart(string clubName, string clubCode, string productName, string PT_remain, string trainingCounter, string studentRGP, string studentName, string instructorCode, string instructorName)
         {
 
             InitializeComponent();
 
-            this.clubCode = clubCode;
-            this.trainingCounter = trainingCounter;
-            this.studentRGP = studentRGP;
+            _clubCode = clubCode;
+            _trainingCounter = trainingCounter;
+            _studentRGP = studentRGP;
 
-            this.clubName = clubName;
-            this.productName = productName;
-            this.PT_remain = PT_remain;
-            this.studentName = studentName;
+            _clubName = clubName;
+            _productName = productName;
+            _PT_remain = PT_remain;
+            _studentName = studentName;
+            _instructorCode = instructorCode;
+            _instructorName = instructorName;
         }
 
         private void PT_cardStart_Load(object sender, EventArgs e)
@@ -50,9 +53,10 @@ namespace RockStar.Training
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
             pictureEdit_Logo.Image = logo;
 
-            lb_clubName.Text = clubName;
-            lb_productName.Text = productName;
-            lb_PT_remain.Text = "Remains: " + PT_remain;
+            lb_clubName.Text = _clubName;
+            lb_productName.Text = _productName;
+            lb_PT_remain.Text = "Remaining Session(s): " + _PT_remain;
+            lb_Instructor_Name.Text = "Instructor: "+_instructorName;
 
             timer1.Start();
             timer2.Start();
@@ -136,7 +140,16 @@ namespace RockStar.Training
             else
             {
                 timer1.Stop();
-                string msg = "Start using <b><color=red>" + studentName + " - " + productName + "</color></b> 's private session, teach by <b><color=red>" + dt.Rows[0]["preferredName"].ToString().Trim() + "</color></b> ?";
+                string msg = "";
+                if (_instructorCode.Trim() == dt.Rows[0]["employeeStart"].ToString().Trim())
+                {
+                    msg = "Do you want to start using <b>" + _studentName + " - " + _productName + "</b> private session, teach by <b>" + dt.Rows[0]["preferredName"].ToString().Trim() + "</b> ?";
+                }
+                else
+                {
+                    msg = "<b>" + _instructorName + "</b> is the registered instructor for this private instruction package. \nDo you want to start using <b>" + _studentName + " - " + _productName + "</b> private session, teach by <b>" + dt.Rows[0]["preferredName"].ToString().Trim() + "</b> ?";
+                }
+
                 Cst_Form_Long form = new Cst_Form_Long(msg);
                 if (form.ShowDialog() == DialogResult.Yes)
                 {
@@ -164,9 +177,9 @@ namespace RockStar.Training
                                       " (@type, getDate(), @club, @training,@memberStart,@employeeStart,@recid)  ";
 
                 command.Parameters.AddWithValue("@type", "FTU");
-                command.Parameters.AddWithValue("@club", clubCode.Trim());
-                command.Parameters.AddWithValue("@training", trainingCounter.Trim());
-                command.Parameters.AddWithValue("@memberStart", studentRGP.Trim());
+                command.Parameters.AddWithValue("@club", _clubCode.Trim());
+                command.Parameters.AddWithValue("@training", _trainingCounter.Trim());
+                command.Parameters.AddWithValue("@memberStart", _studentRGP.Trim());
                 command.Parameters.AddWithValue("@employeeStart", instructorCode.Trim());
                 command.Parameters.AddWithValue("@recid", Partner.Userid);
                 command.ExecuteNonQuery();

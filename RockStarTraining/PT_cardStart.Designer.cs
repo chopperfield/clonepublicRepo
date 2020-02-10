@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lb_Info = new DevExpress.XtraEditors.LabelControl();
             this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
             this.lb_productName = new DevExpress.XtraEditors.LabelControl();
             this.lb_clubName = new DevExpress.XtraEditors.LabelControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer();
             this.lb_PT_remain = new DevExpress.XtraEditors.LabelControl();
+            this.lb_Instructor_Name = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
@@ -89,7 +89,7 @@
             this.lb_productName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.lb_productName.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lb_productName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_productName.Location = new System.Drawing.Point(12, 59);
+            this.lb_productName.Location = new System.Drawing.Point(12, 64);
             this.lb_productName.Name = "lb_productName";
             this.lb_productName.Size = new System.Drawing.Size(401, 71);
             this.lb_productName.TabIndex = 70;
@@ -159,17 +159,32 @@
             this.lb_PT_remain.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Bottom;
             this.lb_PT_remain.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lb_PT_remain.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_PT_remain.Location = new System.Drawing.Point(419, 90);
+            this.lb_PT_remain.Location = new System.Drawing.Point(419, 95);
             this.lb_PT_remain.Name = "lb_PT_remain";
             this.lb_PT_remain.Size = new System.Drawing.Size(114, 40);
             this.lb_PT_remain.TabIndex = 85;
-            this.lb_PT_remain.Text = "Remain: 99";
+            this.lb_PT_remain.Text = "Remaining Session(s): 99";
+            // 
+            // lb_Instructor_Name
+            // 
+            this.lb_Instructor_Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Instructor_Name.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lb_Instructor_Name.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Instructor_Name.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_Instructor_Name.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lb_Instructor_Name.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Instructor_Name.Location = new System.Drawing.Point(133, 41);
+            this.lb_Instructor_Name.Name = "lb_Instructor_Name";
+            this.lb_Instructor_Name.Size = new System.Drawing.Size(400, 19);
+            this.lb_Instructor_Name.TabIndex = 87;
+            this.lb_Instructor_Name.Text = "Instructor: Director Fury";
             // 
             // PT_cardStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 162);
+            this.Controls.Add(this.lb_Instructor_Name);
             this.Controls.Add(this.lb_PT_remain);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureEdit_Logo);
@@ -208,5 +223,6 @@
         private DevExpress.XtraEditors.LabelControl lb_clubName;
         public DevExpress.XtraEditors.LabelControl lb_productName;
         public DevExpress.XtraEditors.LabelControl lb_PT_remain;
+        public DevExpress.XtraEditors.LabelControl lb_Instructor_Name;
     }
 }

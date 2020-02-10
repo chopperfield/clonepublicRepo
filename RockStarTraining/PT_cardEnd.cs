@@ -18,22 +18,24 @@ namespace RockStar.Training
         Bitmap gbr_warn = new Bitmap(Properties.Resources.warning, 25, 25);
 
 
-        string clubName;
-        string productName;
-        string employee_Start;
-        string trainingCounter;
-        string studentRGP;
+        string _clubName;
+        string _productName;
+        string _employee_Start;
+        string _employee_StartName;
+        string _trainingCounter;
+        string _studentRGP;
 
-        public PT_cardEnd(string clubName, string productName, string employeeStart, string trainingCounter, string studentRGP)
+        public PT_cardEnd(string clubName, string productName, string employeeStart, string employeeStartName ,string trainingCounter, string studentRGP)
         {
 
             InitializeComponent();
 
-            this.clubName = clubName;
-            this.productName = productName;
-            this.employee_Start = employeeStart;
-            this.trainingCounter = trainingCounter;
-            this.studentRGP = studentRGP;
+            _clubName = clubName;
+            _productName = productName;
+            _employee_Start = employeeStart;
+            _employee_StartName = employeeStartName;
+            _trainingCounter = trainingCounter;
+            _studentRGP = studentRGP;
         }
 
         private void PT_cardEnd_Load(object sender, EventArgs e)
@@ -43,8 +45,10 @@ namespace RockStar.Training
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
             pictureEdit_Logo.Image = logo;
 
-            lb_clubName.Text = clubName;
-            lb_productName.Text = productName;
+            lb_clubName.Text = _clubName;
+            lb_productName.Text = _productName;
+            lb_Instructor_Name.Text = _employee_StartName;
+            lb_PT_use.Text = "";
 
             timer1.Start();
             timer2.Start();
@@ -127,7 +131,7 @@ namespace RockStar.Training
             }
             else
             {
-                if (employee_Start.Trim() == dt.Rows[0]["employeeStart"].ToString().Trim())
+                if (_employee_Start.Trim() == dt.Rows[0]["employeeStart"].ToString().Trim())
                 {
                     timer1.Stop();
                     if (MessageBox.Show("Finish Training ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -162,10 +166,10 @@ namespace RockStar.Training
 
                 command.Connection = myConnection;
                 command.CommandText = "update module.trainingUsage set memberEnd=@memberEnd, employeeEnd=@employeeEnd, note=@note where counter=@counter";
-                command.Parameters.AddWithValue("@memberEnd", studentRGP);
-                command.Parameters.AddWithValue("@employeeEnd", employee_Start.Trim());
+                command.Parameters.AddWithValue("@memberEnd", _studentRGP);
+                command.Parameters.AddWithValue("@employeeEnd", _employee_Start.Trim());
                 command.Parameters.AddWithValue("@note", "");
-                command.Parameters.AddWithValue("@counter", trainingCounter);
+                command.Parameters.AddWithValue("@counter", _trainingCounter);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)

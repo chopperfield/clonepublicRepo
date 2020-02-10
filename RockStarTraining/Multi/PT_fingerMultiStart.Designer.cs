@@ -37,6 +37,7 @@
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
             this.timer1 = new System.Windows.Forms.Timer();
             this.lb_PT_participants = new DevExpress.XtraEditors.LabelControl();
+            this.lb_Instructor_Name = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
@@ -86,7 +87,8 @@
             this.lb_productName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.lb_productName.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lb_productName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_productName.Location = new System.Drawing.Point(12, 59);
+            this.lb_productName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_productName.Location = new System.Drawing.Point(12, 64);
             this.lb_productName.Name = "lb_productName";
             this.lb_productName.Size = new System.Drawing.Size(401, 71);
             this.lb_productName.TabIndex = 70;
@@ -143,17 +145,32 @@
             this.lb_PT_participants.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Bottom;
             this.lb_PT_participants.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lb_PT_participants.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_PT_participants.Location = new System.Drawing.Point(419, 90);
+            this.lb_PT_participants.Location = new System.Drawing.Point(419, 95);
             this.lb_PT_participants.Name = "lb_PT_participants";
             this.lb_PT_participants.Size = new System.Drawing.Size(114, 40);
             this.lb_PT_participants.TabIndex = 82;
-            this.lb_PT_participants.Text = "Participants: 99";
+            this.lb_PT_participants.Text = "Remaining Session(s): 99";
+            // 
+            // lb_Instructor_Name
+            // 
+            this.lb_Instructor_Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Instructor_Name.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lb_Instructor_Name.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Instructor_Name.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_Instructor_Name.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lb_Instructor_Name.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Instructor_Name.Location = new System.Drawing.Point(133, 41);
+            this.lb_Instructor_Name.Name = "lb_Instructor_Name";
+            this.lb_Instructor_Name.Size = new System.Drawing.Size(400, 19);
+            this.lb_Instructor_Name.TabIndex = 85;
+            this.lb_Instructor_Name.Text = "Instructor: Director Fury";
             // 
             // PT_fingerMultiStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 162);
+            this.Controls.Add(this.lb_Instructor_Name);
             this.Controls.Add(this.pictureEdit_Logo);
             this.Controls.Add(this.lb_PT_participants);
             this.Controls.Add(this.panelControl1);
@@ -190,5 +207,6 @@
         public DevExpress.XtraBars.Alerter.AlertControl alertControl1;
         private System.Windows.Forms.Timer timer1;
         public DevExpress.XtraEditors.LabelControl lb_PT_participants;
+        public DevExpress.XtraEditors.LabelControl lb_Instructor_Name;
     }
 }

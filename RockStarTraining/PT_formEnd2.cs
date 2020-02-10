@@ -23,16 +23,17 @@ namespace RockStar.Training
 
         private string Img_member_Url;
         
-        DataTable dt_finger_employees;
+        DataTable _dt_finger_employees;
 
-        private string clubName;
-        private string counter_PTSession;
-        private string student_Name;
-        private string student_RGP;
-        private string product_Name;
+        private string _clubName;
+        private string _counter_PTSession;
+        private string _student_Name;
+        private string _student_RGP;
+        private string _product_Name;
 
-        private string employee_Start;
-        private bool isFinger;
+        private string _employee_Start;
+        private string _employee_StartName;
+        private bool _isFinger;
 
         /// <summary>
         /// Input Datatable if using finger, if not null
@@ -45,19 +46,20 @@ namespace RockStar.Training
         /// <param name="dt_finger_employees"></param>
         /// <param name="employee_Start"></param>
         /// <param name="isFinger"></param>
-        public PT_formEnd2(string clubName, string counter_PTSession, string student_Name, string student_RGP, string product_Name, DataTable dt_finger_employees, string employee_Start, bool isFinger)
+        public PT_formEnd2(string clubName, string counter_PTSession, string student_Name, string student_RGP, string product_Name, DataTable dt_finger_employees, string employee_Start, string employee_StartName, bool isFinger)
         {
             InitializeComponent();        
-            this.dt_finger_employees = new DataTable();
-            this.dt_finger_employees = dt_finger_employees;
+            _dt_finger_employees = new DataTable();
+            _dt_finger_employees = dt_finger_employees;
 
-            this.clubName = clubName;
-            this.counter_PTSession = counter_PTSession;
-            this.student_Name = student_Name;
-            this.student_RGP = student_RGP;
-            this.product_Name = product_Name;
-            this.employee_Start = employee_Start;
-            this.isFinger = isFinger;
+            _clubName = clubName;
+            _counter_PTSession = counter_PTSession;
+            _student_Name = student_Name;
+            _student_RGP = student_RGP;
+            _product_Name = product_Name;
+            _employee_Start = employee_Start;
+            _employee_StartName = employee_StartName;
+            _isFinger = isFinger;
         }
 
         private void PT_formEnd2_Load(object sender, EventArgs e)
@@ -66,11 +68,11 @@ namespace RockStar.Training
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
             pictureEdit_Logo.Image = logo;
 
-            lb_ClubName.Text = clubName;
-            lb_Student_Name.Text = student_Name;
-            lb_Student_RGP.Text = "RGP: " + student_RGP;
-            lb_productName.Text = product_Name;
-
+            lb_ClubName.Text = _clubName;
+            lb_Student_Name.Text = _student_Name;
+            lb_Student_RGP.Text = "RGP: " + _student_RGP;
+            lb_productName.Text = _product_Name;
+            lb_Instructor_Name.Text = "Instructor: " + _employee_StartName; 
             pictureEdit_Student_Attendees.Image = null;
 
             setup_Datatable = new setup_Datatable();
@@ -93,7 +95,7 @@ namespace RockStar.Training
                 Img_member_Url = utils.get_Student_Image_URL();
 
                 //set image
-                string img_path = utils.get_Student_Image(Img_member_Url, student_RGP.ToString());
+                string img_path = utils.get_Student_Image(Img_member_Url, _student_RGP.ToString());
                 if (!string.IsNullOrEmpty(img_path))
                 {
                     using (var bmpTemp = new Bitmap(img_path))
@@ -174,13 +176,13 @@ namespace RockStar.Training
                 {
                     string RGP = dt.Rows[0]["RGP"].ToString().Trim();
 
-                    if( RGP.Trim() == student_RGP.Trim())
+                    if( RGP.Trim() == _student_RGP.Trim())
                     {
                         timer1.Stop();
                         timer2.Stop();
-                        if (isFinger)
+                        if (_isFinger)
                         {
-                            PT_fingerEnd pt_fingerend = new PT_fingerEnd(dt_finger_employees, lb_ClubName.Text, product_Name, employee_Start, counter_PTSession, student_RGP);
+                            PT_fingerEnd pt_fingerend = new PT_fingerEnd(_dt_finger_employees, lb_ClubName.Text, _product_Name, _employee_Start, _employee_StartName, _counter_PTSession, _student_RGP);
                             if (pt_fingerend.ShowDialog() == DialogResult.OK)
                             {
                                 this.DialogResult = DialogResult.OK;
@@ -194,7 +196,7 @@ namespace RockStar.Training
                         }
                         else
                         {
-                            PT_cardEnd PT_cardEnd = new PT_cardEnd(lb_ClubName.Text, product_Name, employee_Start, counter_PTSession, student_RGP);
+                            PT_cardEnd PT_cardEnd = new PT_cardEnd(lb_ClubName.Text, _product_Name, _employee_Start, _employee_StartName, _counter_PTSession, _student_RGP);
                             if (PT_cardEnd.ShowDialog() == DialogResult.OK)
                             {
                                 this.DialogResult = DialogResult.OK;
