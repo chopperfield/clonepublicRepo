@@ -26,22 +26,22 @@ namespace RockStar.Training
         fingerPrint_Device fingerPrint_Device = new fingerPrint_Device();
 
 
-        string clubCode;
-        string clubName;
-        string productName;
-        string totalParticipants;
-        DataTable dt_listData = new DataTable();
+        string _clubCode;
+        string _clubName;
+        string _productName;
+        string _totalParticipants;
+        DataTable _dt_listData = new DataTable();
         public PT_fingerMultiStart(DataTable dt_finger,string clubName,string clubCode ,string productName, DataTable dt_listData)
         {
 
             InitializeComponent();            
             _dt_ins_fingerPrint = dt_finger;
            
-            this.clubCode = clubCode;
-            this.clubName = clubName;
-            this.productName = productName;
-            this.dt_listData = dt_listData;
-            totalParticipants = dt_listData.Rows.Count.ToString();
+            _clubCode = clubCode;
+            _clubName = clubName;
+            _productName = productName;
+            _dt_listData = dt_listData;
+            _totalParticipants = dt_listData.Rows.Count.ToString();
         }
 
         private void PT_fingerMultiStart_Load(object sender, EventArgs e)
@@ -49,9 +49,9 @@ namespace RockStar.Training
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
             pictureEdit_Logo.Image = logo;
 
-            lb_clubName.Text = clubName;
-            lb_productName.Text = productName;
-            lb_PT_participants.Text = "Participants: " + totalParticipants;
+            lb_clubName.Text = _clubName;
+            lb_productName.Text = _productName;
+            lb_PT_participants.Text = "Participants: " + _totalParticipants;
 
             try //cuman buat getFileCode (pakai throw) karena pada event load execute tiap code sblom di close)
             {
@@ -194,7 +194,7 @@ namespace RockStar.Training
                 instructor_Name = dr[0]["employeeName"].ToString();
             }
             timer1.Stop();
-            string msg = "Start using <b><color=red>" + productName+"</color></b> private session with total participants "+totalParticipants+", teach by <b><color=red>"+instructor_Name+"</color></b> ?";
+            string msg = "Start using <b><color=red>" + _productName+"</color></b> private session with total participants "+_totalParticipants+", teach by <b><color=red>"+instructor_Name+"</color></b> ?";
             Cst_Form_Long form = new Cst_Form_Long(msg);
             if (form.ShowDialog() == DialogResult.Yes)
             {                
@@ -211,7 +211,7 @@ namespace RockStar.Training
         {
             try
             {
-                foreach (DataRow dr in dt_listData.Rows)
+                foreach (DataRow dr in _dt_listData.Rows)
                 {
                     SqlCommand command = new SqlCommand();
                     try
@@ -227,7 +227,7 @@ namespace RockStar.Training
                         command.CommandText = "insert into module.trainingUsage (type,date,club,training,memberStart,employeeStart,recid) values " +
                                               " (@type, getDate(), @club, @training,@memberStart,@employeeStart,@recid)  ";
                         command.Parameters.AddWithValue("@type", "FTU");
-                        command.Parameters.AddWithValue("@club", clubCode.Trim());
+                        command.Parameters.AddWithValue("@club", _clubCode.Trim());
                         command.Parameters.AddWithValue("@training", dr["counter"].ToString().Trim());
                         command.Parameters.AddWithValue("@memberStart", dr["code"].ToString().Trim());
                         command.Parameters.AddWithValue("@employeeStart", instructor_FingerID.Trim());
