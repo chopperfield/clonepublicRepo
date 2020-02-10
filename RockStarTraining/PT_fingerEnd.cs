@@ -56,7 +56,7 @@ namespace RockStar.Training
 
             lb_clubName.Text = _clubName;
             lb_productName.Text = _productName;
-            lb_Instructor_Name.Text = _employee_StartName;
+            lb_Instructor_Name.Text = "Instructor: "+_employee_StartName;
             lb_PT_use.Text = "";
 
             try //cuman buat getFileCode (pakai throw) karena pada event load execute tiap code sblom di close)
