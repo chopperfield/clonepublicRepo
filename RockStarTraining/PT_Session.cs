@@ -324,6 +324,8 @@ namespace RockStar.Training
             gridView1.Columns["firstName"].Visible = false;
             gridView1.Columns["lastName"].Caption = "Last Name";
             gridView1.Columns["lastName"].Visible = false;
+            gridView1.Columns["employeeStartName"].Caption = "Employee Start Name";
+            gridView1.Columns["employeeStartName"].Visible = false;
         }
 
                 
@@ -1187,9 +1189,10 @@ namespace RockStar.Training
             string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
             string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
             string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
+            string employee_StartName = gridView1.GetFocusedRowCellDisplayText("employeeStartName").ToString().Trim();
 
             //PT_formEnd pt_formEnd = new PT_formEnd(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start);
-            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start, true))
+            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start, employee_StartName , true))
             {
                 if (pt_formEnd.ShowDialog() == DialogResult.OK)
                 {
@@ -1210,8 +1213,9 @@ namespace RockStar.Training
             string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
             string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
             string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
+            string employee_StartName = gridView1.GetFocusedRowCellDisplayText("employeeStartName").ToString().Trim();
 
-            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, null, employee_Start, false))
+            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, null, employee_Start, employee_StartName,false))
             {
                 if (pt_formEnd.ShowDialog() == DialogResult.OK)
                 {
