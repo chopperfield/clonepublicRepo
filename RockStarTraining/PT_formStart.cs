@@ -22,11 +22,11 @@ namespace RockStar.Training
 
         private string Img_member_Url;
         
-        DataTable dt_finger_employees;
-        private string code_clubUser;
+        DataTable _dt_finger_employees;
+        private string _code_clubUser;
         private string student_RGP;
 
-        private bool isFinger;
+        private bool _isFinger;
 
         /// <summary>
         /// Input Datatable if using finger, if not null
@@ -38,10 +38,10 @@ namespace RockStar.Training
         {
             InitializeComponent();        
             lb_ClubName.Text = clubName;
-            this.dt_finger_employees = new DataTable();
-            this.dt_finger_employees = dt_finger_employees;
-            this.code_clubUser = code_clubUser;
-            this.isFinger = isFinger;
+            _dt_finger_employees = new DataTable();
+            _dt_finger_employees = dt_finger_employees;
+            _code_clubUser = code_clubUser;
+            _isFinger = isFinger;
         }
         private void PT_formStart_Load(object sender, EventArgs e)
         {
@@ -305,9 +305,14 @@ namespace RockStar.Training
                 {
                     timer1.Stop();
                     timer2.Stop();
-                    if (isFinger)
+                    string productName = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
+                    string productRemain = gridView1.GetFocusedRowCellDisplayText("remain").ToString().Trim();
+                    string trainingCounter = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
+                    string instructorCode = gridView1.GetFocusedRowCellDisplayText("instructorCode").ToString().Trim();
+                    string instructorName = gridView1.GetFocusedRowCellDisplayText("instructorName").ToString().Trim();
+                    if (_isFinger)
                     {
-                        PT_fingerStart pt_fingerstart = new PT_fingerStart(dt_finger_employees, lb_ClubName.Text, code_clubUser, gridView1.GetFocusedRowCellDisplayText("productName"), gridView1.GetFocusedRowCellDisplayText("remain"), gridView1.GetFocusedRowCellDisplayText("counter"), student_RGP, lb_Student_Name.Text);
+                        PT_fingerStart pt_fingerstart = new PT_fingerStart(_dt_finger_employees, lb_ClubName.Text, _code_clubUser, productName, productRemain, trainingCounter, student_RGP, lb_Student_Name.Text, instructorCode,instructorName);
                         if (pt_fingerstart.ShowDialog() == DialogResult.OK)
                         {
                             this.DialogResult = DialogResult.OK;
@@ -321,7 +326,7 @@ namespace RockStar.Training
                     }
                     else
                     {
-                        PT_cardStart pt_cardstart = new PT_cardStart(lb_ClubName.Text, code_clubUser, gridView1.GetFocusedRowCellDisplayText("productName"), gridView1.GetFocusedRowCellDisplayText("remain"), gridView1.GetFocusedRowCellDisplayText("counter"), student_RGP, lb_Student_Name.Text);
+                        PT_cardStart pt_cardstart = new PT_cardStart(lb_ClubName.Text, _code_clubUser, productName ,productRemain , trainingCounter, student_RGP, lb_Student_Name.Text, instructorCode, instructorName);
                         if (pt_cardstart.ShowDialog() == DialogResult.OK)
                         {
                             this.DialogResult = DialogResult.OK;
