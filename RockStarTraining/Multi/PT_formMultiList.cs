@@ -18,10 +18,10 @@ namespace RockStar.Training
         Bitmap gbr_error = new Bitmap(Properties.Resources.close, 25, 25);
            
 
-        DataTable dt_finger_employees;
-        private string code_clubUser;
-        private string code_UserClubName;
-        private bool isFinger;
+        DataTable _dt_finger_employees;
+        private string _code_clubUser;
+        private string _code_UserClubName;
+        private bool _isFinger;
 
         /// <summary>
         /// Input Datatable if using finger, if not null
@@ -33,16 +33,16 @@ namespace RockStar.Training
         {
             InitializeComponent();
 
-            this.code_UserClubName = code_UserClubName;
-            this.dt_finger_employees = new DataTable();
-            this.dt_finger_employees = dt_finger_employees;
-            this.code_clubUser = code_clubUser;
-            this.isFinger = isFinger;
+            _code_UserClubName = code_UserClubName;
+            _dt_finger_employees = new DataTable();
+            _dt_finger_employees = dt_finger_employees;
+            _code_clubUser = code_clubUser;
+            _isFinger = isFinger;
         }
 
         private void PT_formMultiList_Load(object sender, EventArgs e)
         {
-            lb_ClubName.Text = code_UserClubName;
+            lb_ClubName.Text = _code_UserClubName;
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
             pictureEdit_Logo.Image = logo;
         }
@@ -95,13 +95,13 @@ namespace RockStar.Training
                 gridView1.Columns["counter"].Caption = "Counter";
                 gridView1.Columns["counter"].Width = 50;
 
-                gridView1.Columns["memberName"].VisibleIndex = 1;
-                gridView1.Columns["memberName"].Caption = "Student Name";
-                gridView1.Columns["memberName"].Width = 200;
-
-                gridView1.Columns["productName"].VisibleIndex = 2;
+                gridView1.Columns["productName"].VisibleIndex = 1;
                 gridView1.Columns["productName"].Caption = "Product Name";
                 gridView1.Columns["productName"].Width = 200;
+
+                gridView1.Columns["instructorCode"].VisibleIndex = 2;
+                gridView1.Columns["instructorCode"].Caption = "Instructor Code";
+                gridView1.Columns["instructorCode"].Width = 150;
 
                 gridView1.Columns["instructorName"].VisibleIndex = 3;
                 gridView1.Columns["instructorName"].Caption = "Instructor Name";
@@ -128,6 +128,7 @@ namespace RockStar.Training
                 gridView1.Columns["code"].Visible = false;
                 gridView1.Columns["barcode"].Visible = false;
                 gridView1.Columns["agreement"].Visible = false;
+                gridView1.Columns["memberName"].Visible = false;
                 gridView1.Columns["firstName"].Visible = false;
                 gridView1.Columns["lastName"].Visible = false;
             }
@@ -144,76 +145,59 @@ namespace RockStar.Training
 
         private void btn_StartScan_Click(object sender, EventArgs e)
         {
-            using (PT_formMultiStart pt_formStart = new PT_formMultiStart(code_UserClubName))
+            using (PT_formMultiStart pt_formStart = new PT_formMultiStart(_code_UserClubName))
             {
                 if (pt_formStart.ShowDialog() == DialogResult.OK)
                 {
                     if(gridControl1.DataSource == null)
                     {
-                        dt = pt_formStart.getdtSchema.Clone();
-                        gridControl1.DataSource = dt;
+                        dt_dataList = pt_formStart.getdtSchema.Clone();
+                        gridControl1.DataSource = dt_dataList;
                         arrangeCol();
-                    }                                        
-                    dt.ImportRow(pt_formStart.getDR);
+                    }
+                    dt_dataList.ImportRow(pt_formStart.getDR);
                     gridView1.RefreshData();
                 }
             }
         }
 
-        DataTable dt = new DataTable();
+        DataTable dt_dataList = new DataTable();
 
         private void btn_Done_Click(object sender, EventArgs e)
         {
-            if (isFinger)
-            {
-                PT_fingerMultiStart pt_fingerMultiStart = new PT_fingerMultiStart(dt_finger_employees, lb_ClubName.Text, code_clubUser, gridView1.GetRowCellDisplayText(0,"productName"),dt );
-                if (pt_fingerMultiStart.ShowDialog() == DialogResult.OK)
+            if (gridView1.RowCount != 0)
+            {                
+                string productName = gridView1.GetRowCellDisplayText(0, "productName");
+                if (_isFinger)
                 {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    PT_fingerMultiStart pt_fingerMultiStart = new PT_fingerMultiStart(_dt_finger_employees, lb_ClubName.Text, _code_clubUser, productName , dt_dataList);
+                    if (pt_fingerMultiStart.ShowDialog() == DialogResult.OK)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.DialogResult = DialogResult.Cancel;
+                        this.Close();
+                    }
                 }
-                else
-                {
-                    this.DialogResult = DialogResult.Cancel;
-                    this.Close();
-                }
+                //else
+                //{
+                //    PT_cardStart pt_cardstart = new PT_cardStart(lb_ClubName.Text, code_clubUser, gridView1.GetFocusedRowCellDisplayText("productName"), gridView1.GetFocusedRowCellDisplayText("remain"), gridView1.GetFocusedRowCellDisplayText("counter"), student_RGP, lb_Student_Name.Text);
+                //    if (pt_cardstart.ShowDialog() == DialogResult.OK)
+                //    {
+                //        this.DialogResult = DialogResult.OK;
+                //        this.Close();
+                //    }
+                //    else
+                //    {
+                //        this.DialogResult = DialogResult.Cancel;
+                //        this.Close();
+                //    }
+                //}
             }
-            //else
-            //{
-            //    PT_cardStart pt_cardstart = new PT_cardStart(lb_ClubName.Text, code_clubUser, gridView1.GetFocusedRowCellDisplayText("productName"), gridView1.GetFocusedRowCellDisplayText("remain"), gridView1.GetFocusedRowCellDisplayText("counter"), student_RGP, lb_Student_Name.Text);
-            //    if (pt_cardstart.ShowDialog() == DialogResult.OK)
-            //    {
-            //        this.DialogResult = DialogResult.OK;
-            //        this.Close();
-            //    }
-            //    else
-            //    {
-            //        this.DialogResult = DialogResult.Cancel;
-            //        this.Close();
-            //    }
-            //}
-
-            //List<ab> parts = new List<ab>();
-            //parts.Add(new ab { Name ="a", Kelas="b"});
-            //string asd = parts[0].Kelas;
         }
     }
 }
 
-//public class ab{
-    
-
-//    private string name; // field
-//    public string Name   // property
-//    {
-//        get { return name; }
-//        set { name = value; }
-//    }
-
-//    private string kelas; // field
-//    public string Kelas   // property
-//    {
-//        get { return kelas; }
-//        set { kelas = value; }
-//    }
-//}
