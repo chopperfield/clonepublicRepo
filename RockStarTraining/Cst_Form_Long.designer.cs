@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btn_No = new System.Windows.Forms.Button();
             this.btn_Yes = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             this.lb_Info = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
@@ -73,7 +72,7 @@
             this.lb_Info.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lb_Info.Location = new System.Drawing.Point(76, 22);
             this.lb_Info.Name = "lb_Info";
-            this.lb_Info.Size = new System.Drawing.Size(368, 58);
+            this.lb_Info.Size = new System.Drawing.Size(368, 92);
             this.lb_Info.TabIndex = 61;
             this.lb_Info.Text = "Messages: XXXX";
             // 
