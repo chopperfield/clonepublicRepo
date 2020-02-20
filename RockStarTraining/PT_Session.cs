@@ -34,6 +34,8 @@ namespace RockStar.Training
         bool _isSingleClub = false;
 
         private DataTable dt_ins_fingerPrint;//instantiate on get fingerinstructor
+
+        private static DataTable dt_club_listRoom;
         
         public PT_Session(ToolStripProgressBar statusProgressBar4, NotifyIcon statusNotify4)
         {
@@ -174,6 +176,7 @@ namespace RockStar.Training
                 splashScreenManager1.ShowWaitForm();
                 splashScreenManager1.SetWaitFormDescription("Fetching Data");
                 get_UserClub();
+                get_Club_RoomList();
 
                 if (!_isSingleClub)//all club
                 {
@@ -222,6 +225,16 @@ namespace RockStar.Training
             code_UserClub = dt.Rows[0]["club"].ToString();
             lb_UserClub.Text = dt.Rows[0]["clubName"].ToString();
             code_UserClubName = dt.Rows[0]["clubName"].ToString();
+        }
+
+        private void get_Club_RoomList()
+        {
+            dt_club_listRoom = setup_Datatable.datatable_Room(code_UserClub);
+        }
+
+        public static DataTable get_Datatable_ClubRoom_List()
+        {
+            return dt_club_listRoom;
         }
 
         private void get_Finger_Instructor()
