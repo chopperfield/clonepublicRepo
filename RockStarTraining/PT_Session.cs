@@ -232,7 +232,7 @@ namespace RockStar.Training
             dt_club_listRoom = setup_Datatable.datatable_Room(code_UserClub);
         }
 
-        public static DataTable get_Datatable_ClubRoom_List()
+        public static DataTable get_Datatable_Club_RoomList()
         {
             return dt_club_listRoom;
         }
