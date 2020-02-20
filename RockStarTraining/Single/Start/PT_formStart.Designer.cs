@@ -44,6 +44,8 @@
             this.lb_Student_Name = new DevExpress.XtraEditors.LabelControl();
             this.lb_Student_RGP = new DevExpress.XtraEditors.LabelControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::RockStar.Training.form_Wait), true, true);
+            this.lb_Room = new DevExpress.XtraEditors.LabelControl();
+            this.cmb_Room = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
@@ -211,7 +213,7 @@
             this.lb_Student_Name.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_Student_Name.Location = new System.Drawing.Point(115, 91);
             this.lb_Student_Name.Name = "lb_Student_Name";
-            this.lb_Student_Name.Size = new System.Drawing.Size(648, 88);
+            this.lb_Student_Name.Size = new System.Drawing.Size(648, 56);
             this.lb_Student_Name.TabIndex = 87;
             this.lb_Student_Name.Text = "Student Name";
             // 
@@ -231,11 +233,39 @@
             this.lb_Student_RGP.TabIndex = 88;
             this.lb_Student_RGP.Text = "RGP : 825";
             // 
+            // lb_Room
+            // 
+            this.lb_Room.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Room.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Room.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Room.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.lb_Room.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.lb_Room.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lb_Room.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Room.Location = new System.Drawing.Point(115, 153);
+            this.lb_Room.Name = "lb_Room";
+            this.lb_Room.Size = new System.Drawing.Size(66, 26);
+            this.lb_Room.TabIndex = 89;
+            this.lb_Room.Text = "Room: ";
+            // 
+            // cmb_Room
+            // 
+            this.cmb_Room.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Room.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cmb_Room.FormattingEnabled = true;
+            this.cmb_Room.Location = new System.Drawing.Point(180, 150);
+            this.cmb_Room.Name = "cmb_Room";
+            this.cmb_Room.Size = new System.Drawing.Size(252, 29);
+            this.cmb_Room.TabIndex = 91;
+            // 
             // PT_formStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 378);
+            this.Controls.Add(this.cmb_Room);
+            this.Controls.Add(this.lb_Room);
             this.Controls.Add(this.lb_Student_RGP);
             this.Controls.Add(this.lb_Student_Name);
             this.Controls.Add(this.pictureEdit_Student_Attendees);
@@ -283,6 +313,8 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit_Student_Attendees;
         private DevExpress.XtraEditors.LabelControl lb_Student_Name;
         private DevExpress.XtraEditors.LabelControl lb_Student_RGP;
+        private DevExpress.XtraEditors.LabelControl lb_Room;
+        private System.Windows.Forms.ComboBox cmb_Room;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

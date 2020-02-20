@@ -25,8 +25,9 @@ namespace RockStar.Training
         string _totalParticipants;
         string _instructorCode;
         string _instructorName;
+        string _room;
 
-        public PT_cardMultiStart(string clubName, string clubCode, string productName, DataTable dt_listData, string instructorCode, string instructorName)
+        public PT_cardMultiStart(string clubName, string clubCode, string room, string productName, DataTable dt_listData, string instructorCode, string instructorName)
         {
 
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace RockStar.Training
 
             _instructorCode = instructorCode;
             _instructorName = instructorName;
+            _room = room;
         }
 
         private void PT_cardMultiStart_Load(object sender, EventArgs e)
@@ -52,7 +54,7 @@ namespace RockStar.Training
             lb_productName.Text = _productName;
             lb_PT_participants.Text = "Participants: " + _totalParticipants;
             lb_Instructor_Name.Text = "Instructor: "+_instructorName;
-
+            lb_Room.Text = "Room: " + _room;
             timer1.Start();
             timer2.Start();
         }
@@ -164,10 +166,11 @@ namespace RockStar.Training
                         myConnection.Open();
 
                         command.Connection = myConnection;
-                        command.CommandText = "insert into module.trainingUsage (type,date,club,training,memberStart,employeeStart,recid) values " +
-                                              " (@type, getDate(), @club, @training,@memberStart,@employeeStart,@recid)  ";
+                        command.CommandText = "insert into module.trainingUsage (type,date,club,room,training,memberStart,employeeStart,recid) values " +
+                                              " (@type, getDate(), @club, @room, @training,@memberStart,@employeeStart,@recid)  ";
                         command.Parameters.AddWithValue("@type", "FTU");
                         command.Parameters.AddWithValue("@club", _clubCode.Trim());
+                        command.Parameters.AddWithValue("@room", _room.Trim());
                         command.Parameters.AddWithValue("@training", dr["counter"].ToString().Trim());
                         command.Parameters.AddWithValue("@memberStart", dr["code"].ToString().Trim());
                         command.Parameters.AddWithValue("@employeeStart", instructorCode.Trim());

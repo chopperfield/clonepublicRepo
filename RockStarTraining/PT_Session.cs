@@ -328,7 +328,11 @@ namespace RockStar.Training
             gridView1.Columns["session"].Width = 150;
             gridView1.Columns["session"].Caption = "Session";
 
-            gridView1.Columns["note"].VisibleIndex = 11;//10
+            gridView1.Columns["room"].VisibleIndex = 11;//9
+            gridView1.Columns["room"].Width = 150;
+            gridView1.Columns["room"].Caption = "Room";
+
+            gridView1.Columns["note"].VisibleIndex = 12;//10
             gridView1.Columns["note"].Width = 150;
             gridView1.Columns["note"].Caption = "Note";
 
@@ -1255,9 +1259,9 @@ namespace RockStar.Training
             string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
             string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
             string employee_StartName = gridView1.GetFocusedRowCellDisplayText("employeeStartName").ToString().Trim();
-
+            string room = gridView1.GetFocusedRowCellDisplayText("room").ToString().Trim();
             //PT_formEnd pt_formEnd = new PT_formEnd(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start);
-            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start, employee_StartName , true))
+            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, room, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start, employee_StartName , true))
             {
                 if (pt_formEnd.ShowDialog() == DialogResult.OK)
                 {
@@ -1280,8 +1284,9 @@ namespace RockStar.Training
             string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
             string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
             string employee_StartName = gridView1.GetFocusedRowCellDisplayText("employeeStartName").ToString().Trim();
+            string room = gridView1.GetFocusedRowCellDisplayText("room").ToString().Trim();
 
-            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, null, employee_Start, employee_StartName,false))
+            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, room, counter_Session, student_Name, student_RGP, product_Name, null, employee_Start, employee_StartName,false))
             {
                 if (pt_formEnd.ShowDialog() == DialogResult.OK)
                 {

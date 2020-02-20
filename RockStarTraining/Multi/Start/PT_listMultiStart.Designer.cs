@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lb_ClubName = new DevExpress.XtraEditors.LabelControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -37,6 +38,8 @@
             this.btn_StartScan = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Done = new DevExpress.XtraEditors.SimpleButton();
             this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
+            this.lb_Room = new DevExpress.XtraEditors.LabelControl();
+            this.cmb_Room = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -50,11 +53,11 @@
             this.lb_ClubName.Appearance.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.lb_ClubName.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_ClubName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
-            this.lb_ClubName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lb_ClubName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lb_ClubName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_ClubName.Location = new System.Drawing.Point(344, 12);
             this.lb_ClubName.Name = "lb_ClubName";
-            this.lb_ClubName.Size = new System.Drawing.Size(512, 41);
+            this.lb_ClubName.Size = new System.Drawing.Size(512, 29);
             this.lb_ClubName.TabIndex = 69;
             this.lb_ClubName.Text = "Kota Kasablanka";
             // 
@@ -88,12 +91,12 @@
             this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(3, 101);
+            this.gridControl1.Location = new System.Drawing.Point(3, 130);
             this.gridControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.gridControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(862, 274);
+            this.gridControl1.Size = new System.Drawing.Size(862, 245);
             this.gridControl1.TabIndex = 85;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -152,18 +155,49 @@
             this.lb_Usage.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lb_Usage.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_Usage.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.lb_Usage.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lb_Usage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.lb_Usage.Location = new System.Drawing.Point(742, 72);
+            this.lb_Usage.Location = new System.Drawing.Point(331, 105);
             this.lb_Usage.Name = "lb_Usage";
-            this.lb_Usage.Size = new System.Drawing.Size(114, 23);
-            this.lb_Usage.TabIndex = 90;
-            this.lb_Usage.Text = "Start Usage";
+            this.lb_Usage.Size = new System.Drawing.Size(525, 23);
+            this.lb_Usage.TabIndex = 92;
+            this.lb_Usage.Text = "--- Start Usage ---";
+            // 
+            // lb_Room
+            // 
+            this.lb_Room.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Room.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lb_Room.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Room.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_Room.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.lb_Room.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lb_Room.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Room.Location = new System.Drawing.Point(525, 69);
+            this.lb_Room.Name = "lb_Room";
+            this.lb_Room.Size = new System.Drawing.Size(73, 23);
+            this.lb_Room.TabIndex = 93;
+            this.lb_Room.Text = "Room:";
+            // 
+            // cmb_Room
+            // 
+            this.cmb_Room.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmb_Room.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Room.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.cmb_Room.FormattingEnabled = true;
+            this.cmb_Room.Location = new System.Drawing.Point(604, 68);
+            this.cmb_Room.Name = "cmb_Room";
+            this.cmb_Room.Size = new System.Drawing.Size(252, 31);
+            this.cmb_Room.TabIndex = 94;
             // 
             // PT_listMultiStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 378);
+            this.Controls.Add(this.cmb_Room);
+            this.Controls.Add(this.lb_Room);
             this.Controls.Add(this.lb_Usage);
             this.Controls.Add(this.btn_Done);
             this.Controls.Add(this.btn_StartScan);
@@ -184,7 +218,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -196,7 +229,9 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton btn_StartScan;
         private DevExpress.XtraEditors.SimpleButton btn_Done;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private DevExpress.XtraEditors.LabelControl lb_Usage;
+        private DevExpress.XtraEditors.LabelControl lb_Room;
+        private System.Windows.Forms.ComboBox cmb_Room;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

@@ -58,6 +58,12 @@ namespace RockStar.Training
             lb_Student_Name.Text = "";
             pictureEdit_Student_Attendees.Image = null;
 
+            cmb_Room.DataSource = PT_Session.get_Datatable_Club_RoomList();
+            cmb_Room.ValueMember = "room";
+            cmb_Room.DisplayMember = "room";
+            cmb_Room.SelectedIndex = -1;
+            cmb_Room.Visible = false;
+            lb_Room.Visible = false;
 
             foreach (Control ctl in this.Controls)//bgw
             {
@@ -172,6 +178,8 @@ namespace RockStar.Training
                         lb_Info.Text = "Press ENTER Key To Select";
                         arrangeCol();
                         textBox1.Enabled = false;
+                        cmb_Room.Visible = true;
+                        lb_Room.Visible = true;
                     }
                     else
                     {
@@ -179,7 +187,7 @@ namespace RockStar.Training
                         alertControl1.Show(this, "Data center", "Training not found !", gbr_error);
                         lb_Info.Text = "Please Tap Student Card";
                         timer1.Start();
-                        textBox1.Focus();
+                        textBox1.Focus();                        
                     }                    
                 }
                 else if (dt.Rows.Count == 0)
@@ -310,9 +318,15 @@ namespace RockStar.Training
                     string trainingCounter = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
                     string instructorCode = gridView1.GetFocusedRowCellDisplayText("instructorCode").ToString().Trim();
                     string instructorName = gridView1.GetFocusedRowCellDisplayText("instructorName").ToString().Trim();
+
+                    if (cmb_Room.SelectedIndex == -1 || string.IsNullOrEmpty(cmb_Room.Text))
+                    {
+                        MessageBox.Show("Select room to start private session", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     if (_isFinger)
                     {
-                        PT_fingerStart pt_fingerstart = new PT_fingerStart(_dt_finger_employees, lb_ClubName.Text, _code_clubUser, productName, productRemain, trainingCounter, student_RGP, lb_Student_Name.Text, instructorCode,instructorName);
+                        PT_fingerStart pt_fingerstart = new PT_fingerStart(_dt_finger_employees, lb_ClubName.Text, _code_clubUser, cmb_Room.Text,productName, productRemain, trainingCounter, student_RGP, lb_Student_Name.Text, instructorCode,instructorName);
                         if (pt_fingerstart.ShowDialog() == DialogResult.OK)
                         {
                             this.DialogResult = DialogResult.OK;
@@ -326,7 +340,7 @@ namespace RockStar.Training
                     }
                     else
                     {
-                        PT_cardStart pt_cardstart = new PT_cardStart(lb_ClubName.Text, _code_clubUser, productName ,productRemain , trainingCounter, student_RGP, lb_Student_Name.Text, instructorCode, instructorName);
+                        PT_cardStart pt_cardstart = new PT_cardStart(lb_ClubName.Text, _code_clubUser, cmb_Room.Text ,productName ,productRemain , trainingCounter, student_RGP, lb_Student_Name.Text, instructorCode, instructorName);
                         if (pt_cardstart.ShowDialog() == DialogResult.OK)
                         {
                             this.DialogResult = DialogResult.OK;

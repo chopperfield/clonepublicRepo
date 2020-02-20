@@ -25,6 +25,8 @@ namespace RockStar.Training
 
         DataTable _dt_student;//dt copy from parent SP
 
+        private string str_room;
+
         public PT_listMultiEnd(string code_UserClubName, DataTable dt_finger_employees, bool isFinger, DataTable dt_student)
         {
             InitializeComponent();
@@ -52,7 +54,8 @@ namespace RockStar.Training
             }
             gridControl1.DataSource = _dt_student;
             arrangeCol();
-            lb_Usage.Text = _dt_student.Rows[0]["employeeStartName"].ToString() + " - " + "Finish Usage";                       
+            lb_Instructor_Room.Text = _dt_student.Rows[0]["employeeStartName"].ToString() + " - " + _dt_student.Rows[0]["room"].ToString();                         
+            str_room = _dt_student.Rows[0]["room"].ToString().Trim();
         }
 
         //======= agar form yang muncul, bisa di drag
@@ -227,7 +230,7 @@ namespace RockStar.Training
 
                 if (_isFinger)
                 {
-                    PT_fingerMultiEnd pt_fingerMultiStart = new PT_fingerMultiEnd(_dt_finger_employees, lb_ClubName.Text, dt_tick);
+                    PT_fingerMultiEnd pt_fingerMultiStart = new PT_fingerMultiEnd(_dt_finger_employees, _code_UserClubName, str_room ,dt_tick);
                     if (pt_fingerMultiStart.ShowDialog() == DialogResult.OK)
                     {                      
                         this.DialogResult = DialogResult.OK;
@@ -241,7 +244,7 @@ namespace RockStar.Training
                 }
                 else
                 {
-                    PT_cardMultiEnd pt_cardMultiEnd = new PT_cardMultiEnd(lb_ClubName.Text, dt_tick);
+                    PT_cardMultiEnd pt_cardMultiEnd = new PT_cardMultiEnd(_code_UserClubName,str_room, dt_tick);
                     if (pt_cardMultiEnd.ShowDialog() == DialogResult.OK)
                     {
                         this.DialogResult = DialogResult.OK;
@@ -269,7 +272,7 @@ namespace RockStar.Training
             }
         }
 
-        public List<model> ModelsCollection = new List<model>();
+        public List<model> ModelsCollection = new List<model>();//untuk report, after dialog result=ok
         public class model
         {
             public model(string trainingUsage, string name, string rgp)

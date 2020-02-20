@@ -45,6 +45,9 @@ namespace RockStar.Training
             lb_ClubName.Text = _code_UserClubName;
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
             pictureEdit_Logo.Image = logo;
+
+            cmb_Room.DataSource = PT_Session.get_Datatable_Club_RoomList();
+            cmb_Room.SelectedIndex = -1;
         }
 
         //======= agar form yang muncul, bisa di drag
@@ -175,13 +178,19 @@ namespace RockStar.Training
         private void btn_Done_Click(object sender, EventArgs e)
         {
             if (gridView1.RowCount != 0)
-            {                
+            {             
+                if(cmb_Room.SelectedIndex == -1 || string.IsNullOrEmpty(cmb_Room.Text))
+                {
+                    MessageBox.Show("Select room to start private sessions", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 string productName = gridView1.GetRowCellDisplayText(0, "productName");
                 string instructorCode = gridView1.GetRowCellDisplayText(0, "instructorCode");
                 string instructorName = gridView1.GetRowCellDisplayText(0, "instructorName");
                 if (_isFinger)
                 {
-                    PT_fingerMultiStart pt_fingerMultiStart = new PT_fingerMultiStart(_dt_finger_employees, lb_ClubName.Text, _code_clubUser, productName , dt_dataList, instructorCode, instructorName);
+                    PT_fingerMultiStart pt_fingerMultiStart = new PT_fingerMultiStart(_dt_finger_employees, lb_ClubName.Text, _code_clubUser, cmb_Room.Text.Trim(),productName , dt_dataList, instructorCode, instructorName);
                     if (pt_fingerMultiStart.ShowDialog() == DialogResult.OK)
                     {
                         this.DialogResult = DialogResult.OK;
@@ -195,7 +204,7 @@ namespace RockStar.Training
                 }
                 else
                 {
-                    PT_cardMultiStart pt_cardMultistart = new PT_cardMultiStart(lb_ClubName.Text, _code_clubUser, productName, dt_dataList, instructorCode, instructorName);
+                    PT_cardMultiStart pt_cardMultistart = new PT_cardMultiStart(lb_ClubName.Text, _code_clubUser, cmb_Room.Text.Trim(),productName, dt_dataList, instructorCode, instructorName);
                     if (pt_cardMultistart.ShowDialog() == DialogResult.OK)
                     {
                         this.DialogResult = DialogResult.OK;
@@ -209,6 +218,9 @@ namespace RockStar.Training
                 }
             }
         }
+
+ 
+
     }
 }
 

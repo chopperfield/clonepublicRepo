@@ -37,7 +37,8 @@ namespace RockStar.Training
 
         string _instructorCode;
         string _instructorName;
-        public PT_fingerStart(DataTable dt_finger,string clubName,string clubCode ,string productName, string PT_remain,string trainingCounter, string studentRGP, string studentName, string instructorCode, string instructorName)
+        string _room;
+        public PT_fingerStart(DataTable dt_finger,string clubName,string clubCode, string room ,string productName, string PT_remain,string trainingCounter, string studentRGP, string studentName, string instructorCode, string instructorName)
         {
 
             InitializeComponent();
@@ -56,6 +57,7 @@ namespace RockStar.Training
             _studentName = studentName;
             _instructorCode = instructorCode;
             _instructorName = instructorName;
+            _room = room;
         }
 
         private void PT_fingerStart_Load(object sender, EventArgs e)
@@ -67,6 +69,7 @@ namespace RockStar.Training
             lb_productName.Text = _productName;
             lb_PT_remain.Text = "Remaining Session(s): " + _PT_remain;
             lb_Instructor_Name.Text = "Instructor: "+_instructorName;
+            lb_Room.Text = "Room: " + _room;
 
             try //cuman buat getFileCode (pakai throw) karena pada event load execute tiap code sblom di close)
             {
@@ -243,11 +246,12 @@ namespace RockStar.Training
                 myConnection.Open();
 
                 command.Connection = myConnection;                
-                command.CommandText = "insert into module.trainingUsage (type,date,club,training,memberStart,employeeStart,recid) values " +
-                                      " (@type, getDate(), @club, @training,@memberStart,@employeeStart,@recid)  ";
+                command.CommandText = "insert into module.trainingUsage (type,date,club,room,training,memberStart,employeeStart,recid) values " +
+                                      " (@type, getDate(), @club, @room, @training,@memberStart,@employeeStart,@recid)  ";
 
                 command.Parameters.AddWithValue("@type", "FTU");
                 command.Parameters.AddWithValue("@club", _clubCode.Trim());
+                command.Parameters.AddWithValue("@room", _room.Trim());
                 command.Parameters.AddWithValue("@training", _trainingCounter.Trim());
                 command.Parameters.AddWithValue("@memberStart", _studentRGP.Trim());
                 command.Parameters.AddWithValue("@employeeStart", instructor_FingerID.Trim());

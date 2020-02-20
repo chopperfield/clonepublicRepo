@@ -33,8 +33,8 @@ namespace RockStar.Training
         DataTable _dt_listData = new DataTable();
         string _instructorCode;
         string _instructorName;
-        
-        public PT_fingerMultiStart(DataTable dt_finger,string clubName,string clubCode ,string productName, DataTable dt_listData, string instructorCode, string instructorName)
+        string _room;
+        public PT_fingerMultiStart(DataTable dt_finger,string clubName,string clubCode ,string room, string productName, DataTable dt_listData, string instructorCode, string instructorName)
         {
 
             InitializeComponent();            
@@ -48,6 +48,7 @@ namespace RockStar.Training
 
             _instructorCode = instructorCode;
             _instructorName = instructorName;
+            _room = room;
         }
 
         private void PT_fingerMultiStart_Load(object sender, EventArgs e)
@@ -59,7 +60,7 @@ namespace RockStar.Training
             lb_productName.Text = _productName;
             lb_PT_participants.Text = "Participants: " + _totalParticipants;
             lb_Instructor_Name.Text = "Instructor: " + _instructorName;
-
+            lb_Room.Text = "Room: " + _room;
             try //cuman buat getFileCode (pakai throw) karena pada event load execute tiap code sblom di close)
             {
                 myReader = new FPReader();
@@ -255,10 +256,11 @@ namespace RockStar.Training
                         myConnection.Open();
 
                         command.Connection = myConnection;
-                        command.CommandText = "insert into module.trainingUsage (type,date,club,training,memberStart,employeeStart,recid) values " +
-                                              " (@type, getDate(), @club, @training,@memberStart,@employeeStart,@recid)  ";
+                        command.CommandText = "insert into module.trainingUsage (type,date,club,room,training,memberStart,employeeStart,recid) values " +
+                                              " (@type, getDate(), @club,@room, @training,@memberStart,@employeeStart,@recid)  ";
                         command.Parameters.AddWithValue("@type", "FTU");
                         command.Parameters.AddWithValue("@club", _clubCode.Trim());
+                        command.Parameters.AddWithValue("@room", _room.Trim());
                         command.Parameters.AddWithValue("@training", dr["counter"].ToString().Trim());
                         command.Parameters.AddWithValue("@memberStart", dr["code"].ToString().Trim());
                         command.Parameters.AddWithValue("@employeeStart", instructor_FingerID.Trim());

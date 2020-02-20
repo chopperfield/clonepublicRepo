@@ -24,8 +24,9 @@ namespace RockStar.Training
         string _employee_StartName;
         string _trainingCounter;
         string _studentRGP;
+        string _room;
 
-        public PT_cardEnd(string clubName, string productName, string employeeStart, string employeeStartName ,string trainingCounter, string studentRGP)
+        public PT_cardEnd(string clubName, string room, string productName, string employeeStart, string employeeStartName ,string trainingCounter, string studentRGP)
         {
 
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace RockStar.Training
             _employee_StartName = employeeStartName;
             _trainingCounter = trainingCounter;
             _studentRGP = studentRGP;
+            _room = room;
         }
 
         private void PT_cardEnd_Load(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace RockStar.Training
             lb_clubName.Text = _clubName;
             lb_productName.Text = _productName;
             lb_Instructor_Name.Text = "Instructor: "+ _employee_StartName;
-            lb_PT_use.Text = "";
+            lb_Room.Text = "Room: "+_room;
 
             timer1.Start();
             timer2.Start();

@@ -39,6 +39,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lb_PT_participants = new DevExpress.XtraEditors.LabelControl();
             this.lb_Instructor_Name = new DevExpress.XtraEditors.LabelControl();
+            this.lb_Room = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
@@ -56,7 +57,7 @@
             this.panelControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(545, 26);
+            this.panelControl1.Size = new System.Drawing.Size(648, 26);
             this.panelControl1.TabIndex = 73;
             // 
             // lb_Info
@@ -74,7 +75,7 @@
             this.lb_Usage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_Usage.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Usage.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lb_Usage.Location = new System.Drawing.Point(436, 5);
+            this.lb_Usage.Location = new System.Drawing.Point(539, 5);
             this.lb_Usage.Name = "lb_Usage";
             this.lb_Usage.Size = new System.Drawing.Size(97, 14);
             this.lb_Usage.TabIndex = 71;
@@ -91,7 +92,7 @@
             this.lb_productName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_productName.Location = new System.Drawing.Point(12, 64);
             this.lb_productName.Name = "lb_productName";
-            this.lb_productName.Size = new System.Drawing.Size(401, 71);
+            this.lb_productName.Size = new System.Drawing.Size(331, 71);
             this.lb_productName.TabIndex = 70;
             this.lb_productName.Text = "Jump Start - Welcome";
             // 
@@ -102,7 +103,7 @@
             this.lb_clubName.Appearance.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.lb_clubName.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_clubName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.lb_clubName.Location = new System.Drawing.Point(133, 12);
+            this.lb_clubName.Location = new System.Drawing.Point(236, 12);
             this.lb_clubName.Name = "lb_clubName";
             this.lb_clubName.Size = new System.Drawing.Size(400, 23);
             this.lb_clubName.TabIndex = 69;
@@ -145,10 +146,10 @@
             this.lb_PT_participants.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_PT_participants.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Bottom;
             this.lb_PT_participants.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.lb_PT_participants.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_PT_participants.Location = new System.Drawing.Point(419, 95);
+            this.lb_PT_participants.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lb_PT_participants.Location = new System.Drawing.Point(503, 111);
             this.lb_PT_participants.Name = "lb_PT_participants";
-            this.lb_PT_participants.Size = new System.Drawing.Size(114, 40);
+            this.lb_PT_participants.Size = new System.Drawing.Size(133, 19);
             this.lb_PT_participants.TabIndex = 82;
             this.lb_PT_participants.Text = "Participants: 99";
             // 
@@ -160,17 +161,32 @@
             this.lb_Instructor_Name.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_Instructor_Name.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lb_Instructor_Name.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.lb_Instructor_Name.Location = new System.Drawing.Point(133, 41);
+            this.lb_Instructor_Name.Location = new System.Drawing.Point(236, 41);
             this.lb_Instructor_Name.Name = "lb_Instructor_Name";
             this.lb_Instructor_Name.Size = new System.Drawing.Size(400, 19);
             this.lb_Instructor_Name.TabIndex = 85;
             this.lb_Instructor_Name.Text = "Instructor: Director Fury";
             // 
+            // lb_Room
+            // 
+            this.lb_Room.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Room.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lb_Room.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Room.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_Room.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lb_Room.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Room.Location = new System.Drawing.Point(349, 66);
+            this.lb_Room.Name = "lb_Room";
+            this.lb_Room.Size = new System.Drawing.Size(287, 19);
+            this.lb_Room.TabIndex = 86;
+            this.lb_Room.Text = "Room: Gymnastics";
+            // 
             // PT_fingerMultiStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 162);
+            this.ClientSize = new System.Drawing.Size(648, 162);
+            this.Controls.Add(this.lb_Room);
             this.Controls.Add(this.lb_Instructor_Name);
             this.Controls.Add(this.pictureEdit_Logo);
             this.Controls.Add(this.lb_PT_participants);
@@ -209,5 +225,6 @@
         private System.Windows.Forms.Timer timer1;
         public DevExpress.XtraEditors.LabelControl lb_PT_participants;
         public DevExpress.XtraEditors.LabelControl lb_Instructor_Name;
+        public DevExpress.XtraEditors.LabelControl lb_Room;
     }
 }

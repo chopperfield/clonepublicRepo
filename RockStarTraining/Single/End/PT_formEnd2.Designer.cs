@@ -28,21 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lb_Info = new DevExpress.XtraEditors.LabelControl();
             this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
             this.lb_ClubName = new DevExpress.XtraEditors.LabelControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.timer2 = new System.Windows.Forms.Timer();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pictureEdit_Student_Attendees = new DevExpress.XtraEditors.PictureEdit();
             this.lb_Student_Name = new DevExpress.XtraEditors.LabelControl();
             this.lb_Student_RGP = new DevExpress.XtraEditors.LabelControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::RockStar.Training.form_Wait), true, true);
             this.lb_productName = new DevExpress.XtraEditors.LabelControl();
             this.lb_Instructor_Name = new DevExpress.XtraEditors.LabelControl();
+            this.lb_Room = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
@@ -169,7 +171,7 @@
             this.lb_Student_Name.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_Student_Name.Location = new System.Drawing.Point(115, 91);
             this.lb_Student_Name.Name = "lb_Student_Name";
-            this.lb_Student_Name.Size = new System.Drawing.Size(427, 47);
+            this.lb_Student_Name.Size = new System.Drawing.Size(411, 47);
             this.lb_Student_Name.TabIndex = 87;
             this.lb_Student_Name.Text = "Student Name";
             // 
@@ -220,11 +222,26 @@
             this.lb_Instructor_Name.TabIndex = 90;
             this.lb_Instructor_Name.Text = "Instructor: Director Fury";
             // 
+            // lb_Room
+            // 
+            this.lb_Room.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Room.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lb_Room.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Room.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_Room.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lb_Room.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Room.Location = new System.Drawing.Point(532, 86);
+            this.lb_Room.Name = "lb_Room";
+            this.lb_Room.Size = new System.Drawing.Size(231, 19);
+            this.lb_Room.TabIndex = 91;
+            this.lb_Room.Text = "Room: Gymnastics";
+            // 
             // PT_formEnd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 232);
+            this.Controls.Add(this.lb_Room);
             this.Controls.Add(this.lb_Instructor_Name);
             this.Controls.Add(this.lb_productName);
             this.Controls.Add(this.lb_Student_RGP);
@@ -271,7 +288,8 @@
         private DevExpress.XtraEditors.LabelControl lb_Student_Name;
         private DevExpress.XtraEditors.LabelControl lb_Student_RGP;
         public DevExpress.XtraEditors.LabelControl lb_productName;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         public DevExpress.XtraEditors.LabelControl lb_Instructor_Name;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        public DevExpress.XtraEditors.LabelControl lb_Room;
     }
 }
