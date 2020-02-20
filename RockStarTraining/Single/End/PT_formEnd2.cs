@@ -212,7 +212,7 @@ namespace RockStar.Training
                     else
                     {
                         alertControl1.Show(this, "Data center", "Miss match student !", gbr_error);
-                        MessageBox.Show("Student does not match with RFID card", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Student does not have any private instruction session running", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }             
                 }
                 else if (dt.Rows.Count == 0)
@@ -272,7 +272,7 @@ namespace RockStar.Training
 
         private void PT_formEnd2_FormClosed(object sender, FormClosedEventArgs e)
         {
-           
+          
         }            
 
     }

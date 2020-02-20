@@ -9,7 +9,7 @@ using System.Media;
 
 namespace RockStar.Training
 {
-    public partial class PT_formMultiStart : Form
+    public partial class PT_studentMultiStart : Form
     {
         SqlConnection myConnection = new SqlConnection(Partner.configConnection);
      
@@ -23,19 +23,16 @@ namespace RockStar.Training
         private string Img_member_Url;        
         DataTable dt_listPrivateInstruction = new DataTable();
 
-
-        /// <summary>
-        /// Scanning Student Card Only
-        /// </summary>
-        /// <param name="clubName"></param>
-        /// <param name="code_clubUser"></param>
-        public PT_formMultiStart(string clubName)
+        string _productName;
+        
+        public PT_studentMultiStart(string clubName, string productName)
         {
             InitializeComponent();        
             lb_ClubName.Text = clubName;
+            _productName = productName;
         }
 
-        private void PT_formMultiStart_Load(object sender, EventArgs e)
+        private void PT_studentMultiStart_Load(object sender, EventArgs e)
         {
             textBox1.Focus();
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
@@ -58,7 +55,7 @@ namespace RockStar.Training
             }
         }
 
-        private void PT_formMultiStart_Shown(object sender, EventArgs e)
+        private void PT_studentMultiStart_Shown(object sender, EventArgs e)
         {           
             try
             {
@@ -197,7 +194,7 @@ namespace RockStar.Training
             e.AlertForm.OpacityLevel = 3;
         }
 
-        private void PT_formMultiStart_KeyDown(object sender, KeyEventArgs e)
+        private void PT_studentMultiStart_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -206,12 +203,12 @@ namespace RockStar.Training
             }
         }
 
-        private void PT_formMultiStart_Paint(object sender, PaintEventArgs e)
+        private void PT_studentMultiStart_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid);
         }
 
-        private void PT_formMultiStart_Resize(object sender, EventArgs e)
+        private void PT_studentMultiStart_Resize(object sender, EventArgs e)
         {
             Invalidate();
         }
@@ -290,15 +287,24 @@ namespace RockStar.Training
             if(gridView1.RowCount != 0)
             {
                 if(e.KeyCode == Keys.Enter)
-                {
+                {                
+                    if (!string.IsNullOrEmpty(_productName)) //pengecekan pemilihan package... jika data sebelumnya sudah di isi
+                    {               
+                        if(_productName.ToUpper().Trim() != gridView1.GetFocusedRowCellDisplayText("productName").ToUpper().Trim())
+                        {
+                            MessageBox.Show("You can only start multiple private instruction session within the same package", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }                       
+                    }
+
                     timer1.Stop();
                     timer2.Stop();
 
                     DataRow[] datarow = dt_listPrivateInstruction.Select("counter= "+gridView1.GetFocusedRowCellDisplayText("counter")+" ");
                     if (datarow.Length != 0)
                     {
-                        dtschema = dt_listPrivateInstruction.Clone();
-                        dr = datarow[0];
+                        dtschema = dt_listPrivateInstruction.Clone();//copy schema
+                        dr = datarow[0];//copy data row
                         DialogResult = DialogResult.OK;
                     }
                     else { MessageBox.Show("Failed to get PI counter"); }

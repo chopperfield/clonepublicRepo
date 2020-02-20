@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -52,9 +53,21 @@
             DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,15 +89,19 @@
             this.pictureEdit_Print = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_Sheet = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_Exit = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_PI_Start_Finger_Multi = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_PI_End_Finger_Multi = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_PI_Start_Card_Multi = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_PI_End_Card_Multi = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_End_Alt = new DevExpress.XtraEditors.PictureEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.filterControl1 = new DevExpress.XtraEditors.FilterControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lb_UserClub = new DevExpress.XtraEditors.LabelControl();
             this.lb_Version = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::RockStar.Training.form_Wait), true, true);
-            this.pictureEdit_PI_Start_Finger_Multi = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -97,12 +114,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Print.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Sheet.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Exit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Finger_Multi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Finger_Multi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Card_Multi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Card_Multi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_End_Alt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Finger_Multi.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -113,7 +134,7 @@
             this.gridControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(786, 587);
+            this.gridControl1.Size = new System.Drawing.Size(931, 587);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -264,7 +285,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(786, 75);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(931, 75);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // flowLayoutPanel1
@@ -280,9 +301,13 @@
             this.flowLayoutPanel1.Controls.Add(this.pictureEdit_Sheet);
             this.flowLayoutPanel1.Controls.Add(this.pictureEdit_Exit);
             this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_Start_Finger_Multi);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(109, 3);
+            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_End_Finger_Multi);
+            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_Start_Card_Multi);
+            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_PI_End_Card_Multi);
+            this.flowLayoutPanel1.Controls.Add(this.pictureEdit_End_Alt);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(39, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(568, 69);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(852, 69);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // pictureEdit_PI_Start_Finger
@@ -297,7 +322,7 @@
             this.pictureEdit_PI_Start_Finger.Properties.ShowMenu = false;
             this.pictureEdit_PI_Start_Finger.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit_PI_Start_Finger.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem1.Text = "Start Private Training (F7)";
+            toolTipTitleItem1.Text = "Start Private Training (F1)";
             toolTipItem1.LeftIndent = 6;
             toolTipItem1.Text = "Start Private Training";
             superToolTip1.Items.Add(toolTipTitleItem1);
@@ -318,7 +343,7 @@
             this.pictureEdit_PI_End_Finger.Properties.ShowMenu = false;
             this.pictureEdit_PI_End_Finger.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit_PI_End_Finger.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem2.Text = "Finish Private Training (F8)";
+            toolTipTitleItem2.Text = "Finish Private Training (F2)";
             toolTipItem2.LeftIndent = 6;
             toolTipItem2.Text = "Finish Private Training";
             superToolTip2.Items.Add(toolTipTitleItem2);
@@ -339,7 +364,7 @@
             this.pictureEdit_PI_Start_Card.Properties.ShowMenu = false;
             this.pictureEdit_PI_Start_Card.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit_PI_Start_Card.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem3.Text = "Start Private Training (F9)";
+            toolTipTitleItem3.Text = "Start Private Training (F3)";
             toolTipItem3.LeftIndent = 6;
             toolTipItem3.Text = "Start Private Training";
             superToolTip3.Items.Add(toolTipTitleItem3);
@@ -360,7 +385,7 @@
             this.pictureEdit_PI_End_Card.Properties.ShowMenu = false;
             this.pictureEdit_PI_End_Card.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit_PI_End_Card.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem4.Text = "Finish Private Training (F10)";
+            toolTipTitleItem4.Text = "Finish Private Training (F4)";
             toolTipItem4.LeftIndent = 6;
             toolTipItem4.Text = "Finish Private Training";
             superToolTip4.Items.Add(toolTipTitleItem4);
@@ -433,6 +458,111 @@
             this.pictureEdit_Exit.TabIndex = 3;
             this.pictureEdit_Exit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit4_MouseClick);
             // 
+            // pictureEdit_PI_Start_Finger_Multi
+            // 
+            this.pictureEdit_PI_Start_Finger_Multi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_PI_Start_Finger_Multi.EditValue = global::RockStar.Training.Properties.Resources.startMultiFinger;
+            this.pictureEdit_PI_Start_Finger_Multi.Location = new System.Drawing.Point(500, 3);
+            this.pictureEdit_PI_Start_Finger_Multi.Name = "pictureEdit_PI_Start_Finger_Multi";
+            this.pictureEdit_PI_Start_Finger_Multi.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_PI_Start_Finger_Multi.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_PI_Start_Finger_Multi.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_PI_Start_Finger_Multi.Properties.ShowMenu = false;
+            this.pictureEdit_PI_Start_Finger_Multi.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_PI_Start_Finger_Multi.Size = new System.Drawing.Size(65, 65);
+            toolTipTitleItem8.Text = "Start Private Training (F5)";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "Start Private Training";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.pictureEdit_PI_Start_Finger_Multi.SuperTip = superToolTip8;
+            this.pictureEdit_PI_Start_Finger_Multi.TabIndex = 8;
+            this.pictureEdit_PI_Start_Finger_Multi.Click += new System.EventHandler(this.pictureEdit_PI_Start_Finger_Multi_Click);
+            // 
+            // pictureEdit_PI_End_Finger_Multi
+            // 
+            this.pictureEdit_PI_End_Finger_Multi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_PI_End_Finger_Multi.EditValue = global::RockStar.Training.Properties.Resources.finishMultiFinger;
+            this.pictureEdit_PI_End_Finger_Multi.Location = new System.Drawing.Point(571, 3);
+            this.pictureEdit_PI_End_Finger_Multi.Name = "pictureEdit_PI_End_Finger_Multi";
+            this.pictureEdit_PI_End_Finger_Multi.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_PI_End_Finger_Multi.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_PI_End_Finger_Multi.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_PI_End_Finger_Multi.Properties.ShowMenu = false;
+            this.pictureEdit_PI_End_Finger_Multi.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_PI_End_Finger_Multi.Size = new System.Drawing.Size(65, 65);
+            toolTipTitleItem9.Text = "Finish Private Training (F6)";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "Finish Private Training";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.pictureEdit_PI_End_Finger_Multi.SuperTip = superToolTip9;
+            this.pictureEdit_PI_End_Finger_Multi.TabIndex = 10;
+            this.pictureEdit_PI_End_Finger_Multi.Click += new System.EventHandler(this.pictureEdit_PI_End_Finger_Multi_Click);
+            // 
+            // pictureEdit_PI_Start_Card_Multi
+            // 
+            this.pictureEdit_PI_Start_Card_Multi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_PI_Start_Card_Multi.EditValue = global::RockStar.Training.Properties.Resources.startMultiCard;
+            this.pictureEdit_PI_Start_Card_Multi.Location = new System.Drawing.Point(642, 3);
+            this.pictureEdit_PI_Start_Card_Multi.Name = "pictureEdit_PI_Start_Card_Multi";
+            this.pictureEdit_PI_Start_Card_Multi.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_PI_Start_Card_Multi.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_PI_Start_Card_Multi.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_PI_Start_Card_Multi.Properties.ShowMenu = false;
+            this.pictureEdit_PI_Start_Card_Multi.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_PI_Start_Card_Multi.Size = new System.Drawing.Size(65, 65);
+            toolTipTitleItem10.Text = "Start Private Training (F7)";
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "Start Private Training";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.pictureEdit_PI_Start_Card_Multi.SuperTip = superToolTip10;
+            this.pictureEdit_PI_Start_Card_Multi.TabIndex = 9;
+            this.pictureEdit_PI_Start_Card_Multi.Click += new System.EventHandler(this.pictureEdit_PI_Start_Card_Multi_Click);
+            // 
+            // pictureEdit_PI_End_Card_Multi
+            // 
+            this.pictureEdit_PI_End_Card_Multi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_PI_End_Card_Multi.EditValue = global::RockStar.Training.Properties.Resources.finishMultiCard;
+            this.pictureEdit_PI_End_Card_Multi.Location = new System.Drawing.Point(713, 3);
+            this.pictureEdit_PI_End_Card_Multi.Name = "pictureEdit_PI_End_Card_Multi";
+            this.pictureEdit_PI_End_Card_Multi.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_PI_End_Card_Multi.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_PI_End_Card_Multi.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_PI_End_Card_Multi.Properties.ShowMenu = false;
+            this.pictureEdit_PI_End_Card_Multi.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_PI_End_Card_Multi.Size = new System.Drawing.Size(65, 65);
+            toolTipTitleItem11.Text = "Finish Private Training (F8)";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "Finish Private Training";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.pictureEdit_PI_End_Card_Multi.SuperTip = superToolTip11;
+            this.pictureEdit_PI_End_Card_Multi.TabIndex = 11;
+            this.pictureEdit_PI_End_Card_Multi.Click += new System.EventHandler(this.pictureEdit_PI_End_Card_Multi_Click);
+            // 
+            // pictureEdit_End_Alt
+            // 
+            this.pictureEdit_End_Alt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_End_Alt.EditValue = global::RockStar.Training.Properties.Resources.finishPI;
+            this.pictureEdit_End_Alt.Location = new System.Drawing.Point(784, 3);
+            this.pictureEdit_End_Alt.Name = "pictureEdit_End_Alt";
+            this.pictureEdit_End_Alt.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_End_Alt.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_End_Alt.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_End_Alt.Properties.ShowMenu = false;
+            this.pictureEdit_End_Alt.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_End_Alt.Size = new System.Drawing.Size(65, 65);
+            toolTipTitleItem12.Text = "Finish Private Training (F8)";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "Finish Private Training";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.pictureEdit_End_Alt.SuperTip = superToolTip12;
+            this.pictureEdit_End_Alt.TabIndex = 12;
+            this.pictureEdit_End_Alt.Click += new System.EventHandler(this.pictureEdit_End_Alt_Click);
+            // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Appearance.BackColor = System.Drawing.Color.White;
@@ -446,7 +576,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel2;
-            this.splitContainerControl1.Size = new System.Drawing.Size(786, 587);
+            this.splitContainerControl1.Size = new System.Drawing.Size(931, 587);
             this.splitContainerControl1.SplitterPosition = 130;
             this.splitContainerControl1.TabIndex = 8;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -484,7 +614,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(786, 71);
+            this.panelControl1.Size = new System.Drawing.Size(931, 71);
             this.panelControl1.TabIndex = 1;
             // 
             // lb_UserClub
@@ -496,7 +626,7 @@
             this.lb_UserClub.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.lb_UserClub.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lb_UserClub.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_UserClub.Location = new System.Drawing.Point(360, 25);
+            this.lb_UserClub.Location = new System.Drawing.Point(505, 25);
             this.lb_UserClub.Name = "lb_UserClub";
             this.lb_UserClub.Size = new System.Drawing.Size(421, 46);
             this.lb_UserClub.TabIndex = 1005;
@@ -509,7 +639,7 @@
             this.lb_Version.Appearance.ForeColor = System.Drawing.Color.DarkGray;
             this.lb_Version.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_Version.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_Version.Location = new System.Drawing.Point(644, 5);
+            this.lb_Version.Location = new System.Drawing.Point(789, 5);
             this.lb_Version.Name = "lb_Version";
             this.lb_Version.Size = new System.Drawing.Size(130, 14);
             this.lb_Version.TabIndex = 1004;
@@ -527,32 +657,11 @@
             this.pictureEdit_Logo.Size = new System.Drawing.Size(72, 41);
             this.pictureEdit_Logo.TabIndex = 114;
             // 
-            // pictureEdit_PI_Start_Finger_Multi
-            // 
-            this.pictureEdit_PI_Start_Finger_Multi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureEdit_PI_Start_Finger_Multi.EditValue = global::RockStar.Training.Properties.Resources.startPI;
-            this.pictureEdit_PI_Start_Finger_Multi.Location = new System.Drawing.Point(500, 3);
-            this.pictureEdit_PI_Start_Finger_Multi.Name = "pictureEdit_PI_Start_Finger_Multi";
-            this.pictureEdit_PI_Start_Finger_Multi.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit_PI_Start_Finger_Multi.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit_PI_Start_Finger_Multi.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit_PI_Start_Finger_Multi.Properties.ShowMenu = false;
-            this.pictureEdit_PI_Start_Finger_Multi.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit_PI_Start_Finger_Multi.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem8.Text = "Start Private Training (F7)";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "Start Private Training";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.pictureEdit_PI_Start_Finger_Multi.SuperTip = superToolTip8;
-            this.pictureEdit_PI_Start_Finger_Multi.TabIndex = 8;
-            this.pictureEdit_PI_Start_Finger_Multi.Click += new System.EventHandler(this.pictureEdit_PI_Start_Finger_Multi_Click);
-            // 
             // PT_Session
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 733);
+            this.ClientSize = new System.Drawing.Size(931, 733);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -576,12 +685,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Print.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Sheet.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Exit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Finger_Multi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Finger_Multi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Card_Multi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Card_Multi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_End_Alt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Finger_Multi.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -620,6 +733,10 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_Start_Card;
         private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_End_Card;
         private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_Start_Finger_Multi;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_Start_Card_Multi;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_End_Finger_Multi;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_PI_End_Card_Multi;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_End_Alt;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

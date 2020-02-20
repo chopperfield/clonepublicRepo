@@ -9,7 +9,7 @@ using System.Media;
 
 namespace RockStar.Training
 {
-    public partial class PT_cardEnd : Form
+    public partial class PT_cardMultiEnd : Form
     {
         SqlConnection myConnection = new SqlConnection(Partner.configConnection);
     
@@ -18,27 +18,20 @@ namespace RockStar.Training
         Bitmap gbr_warn = new Bitmap(Properties.Resources.warning, 25, 25);
 
 
-        string _clubName;
-        string _productName;
-        string _employee_Start;
-        string _employee_StartName;
-        string _trainingCounter;
-        string _studentRGP;
+        string _clubName;      
+        DataTable _dt_student;
+        string employeeStart;
 
-        public PT_cardEnd(string clubName, string productName, string employeeStart, string employeeStartName ,string trainingCounter, string studentRGP)
+
+        public PT_cardMultiEnd(string clubName, DataTable dt_student)
         {
-
             InitializeComponent();
 
             _clubName = clubName;
-            _productName = productName;
-            _employee_Start = employeeStart;
-            _employee_StartName = employeeStartName;
-            _trainingCounter = trainingCounter;
-            _studentRGP = studentRGP;
+            _dt_student = dt_student;
         }
 
-        private void PT_cardEnd_Load(object sender, EventArgs e)
+        private void PT_cardMultiEnd_Load(object sender, EventArgs e)
         {
             timer1.Interval = 1 * 1000; //1detik per tick
             textBox1.Focus();
@@ -46,9 +39,12 @@ namespace RockStar.Training
             pictureEdit_Logo.Image = logo;
 
             lb_clubName.Text = _clubName;
-            lb_productName.Text = _productName;
-            lb_Instructor_Name.Text = "Instructor: "+ _employee_StartName;
+            lb_productName.Text = _dt_student.Rows[0]["productName"].ToString();
+            lb_Instructor_Name.Text = "Instructor: "+ _dt_student.Rows[0]["employeeStartName"].ToString();
             lb_PT_use.Text = "";
+
+            employeeStart = _dt_student.Rows[0]["employeeStart"].ToString();
+
 
             timer1.Start();
             timer2.Start();
@@ -94,35 +90,8 @@ namespace RockStar.Training
 
         public void get_Employee_Status(string rfid)
         {
-            SqlCommand command = new SqlCommand();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable dt = new DataTable();
-
-            if (myConnection.State == ConnectionState.Open)
-            {
-                myConnection.Close();
-            }
-            try
-            {
-                myConnection.Open();
-
-                command.Connection = myConnection;
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandTimeout = 180;
-                command.CommandText = "Module.SP_TrainingCheckTrainer";                
-                command.Parameters.Add("@rfid", SqlDbType.NChar, 10).Value = rfid;
-                adapter.SelectCommand = command;
-                adapter.Fill(dt);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("error" + ex);
-                return;
-            }
-            finally
-            {
-                myConnection.Close();
-            }
+            setup_Datatable setup = new setup_Datatable();
+            DataTable dt = setup.datatable_instructor_RFID(rfid);
 
             if (dt.Rows.Count == 0)
             {                
@@ -131,10 +100,10 @@ namespace RockStar.Training
             }
             else
             {
-                if (_employee_Start.Trim() == dt.Rows[0]["employeeStart"].ToString().Trim())
+                if (employeeStart.Trim() == dt.Rows[0]["employeeStart"].ToString().Trim())
                 {
                     timer1.Stop();
-                    if (MessageBox.Show("Finish Training ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Do you want to finish this private instruction session ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         update_Signin();                       
                     }
@@ -146,7 +115,7 @@ namespace RockStar.Training
                 }
                 else
                 {
-                    MessageBox.Show("Instructor does not match", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Instructor does not match with instructor started the private instruction session", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -157,30 +126,46 @@ namespace RockStar.Training
         public void update_Signin()
         {
 
-            SqlCommand command = new SqlCommand();
-
             try
             {
-                command.Parameters.Clear();
-                myConnection.Open();
+                foreach (DataRow dr in _dt_student.Rows)
+                {
+                    SqlCommand command = new SqlCommand();
+                    try
+                    {
+                        command.Parameters.Clear();
+                        if (myConnection.State == ConnectionState.Open)
+                        {
+                            myConnection.Close();
+                        }
+                        myConnection.Open();
 
-                command.Connection = myConnection;
-                command.CommandText = "update module.trainingUsage set memberEnd=@memberEnd, employeeEnd=@employeeEnd, note=@note where counter=@counter";
-                command.Parameters.AddWithValue("@memberEnd", _studentRGP);
-                command.Parameters.AddWithValue("@employeeEnd", _employee_Start.Trim());
-                command.Parameters.AddWithValue("@note", "");
-                command.Parameters.AddWithValue("@counter", _trainingCounter);
-                command.ExecuteNonQuery();
+                        command.Connection = myConnection;
+                        command.CommandText = "update module.trainingUsage set memberEnd=@memberEnd, employeeEnd=@employeeEnd, note=@note where counter=@counter";
+                        command.Parameters.AddWithValue("@memberEnd", dr["memberStart"]);
+                        command.Parameters.AddWithValue("@employeeEnd", employeeStart);
+                        command.Parameters.AddWithValue("@note", "");
+                        command.Parameters.AddWithValue("@counter", dr["counter"]);
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("error" + ex);
+                        return;
+                    }
+                    finally
+                    {
+                        myConnection.Close();
+                    }
+                }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("error" + ex);
+                MessageBox.Show("Data are not fully updated !", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.Cancel;
                 return;
             }
-            finally
-            {
-                myConnection.Close();
-            }
+
             SoundPlayer audio = new SoundPlayer();
             audio.Stream = Properties.Resources.msg_ins;
             audio.Play();
@@ -195,7 +180,7 @@ namespace RockStar.Training
             e.AlertForm.OpacityLevel = 3;
         }
 
-        private void PT_cardEnd_KeyDown(object sender, KeyEventArgs e)
+        private void PT_cardMultiEnd_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -203,12 +188,12 @@ namespace RockStar.Training
             }
         }
 
-        private void PT_cardEnd_Paint(object sender, PaintEventArgs e)
+        private void PT_cardMultiEnd_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid);
         }
 
-        private void PT_cardEnd_Resize(object sender, EventArgs e)
+        private void PT_cardMultiEnd_Resize(object sender, EventArgs e)
         {
             Invalidate();
         }

@@ -191,7 +191,7 @@ namespace RockStar.Training
                     else
                     {
                         alertControl1.Show(this, "Data center", "Miss match student !", gbr_error);
-                        MessageBox.Show("Student does not match with RFID card", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Student does not have any private instruction session running", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else if (dt.Rows.Count == 0)
@@ -229,7 +229,7 @@ namespace RockStar.Training
                 }
                 else
                 {
-                    MessageBox.Show("finger print device not found", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Fingerprint reader device not found", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                 }
 
@@ -351,7 +351,7 @@ namespace RockStar.Training
         {
             if (employee_Start.Trim() == instructor_FingerID.Trim())
             {
-                if (MessageBox.Show("Finish Training ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to finish this private instruction session ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     update_Signin();
                     if (berhasil_insert == true)
@@ -381,7 +381,7 @@ namespace RockStar.Training
             else
             {
                 //alertControl1.Show(this, "Data center", "Miss match instructor !", gbr_error);
-                MessageBox.Show("Instructor does not match fingerprint", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Instructor does not match with instructor started the private instruction session", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

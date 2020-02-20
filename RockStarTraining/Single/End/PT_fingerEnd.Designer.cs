@@ -1,6 +1,6 @@
 ﻿namespace RockStar.Training
 {
-    partial class PT_cardEnd
+    partial class PT_fingerEnd
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lb_Info = new DevExpress.XtraEditors.LabelControl();
             this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
             this.lb_productName = new DevExpress.XtraEditors.LabelControl();
             this.lb_clubName = new DevExpress.XtraEditors.LabelControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
-            this.timer1 = new System.Windows.Forms.Timer();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.timer2 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lb_PT_use = new DevExpress.XtraEditors.LabelControl();
             this.lb_Instructor_Name = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -66,20 +65,20 @@
             this.lb_Info.Appearance.ForeColor = System.Drawing.Color.White;
             this.lb_Info.Location = new System.Drawing.Point(12, 5);
             this.lb_Info.Name = "lb_Info";
-            this.lb_Info.Size = new System.Drawing.Size(90, 14);
+            this.lb_Info.Size = new System.Drawing.Size(134, 14);
             this.lb_Info.TabIndex = 54;
-            this.lb_Info.Text = "Please Tap Card";
+            this.lb_Info.Text = "Please Scan Your Finger";
             // 
             // lb_Usage
             // 
             this.lb_Usage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_Usage.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Usage.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lb_Usage.Location = new System.Drawing.Point(482, 5);
+            this.lb_Usage.Location = new System.Drawing.Point(424, 5);
             this.lb_Usage.Name = "lb_Usage";
-            this.lb_Usage.Size = new System.Drawing.Size(51, 14);
+            this.lb_Usage.Size = new System.Drawing.Size(109, 14);
             this.lb_Usage.TabIndex = 71;
-            this.lb_Usage.Text = "Sign Out";
+            this.lb_Usage.Text = "Instructor Sign Out";
             // 
             // lb_productName
             // 
@@ -93,7 +92,7 @@
             this.lb_productName.Name = "lb_productName";
             this.lb_productName.Size = new System.Drawing.Size(401, 71);
             this.lb_productName.TabIndex = 70;
-            this.lb_productName.Text = "Gymnastic U/8";
+            this.lb_productName.Text = "Jump Start - Welcome";
             // 
             // lb_clubName
             // 
@@ -135,21 +134,8 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(100, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ShortcutsEnabled = false;
-            this.textBox1.Size = new System.Drawing.Size(0, 20);
-            this.textBox1.TabIndex = 84;
-            this.textBox1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox1_PreviewKeyDown);
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 1000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // lb_PT_use
             // 
@@ -162,7 +148,7 @@
             this.lb_PT_use.Location = new System.Drawing.Point(419, 95);
             this.lb_PT_use.Name = "lb_PT_use";
             this.lb_PT_use.Size = new System.Drawing.Size(114, 40);
-            this.lb_PT_use.TabIndex = 85;
+            this.lb_PT_use.TabIndex = 82;
             this.lb_PT_use.Text = "Used: 1";
             // 
             // lb_Instructor_Name
@@ -176,37 +162,37 @@
             this.lb_Instructor_Name.Location = new System.Drawing.Point(133, 41);
             this.lb_Instructor_Name.Name = "lb_Instructor_Name";
             this.lb_Instructor_Name.Size = new System.Drawing.Size(400, 19);
-            this.lb_Instructor_Name.TabIndex = 86;
+            this.lb_Instructor_Name.TabIndex = 87;
             this.lb_Instructor_Name.Text = "Instructor: Director Fury";
             // 
-            // PT_cardEnd
+            // PT_fingerEnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 162);
             this.Controls.Add(this.lb_Instructor_Name);
-            this.Controls.Add(this.lb_PT_use);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureEdit_Logo);
+            this.Controls.Add(this.lb_PT_use);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.lb_productName);
             this.Controls.Add(this.lb_clubName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Name = "PT_cardEnd";
+            this.Name = "PT_fingerEnd";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PT_cardEnd";
-            this.Load += new System.EventHandler(this.PT_cardEnd_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_cardEnd_Paint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_cardEnd_KeyDown);
-            this.Resize += new System.EventHandler(this.PT_cardEnd_Resize);
+            this.Text = "PT_fingerEnd";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PT_fingerEnd_FormClosed);
+            this.Load += new System.EventHandler(this.PT_fingerEnd_Load);
+            this.Shown += new System.EventHandler(this.PT_fingerEnd_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_fingerEnd_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_fingerEnd_KeyDown);
+            this.Resize += new System.EventHandler(this.PT_fingerEnd_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -215,13 +201,11 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         public DevExpress.XtraEditors.LabelControl lb_Info;
         public DevExpress.XtraEditors.LabelControl lb_Usage;
-        private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit_Logo;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Timer timer2;
-        private DevExpress.XtraEditors.LabelControl lb_clubName;
         public DevExpress.XtraEditors.LabelControl lb_productName;
+        public DevExpress.XtraEditors.LabelControl lb_clubName;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_Logo;
+        public DevExpress.XtraBars.Alerter.AlertControl alertControl1;
+        private System.Windows.Forms.Timer timer1;
         public DevExpress.XtraEditors.LabelControl lb_PT_use;
         public DevExpress.XtraEditors.LabelControl lb_Instructor_Name;
     }

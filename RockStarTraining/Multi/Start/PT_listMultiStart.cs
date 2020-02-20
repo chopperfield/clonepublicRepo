@@ -9,7 +9,7 @@ using System.Media;
 
 namespace RockStar.Training
 {
-    public partial class PT_formMultiList : Form
+    public partial class PT_listMultiStart : Form
     {
         SqlConnection myConnection = new SqlConnection(Partner.configConnection);
      
@@ -29,7 +29,7 @@ namespace RockStar.Training
         /// <param name="clubName"></param>
         /// <param name="code_clubUser"></param>
         /// <param name="dt_finger_employees"></param>        
-        public PT_formMultiList(string code_UserClubName, string code_clubUser,DataTable dt_finger_employees, bool isFinger)
+        public PT_listMultiStart(string code_UserClubName, string code_clubUser,DataTable dt_finger_employees, bool isFinger)
         {
             InitializeComponent();
 
@@ -40,7 +40,7 @@ namespace RockStar.Training
             _isFinger = isFinger;
         }
 
-        private void PT_formMultiList_Load(object sender, EventArgs e)
+        private void PT_listMultiStart_Load(object sender, EventArgs e)
         {
             lb_ClubName.Text = _code_UserClubName;
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
@@ -67,7 +67,7 @@ namespace RockStar.Training
             e.AlertForm.OpacityLevel = 3;
         }
 
-        private void PT_formMultiList_KeyDown(object sender, KeyEventArgs e)
+        private void PT_listMultiStart_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -76,12 +76,12 @@ namespace RockStar.Training
             }
         }
 
-        private void PT_formMultiList_Paint(object sender, PaintEventArgs e)
+        private void PT_listMultiStart_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid);
         }
 
-        private void PT_formMultiList_Resize(object sender, EventArgs e)
+        private void PT_listMultiStart_Resize(object sender, EventArgs e)
         {
             Invalidate();
         }
@@ -95,29 +95,33 @@ namespace RockStar.Training
                 gridView1.Columns["counter"].Caption = "Counter";
                 gridView1.Columns["counter"].Width = 50;
 
-                gridView1.Columns["productName"].VisibleIndex = 1;
+                gridView1.Columns["memberName"].VisibleIndex = 1;
+                gridView1.Columns["memberName"].Caption = "Student Name";
+                gridView1.Columns["memberName"].Width = 200;
+
+                gridView1.Columns["productName"].VisibleIndex = 2;
                 gridView1.Columns["productName"].Caption = "Product Name";
                 gridView1.Columns["productName"].Width = 200;
 
-                gridView1.Columns["instructorCode"].VisibleIndex = 2;
+                gridView1.Columns["instructorCode"].VisibleIndex = 3;
                 gridView1.Columns["instructorCode"].Caption = "Instructor Code";
                 gridView1.Columns["instructorCode"].Width = 150;
 
-                gridView1.Columns["instructorName"].VisibleIndex = 3;
+                gridView1.Columns["instructorName"].VisibleIndex = 4;
                 gridView1.Columns["instructorName"].Caption = "Instructor Name";
                 gridView1.Columns["instructorName"].Width = 150;
 
-                gridView1.Columns["remain"].VisibleIndex = 4;
+                gridView1.Columns["remain"].VisibleIndex = 5;
                 gridView1.Columns["remain"].Caption = "Remain";
                 gridView1.Columns["remain"].Width = 50;
 
-                gridView1.Columns["expired"].VisibleIndex = 5;
+                gridView1.Columns["expired"].VisibleIndex = 6;
                 gridView1.Columns["expired"].Caption = "Expired Date";
                 gridView1.Columns["expired"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
                 gridView1.Columns["expired"].DisplayFormat.FormatString = "dd MMM yyyy";
                 gridView1.Columns["expired"].Width = 100;
 
-                gridView1.Columns["note"].VisibleIndex = 6;
+                gridView1.Columns["note"].VisibleIndex = 7;
                 gridView1.Columns["note"].Caption = "Note";
                 gridView1.Columns["note"].Width = 200;
 
@@ -128,7 +132,6 @@ namespace RockStar.Training
                 gridView1.Columns["code"].Visible = false;
                 gridView1.Columns["barcode"].Visible = false;
                 gridView1.Columns["agreement"].Visible = false;
-                gridView1.Columns["memberName"].Visible = false;
                 gridView1.Columns["firstName"].Visible = false;
                 gridView1.Columns["lastName"].Visible = false;
             }
@@ -145,7 +148,13 @@ namespace RockStar.Training
 
         private void btn_StartScan_Click(object sender, EventArgs e)
         {
-            using (PT_formMultiStart pt_formStart = new PT_formMultiStart(_code_UserClubName))
+            string productName = "";
+            if(gridView1.RowCount != 0)
+            {
+                productName = gridView1.GetRowCellDisplayText(0, "productName");//limitation product yg sma
+            }
+
+            using (PT_studentMultiStart pt_formStart = new PT_studentMultiStart(_code_UserClubName, productName))
             {
                 if (pt_formStart.ShowDialog() == DialogResult.OK)
                 {
@@ -168,9 +177,11 @@ namespace RockStar.Training
             if (gridView1.RowCount != 0)
             {                
                 string productName = gridView1.GetRowCellDisplayText(0, "productName");
+                string instructorCode = gridView1.GetRowCellDisplayText(0, "instructorCode");
+                string instructorName = gridView1.GetRowCellDisplayText(0, "instructorName");
                 if (_isFinger)
                 {
-                    PT_fingerMultiStart pt_fingerMultiStart = new PT_fingerMultiStart(_dt_finger_employees, lb_ClubName.Text, _code_clubUser, productName , dt_dataList);
+                    PT_fingerMultiStart pt_fingerMultiStart = new PT_fingerMultiStart(_dt_finger_employees, lb_ClubName.Text, _code_clubUser, productName , dt_dataList, instructorCode, instructorName);
                     if (pt_fingerMultiStart.ShowDialog() == DialogResult.OK)
                     {
                         this.DialogResult = DialogResult.OK;
@@ -182,20 +193,20 @@ namespace RockStar.Training
                         this.Close();
                     }
                 }
-                //else
-                //{
-                //    PT_cardStart pt_cardstart = new PT_cardStart(lb_ClubName.Text, code_clubUser, gridView1.GetFocusedRowCellDisplayText("productName"), gridView1.GetFocusedRowCellDisplayText("remain"), gridView1.GetFocusedRowCellDisplayText("counter"), student_RGP, lb_Student_Name.Text);
-                //    if (pt_cardstart.ShowDialog() == DialogResult.OK)
-                //    {
-                //        this.DialogResult = DialogResult.OK;
-                //        this.Close();
-                //    }
-                //    else
-                //    {
-                //        this.DialogResult = DialogResult.Cancel;
-                //        this.Close();
-                //    }
-                //}
+                else
+                {
+                    PT_cardMultiStart pt_cardMultistart = new PT_cardMultiStart(lb_ClubName.Text, _code_clubUser, productName, dt_dataList, instructorCode, instructorName);
+                    if (pt_cardMultistart.ShowDialog() == DialogResult.OK)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.DialogResult = DialogResult.Cancel;
+                        this.Close();
+                    }
+                }
             }
         }
     }

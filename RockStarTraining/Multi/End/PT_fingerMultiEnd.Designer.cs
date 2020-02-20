@@ -1,6 +1,6 @@
 ﻿namespace RockStar.Training
 {
-    partial class PT_fingerMultiStart
+    partial class PT_fingerMultiEnd
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lb_Info = new DevExpress.XtraEditors.LabelControl();
             this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
             this.lb_productName = new DevExpress.XtraEditors.LabelControl();
             this.lb_clubName = new DevExpress.XtraEditors.LabelControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
-            this.timer1 = new System.Windows.Forms.Timer();
-            this.lb_PT_participants = new DevExpress.XtraEditors.LabelControl();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lb_PT_use = new DevExpress.XtraEditors.LabelControl();
             this.lb_Instructor_Name = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -73,11 +74,11 @@
             this.lb_Usage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_Usage.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Usage.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lb_Usage.Location = new System.Drawing.Point(494, 5);
+            this.lb_Usage.Location = new System.Drawing.Point(424, 5);
             this.lb_Usage.Name = "lb_Usage";
-            this.lb_Usage.Size = new System.Drawing.Size(39, 14);
+            this.lb_Usage.Size = new System.Drawing.Size(109, 14);
             this.lb_Usage.TabIndex = 71;
-            this.lb_Usage.Text = "Sign In";
+            this.lb_Usage.Text = "Instructor Sign Out";
             // 
             // lb_productName
             // 
@@ -87,7 +88,6 @@
             this.lb_productName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.lb_productName.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lb_productName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_productName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_productName.Location = new System.Drawing.Point(12, 64);
             this.lb_productName.Name = "lb_productName";
             this.lb_productName.Size = new System.Drawing.Size(401, 71);
@@ -137,19 +137,19 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lb_PT_participants
+            // lb_PT_use
             // 
-            this.lb_PT_participants.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_PT_participants.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_PT_participants.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.lb_PT_participants.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Bottom;
-            this.lb_PT_participants.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.lb_PT_participants.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_PT_participants.Location = new System.Drawing.Point(419, 95);
-            this.lb_PT_participants.Name = "lb_PT_participants";
-            this.lb_PT_participants.Size = new System.Drawing.Size(114, 40);
-            this.lb_PT_participants.TabIndex = 82;
-            this.lb_PT_participants.Text = "Remaining Session(s): 99";
+            this.lb_PT_use.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_PT_use.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_PT_use.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_PT_use.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Bottom;
+            this.lb_PT_use.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.lb_PT_use.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lb_PT_use.Location = new System.Drawing.Point(419, 95);
+            this.lb_PT_use.Name = "lb_PT_use";
+            this.lb_PT_use.Size = new System.Drawing.Size(114, 40);
+            this.lb_PT_use.TabIndex = 82;
+            this.lb_PT_use.Text = "Used: 1";
             // 
             // lb_Instructor_Name
             // 
@@ -162,32 +162,32 @@
             this.lb_Instructor_Name.Location = new System.Drawing.Point(133, 41);
             this.lb_Instructor_Name.Name = "lb_Instructor_Name";
             this.lb_Instructor_Name.Size = new System.Drawing.Size(400, 19);
-            this.lb_Instructor_Name.TabIndex = 85;
+            this.lb_Instructor_Name.TabIndex = 87;
             this.lb_Instructor_Name.Text = "Instructor: Director Fury";
             // 
-            // PT_fingerMultiStart
+            // PT_fingerMultiEnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 162);
             this.Controls.Add(this.lb_Instructor_Name);
             this.Controls.Add(this.pictureEdit_Logo);
-            this.Controls.Add(this.lb_PT_participants);
+            this.Controls.Add(this.lb_PT_use);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.lb_productName);
             this.Controls.Add(this.lb_clubName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Name = "PT_fingerMultiStart";
+            this.Name = "PT_fingerMultiEnd";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PT_fingerMultiStart";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PT_fingerMultiStart_FormClosed);
-            this.Load += new System.EventHandler(this.PT_fingerMultiStart_Load);
-            this.Shown += new System.EventHandler(this.PT_fingerMultiStart_Shown);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_fingerMultiStart_Paint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_fingerMultiStart_KeyDown);
-            this.Resize += new System.EventHandler(this.PT_fingerMultiStart_Resize);
+            this.Text = "PT_fingerMultiEnd";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PT_fingerMultiEnd_FormClosed);
+            this.Load += new System.EventHandler(this.PT_fingerMultiEnd_Load);
+            this.Shown += new System.EventHandler(this.PT_fingerMultiEnd_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_fingerMultiEnd_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_fingerMultiEnd_KeyDown);
+            this.Resize += new System.EventHandler(this.PT_fingerMultiEnd_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -206,7 +206,7 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit_Logo;
         public DevExpress.XtraBars.Alerter.AlertControl alertControl1;
         private System.Windows.Forms.Timer timer1;
-        public DevExpress.XtraEditors.LabelControl lb_PT_participants;
+        public DevExpress.XtraEditors.LabelControl lb_PT_use;
         public DevExpress.XtraEditors.LabelControl lb_Instructor_Name;
     }
 }

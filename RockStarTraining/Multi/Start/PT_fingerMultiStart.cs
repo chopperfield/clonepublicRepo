@@ -13,7 +13,7 @@ using FastCodeSDK;
 
 namespace RockStar.Training
 {
-    public partial class PT_fingerEnd : Form
+    public partial class PT_fingerMultiStart : Form
     {
         SqlConnection myConnection = new SqlConnection(Partner.configConnection);
 
@@ -26,38 +26,39 @@ namespace RockStar.Training
         fingerPrint_Device fingerPrint_Device = new fingerPrint_Device();
 
 
+        string _clubCode;
         string _clubName;
         string _productName;
-        string _employee_Start;
-        string _employee_StartName;
-        string _trainingCounter;
-        string _studentRGP;
-
-        public PT_fingerEnd(DataTable dt_finger,string clubName,string productName, string employeeStart, string employeeStartName, string trainingCounter, string studentRGP)
+        string _totalParticipants;
+        DataTable _dt_listData = new DataTable();
+        string _instructorCode;
+        string _instructorName;
+        
+        public PT_fingerMultiStart(DataTable dt_finger,string clubName,string clubCode ,string productName, DataTable dt_listData, string instructorCode, string instructorName)
         {
 
-            InitializeComponent();
-
-            
+            InitializeComponent();            
             _dt_ins_fingerPrint = dt_finger;
-
+           
+            _clubCode = clubCode;
             _clubName = clubName;
             _productName = productName;
-            _employee_Start = employeeStart;
-            _employee_StartName = employeeStartName;
-            _trainingCounter = trainingCounter;
-            _studentRGP = studentRGP;
+            _dt_listData = dt_listData;
+            _totalParticipants = dt_listData.Rows.Count.ToString();
+
+            _instructorCode = instructorCode;
+            _instructorName = instructorName;
         }
 
-        private void PT_fingerEnd_Load(object sender, EventArgs e)
+        private void PT_fingerMultiStart_Load(object sender, EventArgs e)
         {
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
             pictureEdit_Logo.Image = logo;
 
             lb_clubName.Text = _clubName;
             lb_productName.Text = _productName;
-            lb_Instructor_Name.Text = "Instructor: "+_employee_StartName;
-            lb_PT_use.Text = "";
+            lb_PT_participants.Text = "Participants: " + _totalParticipants;
+            lb_Instructor_Name.Text = "Instructor: " + _instructorName;
 
             try //cuman buat getFileCode (pakai throw) karena pada event load execute tiap code sblom di close)
             {
@@ -78,7 +79,7 @@ namespace RockStar.Training
                 }
                 else
                 {
-                    MessageBox.Show("finger print device not found", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Fingerprint reader device not found", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                 }
             }
@@ -89,7 +90,7 @@ namespace RockStar.Training
             }
         }
 
-        private void PT_fingerEnd_Shown(object sender, EventArgs e)
+        private void PT_fingerMultiStart_Shown(object sender, EventArgs e)
         {
             try
             {
@@ -149,15 +150,7 @@ namespace RockStar.Training
                 }
             }
             if (Status == FPReader.IdentificationStatus.NoCandidate)                
-            {
-                //Action action = () =>
-                //{
-                //    DevExpress.XtraBars.Alerter.AlertControl control = new DevExpress.XtraBars.Alerter.AlertControl();
-                //    control = alertControl1;
-                //    control.FormLocation = DevExpress.XtraBars.Alerter.AlertFormLocation.BottomRight;
-                //    control.Show(this, "Data center", "Instructor not found", gbr_warn);// "this" being a Form
-                //};
-                //this.Invoke(action);
+            {            
                 MessageBox.Show("Fingerprint does not match with any candidate", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -199,7 +192,103 @@ namespace RockStar.Training
         }
 
 
-   
+        public void check_Instructor()
+        {
+            DataRow[] dr = _dt_ins_fingerPrint.Select("employee= "+instructor_FingerID.Trim());
+            string finger_instructor_Name = "-";
+            if(dr.Length != 0)
+            {
+                finger_instructor_Name = dr[0]["employeeName"].ToString();
+            }
+            timer1.Stop();
+
+            //cek registered package instructor with instructor finger
+            List<string> list_instructorName = new List<string>();            
+            foreach(DataRow data in _dt_listData.Rows)
+            {
+                if(data["instructorCode"].ToString().Trim() != instructor_FingerID.Trim())
+                {
+                    if (!list_instructorName.Contains(data["instructorName"].ToString().Trim()))
+                    {
+                        list_instructorName.Add(data["instructorName"].ToString().Trim());
+                    }
+                }
+            }
+            
+
+            string msg = "";
+            if (list_instructorName.Count == 0)
+            {
+                msg = "Do you want to start using <b>" + _productName + "</b> private session with total participants <b>" + _totalParticipants + "</b>, teach by <b>" + finger_instructor_Name + "</b> ?";
+            }
+            else
+            {
+                msg = "<b>" + string.Join(";",list_instructorName.ToArray()) + "</b> is the registered instructor for this private instruction package. \nDo you want to start using <b>" + _productName + "</b> private session with total participants <b>" + _totalParticipants + "</b>, teach by <b>" + finger_instructor_Name + "</b> ?";
+            }
+
+            Cst_Form_Long form = new Cst_Form_Long(msg);
+            if (form.ShowDialog() == DialogResult.Yes)
+            {                
+                insert_signin();              
+            }
+            else
+            {
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
+        }
+
+        public void insert_signin()
+        {
+            try
+            {
+                foreach (DataRow dr in _dt_listData.Rows)
+                {
+                    SqlCommand command = new SqlCommand();
+                    try
+                    {
+                        command.Parameters.Clear();
+                        if (myConnection.State == ConnectionState.Open)
+                        {
+                            myConnection.Close();
+                        }
+                        myConnection.Open();
+
+                        command.Connection = myConnection;
+                        command.CommandText = "insert into module.trainingUsage (type,date,club,training,memberStart,employeeStart,recid) values " +
+                                              " (@type, getDate(), @club, @training,@memberStart,@employeeStart,@recid)  ";
+                        command.Parameters.AddWithValue("@type", "FTU");
+                        command.Parameters.AddWithValue("@club", _clubCode.Trim());
+                        command.Parameters.AddWithValue("@training", dr["counter"].ToString().Trim());
+                        command.Parameters.AddWithValue("@memberStart", dr["code"].ToString().Trim());
+                        command.Parameters.AddWithValue("@employeeStart", instructor_FingerID.Trim());
+                        command.Parameters.AddWithValue("@recid", Partner.Userid);
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("error" + ex);
+                        return;
+                    }
+                    finally
+                    {
+                        myConnection.Close();
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Data are not fully insert !","Axioma Agent",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                DialogResult = DialogResult.Cancel;
+                return;
+            }
+
+            SoundPlayer audio = new SoundPlayer();
+            audio.Stream = Properties.Resources.msg_ins;
+            audio.Play();
+            DialogResult = DialogResult.OK;
+            this.Close();
+        }
 
         private void alertControl1_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)
         {
@@ -208,7 +297,7 @@ namespace RockStar.Training
             e.AlertForm.OpacityLevel = 3;
         }
 
-        private void PT_fingerEnd_KeyDown(object sender, KeyEventArgs e)
+        private void PT_fingerMultiStart_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -216,17 +305,17 @@ namespace RockStar.Training
             }
         }
 
-        private void PT_fingerEnd_Paint(object sender, PaintEventArgs e)
+        private void PT_fingerMultiStart_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid);
         }
 
-        private void PT_fingerEnd_Resize(object sender, EventArgs e)
+        private void PT_fingerMultiStart_Resize(object sender, EventArgs e)
         {
             Invalidate();
         }
 
-        private void PT_fingerEnd_FormClosed(object sender, FormClosedEventArgs e)
+        private void PT_fingerMultiStart_FormClosed(object sender, FormClosedEventArgs e)
         {
             myReader.FPRemoveAll();
             myReader.FPIdentificationStop();
@@ -242,63 +331,6 @@ namespace RockStar.Training
                 timer1.Stop();
                 this.Close();                
             }
-        }
-    
-        private void check_Instructor()
-        {
-            if (_employee_Start.Trim() == instructor_FingerID.Trim())
-            {
-                timer1.Stop();
-                if (MessageBox.Show("Finish Training ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    update_Signin();                                
-                }
-                else
-                {
-                    this.DialogResult = DialogResult.Cancel;
-                    this.Close();
-                }
-            }
-            else
-            {
-                //alertControl1.Show(this, "Data center", "Miss match instructor !", gbr_error);
-                MessageBox.Show("Instructor does not match fingerprint", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-        public void update_Signin()
-        {
-
-            SqlCommand command = new SqlCommand();
-
-            try
-            {
-                command.Parameters.Clear();
-                myConnection.Open();
-
-                command.Connection = myConnection;
-                command.CommandText = "update module.trainingUsage set memberEnd=@memberEnd, employeeEnd=@employeeEnd, note=@note where counter=@counter";
-                command.Parameters.AddWithValue("@memberEnd", _studentRGP);
-                command.Parameters.AddWithValue("@employeeEnd", instructor_FingerID);
-                command.Parameters.AddWithValue("@note", "");
-                command.Parameters.AddWithValue("@counter", _trainingCounter);
-                command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("error" + ex);
-                return;
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-            SoundPlayer audio = new SoundPlayer();
-            audio.Stream = Properties.Resources.msg_ins;
-            audio.Play();
-            DialogResult = DialogResult.OK;
-            this.Close();
         }
 
 

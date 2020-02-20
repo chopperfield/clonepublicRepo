@@ -1,6 +1,6 @@
 ﻿namespace RockStar.Training
 {
-    partial class PT_formMultiList
+    partial class PT_listMultiEnd
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lb_ClubName = new DevExpress.XtraEditors.LabelControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::RockStar.Training.form_Wait), true, true);
             this.btn_StartScan = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Done = new DevExpress.XtraEditors.SimpleButton();
+            this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
+            this.lb_productName = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -53,7 +56,7 @@
             this.lb_ClubName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_ClubName.Location = new System.Drawing.Point(344, 12);
             this.lb_ClubName.Name = "lb_ClubName";
-            this.lb_ClubName.Size = new System.Drawing.Size(419, 73);
+            this.lb_ClubName.Size = new System.Drawing.Size(512, 41);
             this.lb_ClubName.TabIndex = 69;
             this.lb_ClubName.Text = "Kota Kasablanka";
             // 
@@ -87,12 +90,12 @@
             this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(3, 101);
+            this.gridControl1.Location = new System.Drawing.Point(3, 130);
             this.gridControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.gridControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(769, 274);
+            this.gridControl1.Size = new System.Drawing.Size(862, 245);
             this.gridControl1.TabIndex = 85;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -115,11 +118,12 @@
             this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
             this.gridView1.OptionsPrint.AutoWidth = false;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.CustomDrawColumnHeader += new DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventHandler(this.gridView1_CustomDrawColumnHeader);
+            this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
             // 
             // btn_StartScan
             // 
@@ -143,11 +147,47 @@
             this.btn_Done.Text = "Done";
             this.btn_Done.Click += new System.EventHandler(this.btn_Done_Click);
             // 
-            // PT_formMultiList
+            // lb_Usage
+            // 
+            this.lb_Usage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Usage.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lb_Usage.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Usage.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_Usage.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.lb_Usage.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lb_Usage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Usage.Location = new System.Drawing.Point(327, 101);
+            this.lb_Usage.Name = "lb_Usage";
+            this.lb_Usage.Size = new System.Drawing.Size(529, 23);
+            this.lb_Usage.TabIndex = 91;
+            this.lb_Usage.Text = "Finish Usage";
+            // 
+            // lb_productName
+            // 
+            this.lb_productName.AllowHtmlString = true;
+            this.lb_productName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_productName.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_productName.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lb_productName.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_productName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.lb_productName.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.lb_productName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lb_productName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_productName.Location = new System.Drawing.Point(344, 54);
+            this.lb_productName.Name = "lb_productName";
+            this.lb_productName.Size = new System.Drawing.Size(512, 41);
+            this.lb_productName.TabIndex = 92;
+            this.lb_productName.Text = "Gymnastic U/8";
+            // 
+            // PT_listMultiEnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 378);
+            this.ClientSize = new System.Drawing.Size(868, 378);
+            this.Controls.Add(this.lb_productName);
+            this.Controls.Add(this.lb_Usage);
             this.Controls.Add(this.btn_Done);
             this.Controls.Add(this.btn_StartScan);
             this.Controls.Add(this.gridControl1);
@@ -155,14 +195,14 @@
             this.Controls.Add(this.lb_ClubName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Name = "PT_formMultiList";
+            this.Name = "PT_listMultiEnd";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PT_formMultiList";
-            this.Load += new System.EventHandler(this.PT_formMultiList_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_formMultiList_Paint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_formMultiList_KeyDown);
-            this.Resize += new System.EventHandler(this.PT_formMultiList_Resize);
+            this.Text = "PT_listMultiEnd";
+            this.Load += new System.EventHandler(this.PT_listMultiEnd_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_listMultiEnd_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_listMultiEnd_KeyDown);
+            this.Resize += new System.EventHandler(this.PT_listMultiEnd_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -178,6 +218,8 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton btn_StartScan;
         private DevExpress.XtraEditors.SimpleButton btn_Done;
+        private DevExpress.XtraEditors.LabelControl lb_Usage;
+        public DevExpress.XtraEditors.LabelControl lb_productName;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

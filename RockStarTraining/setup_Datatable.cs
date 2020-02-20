@@ -261,5 +261,44 @@ namespace RockStar.Training
             }
             return dt;
         }
+
+
+        /// <summary>
+        /// get instructor rfid info
+        /// </summary>
+        /// <param name="rfid"></param>
+        /// <returns></returns>
+        public DataTable datatable_instructor_RFID(string rfid)
+        {
+            SqlCommand command = new SqlCommand();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+
+            if (myConnection.State == ConnectionState.Open)
+            {
+                myConnection.Close();
+            }
+            try
+            {
+                myConnection.Open();
+
+                command.Connection = myConnection;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandTimeout = 180;
+                command.CommandText = "Module.SP_TrainingCheckTrainer";
+                command.Parameters.Add("@rfid", SqlDbType.NChar, 10).Value = rfid;
+                adapter.SelectCommand = command;
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error" + ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dt;
+        }
     }
 }

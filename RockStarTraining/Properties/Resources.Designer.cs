@@ -153,6 +153,26 @@ namespace RockStar.Training.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap finishMultiCard {
+            get {
+                object obj = ResourceManager.GetObject("finishMultiCard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap finishMultiFinger {
+            get {
+                object obj = ResourceManager.GetObject("finishMultiFinger", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap finishPI {
             get {
                 object obj = ResourceManager.GetObject("finishPI", resourceCulture);
@@ -273,6 +293,26 @@ namespace RockStar.Training.Properties {
         internal static System.Drawing.Bitmap sigma {
             get {
                 object obj = ResourceManager.GetObject("sigma", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap startMultiCard {
+            get {
+                object obj = ResourceManager.GetObject("startMultiCard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap startMultiFinger {
+            get {
+                object obj = ResourceManager.GetObject("startMultiFinger", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

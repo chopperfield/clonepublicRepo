@@ -9,7 +9,7 @@ using System.Media;
 
 namespace RockStar.Training
 {
-    public partial class PT_cardStart : Form
+    public partial class PT_cardEnd : Form
     {
         SqlConnection myConnection = new SqlConnection(Partner.configConnection);
     
@@ -18,35 +18,27 @@ namespace RockStar.Training
         Bitmap gbr_warn = new Bitmap(Properties.Resources.warning, 25, 25);
 
 
-        string _clubCode;
-        string _trainingCounter;
-        string _studentRGP;
-        string _studentName;
-
         string _clubName;
         string _productName;
-        string _PT_remain;
+        string _employee_Start;
+        string _employee_StartName;
+        string _trainingCounter;
+        string _studentRGP;
 
-        string _instructorCode;
-        string _instructorName;
-        public PT_cardStart(string clubName, string clubCode, string productName, string PT_remain, string trainingCounter, string studentRGP, string studentName, string instructorCode, string instructorName)
+        public PT_cardEnd(string clubName, string productName, string employeeStart, string employeeStartName ,string trainingCounter, string studentRGP)
         {
 
             InitializeComponent();
 
-            _clubCode = clubCode;
-            _trainingCounter = trainingCounter;
-            _studentRGP = studentRGP;
-
             _clubName = clubName;
             _productName = productName;
-            _PT_remain = PT_remain;
-            _studentName = studentName;
-            _instructorCode = instructorCode;
-            _instructorName = instructorName;
+            _employee_Start = employeeStart;
+            _employee_StartName = employeeStartName;
+            _trainingCounter = trainingCounter;
+            _studentRGP = studentRGP;
         }
 
-        private void PT_cardStart_Load(object sender, EventArgs e)
+        private void PT_cardEnd_Load(object sender, EventArgs e)
         {
             timer1.Interval = 1 * 1000; //1detik per tick
             textBox1.Focus();
@@ -55,8 +47,8 @@ namespace RockStar.Training
 
             lb_clubName.Text = _clubName;
             lb_productName.Text = _productName;
-            lb_PT_remain.Text = "Remaining Session(s): " + _PT_remain;
-            lb_Instructor_Name.Text = "Instructor: "+_instructorName;
+            lb_Instructor_Name.Text = "Instructor: "+ _employee_StartName;
+            lb_PT_use.Text = "";
 
             timer1.Start();
             timer2.Start();
@@ -102,35 +94,8 @@ namespace RockStar.Training
 
         public void get_Employee_Status(string rfid)
         {
-            SqlCommand command = new SqlCommand();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable dt = new DataTable();
-
-            if (myConnection.State == ConnectionState.Open)
-            {
-                myConnection.Close();
-            }
-            try
-            {
-                myConnection.Open();
-
-                command.Connection = myConnection;
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandTimeout = 180;
-                command.CommandText = "Module.SP_TrainingCheckTrainer";                
-                command.Parameters.Add("@rfid", SqlDbType.NChar, 10).Value = rfid;
-                adapter.SelectCommand = command;
-                adapter.Fill(dt);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("error" + ex);
-                return;
-            }
-            finally
-            {
-                myConnection.Close();
-            }
+            setup_Datatable setup = new setup_Datatable();
+            DataTable dt = setup.datatable_instructor_RFID(rfid);
 
             if (dt.Rows.Count == 0)
             {                
@@ -139,49 +104,45 @@ namespace RockStar.Training
             }
             else
             {
-                timer1.Stop();
-                string msg = "";
-                if (_instructorCode.Trim() == dt.Rows[0]["employeeStart"].ToString().Trim())
+                if (_employee_Start.Trim() == dt.Rows[0]["employeeStart"].ToString().Trim())
                 {
-                    msg = "Do you want to start using <b>" + _studentName + " - " + _productName + "</b> private session, teach by <b>" + dt.Rows[0]["preferredName"].ToString().Trim() + "</b> ?";
+                    timer1.Stop();
+                    if (MessageBox.Show("Do you want to finish this private instruction session ?", "Axioma agent", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        update_Signin();                       
+                    }
+                    else
+                    {
+                        this.DialogResult = DialogResult.Cancel;
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    msg = "<b>" + _instructorName + "</b> is the registered instructor for this private instruction package. \nDo you want to start using <b>" + _studentName + " - " + _productName + "</b> private session, teach by <b>" + dt.Rows[0]["preferredName"].ToString().Trim() + "</b> ?";
-                }
-
-                Cst_Form_Long form = new Cst_Form_Long(msg);
-                if (form.ShowDialog() == DialogResult.Yes)
-                {
-                    insert_signin(dt.Rows[0]["employeeStart"].ToString().Trim());                   
-                }
-                else
-                {
-                    this.DialogResult = DialogResult.Cancel;
-                    this.Close();
+                    MessageBox.Show("Instructor does not match with instructor started the private instruction session", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
 
-        public void insert_signin(string instructorCode)
+
+
+        public void update_Signin()
         {
+
             SqlCommand command = new SqlCommand();
+
             try
             {
                 command.Parameters.Clear();
                 myConnection.Open();
 
                 command.Connection = myConnection;
-                command.CommandText = "insert into module.trainingUsage (type,date,club,training,memberStart,employeeStart,recid) values " +
-                                      " (@type, getDate(), @club, @training,@memberStart,@employeeStart,@recid)  ";
-
-                command.Parameters.AddWithValue("@type", "FTU");
-                command.Parameters.AddWithValue("@club", _clubCode.Trim());
-                command.Parameters.AddWithValue("@training", _trainingCounter.Trim());
-                command.Parameters.AddWithValue("@memberStart", _studentRGP.Trim());
-                command.Parameters.AddWithValue("@employeeStart", instructorCode.Trim());
-                command.Parameters.AddWithValue("@recid", Partner.Userid);
+                command.CommandText = "update module.trainingUsage set memberEnd=@memberEnd, employeeEnd=@employeeEnd, note=@note where counter=@counter";
+                command.Parameters.AddWithValue("@memberEnd", _studentRGP);
+                command.Parameters.AddWithValue("@employeeEnd", _employee_Start.Trim());
+                command.Parameters.AddWithValue("@note", "");
+                command.Parameters.AddWithValue("@counter", _trainingCounter);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -207,7 +168,7 @@ namespace RockStar.Training
             e.AlertForm.OpacityLevel = 3;
         }
 
-        private void PT_cardStart_KeyDown(object sender, KeyEventArgs e)
+        private void PT_cardEnd_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -215,12 +176,12 @@ namespace RockStar.Training
             }
         }
 
-        private void PT_cardStart_Paint(object sender, PaintEventArgs e)
+        private void PT_cardEnd_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid, Color.FromArgb(29, 26, 77), 2, ButtonBorderStyle.Solid);
         }
 
-        private void PT_cardStart_Resize(object sender, EventArgs e)
+        private void PT_cardEnd_Resize(object sender, EventArgs e)
         {
             Invalidate();
         }

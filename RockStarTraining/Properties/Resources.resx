@@ -199,4 +199,16 @@
   <data name="startPI_Card" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\startPI_Card.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="finishMultiCard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\finishMultiCard.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="finishMultiFinger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\finishMultiFinger.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="startMultiCard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\startMultiCard.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="startMultiFinger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\startMultiFinger.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
