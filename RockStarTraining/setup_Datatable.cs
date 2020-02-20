@@ -300,5 +300,48 @@ namespace RockStar.Training
             }
             return dt;
         }
+
+
+
+        /// <summary>
+        /// Retrieve list room
+        /// </summary>
+        /// <param name="codeClub"></param>
+        /// <returns>Datatable</returns>
+        public DataTable datatable_Room(string codeClub)
+        {
+            SqlCommand command = new SqlCommand();
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            if (myConnection.State == ConnectionState.Open)
+            {
+                myConnection.Close();
+            }
+            try
+            {
+                dt.Clear();
+                command.Parameters.Clear();
+                myConnection.Open();
+                command.CommandTimeout = 180;
+
+                command.Connection = myConnection;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "Module.SP_Club_Room";
+                command.Parameters.Add("club", SqlDbType.NChar, 3).Value = codeClub;
+                adapter.SelectCommand = command;
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error" + ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            dt.DefaultView.Sort = "room ASC";
+            return dt;
+        }
     }
 }
