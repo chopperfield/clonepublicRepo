@@ -37,8 +37,9 @@
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::RockStar.Training.form_Wait), true, true);
             this.btn_StartScan = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Done = new DevExpress.XtraEditors.SimpleButton();
-            this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
+            this.lb_Instructor_Room = new DevExpress.XtraEditors.LabelControl();
             this.lb_productName = new DevExpress.XtraEditors.LabelControl();
+            this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -147,21 +148,21 @@
             this.btn_Done.Text = "Done";
             this.btn_Done.Click += new System.EventHandler(this.btn_Done_Click);
             // 
-            // lb_Usage
+            // lb_Instructor_Room
             // 
-            this.lb_Usage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lb_Instructor_Room.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_Usage.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lb_Usage.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.lb_Usage.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.lb_Usage.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
-            this.lb_Usage.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.lb_Usage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.lb_Usage.Location = new System.Drawing.Point(327, 101);
-            this.lb_Usage.Name = "lb_Usage";
-            this.lb_Usage.Size = new System.Drawing.Size(529, 23);
-            this.lb_Usage.TabIndex = 91;
-            this.lb_Usage.Text = "Finish Usage";
+            this.lb_Instructor_Room.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.lb_Instructor_Room.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Instructor_Room.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_Instructor_Room.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.lb_Instructor_Room.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lb_Instructor_Room.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Instructor_Room.Location = new System.Drawing.Point(331, 75);
+            this.lb_Instructor_Room.Name = "lb_Instructor_Room";
+            this.lb_Instructor_Room.Size = new System.Drawing.Size(525, 23);
+            this.lb_Instructor_Room.TabIndex = 96;
+            this.lb_Instructor_Room.Text = "Sunaryo - Studio 01";
             // 
             // lb_productName
             // 
@@ -173,19 +174,36 @@
             this.lb_productName.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_productName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.lb_productName.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.lb_productName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lb_productName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lb_productName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.lb_productName.Location = new System.Drawing.Point(344, 54);
+            this.lb_productName.Location = new System.Drawing.Point(344, 46);
             this.lb_productName.Name = "lb_productName";
-            this.lb_productName.Size = new System.Drawing.Size(512, 41);
-            this.lb_productName.TabIndex = 92;
+            this.lb_productName.Size = new System.Drawing.Size(512, 23);
+            this.lb_productName.TabIndex = 95;
             this.lb_productName.Text = "Gymnastic U/8";
+            // 
+            // lb_Usage
+            // 
+            this.lb_Usage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Usage.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lb_Usage.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Usage.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lb_Usage.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.lb_Usage.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.lb_Usage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Usage.Location = new System.Drawing.Point(331, 104);
+            this.lb_Usage.Name = "lb_Usage";
+            this.lb_Usage.Size = new System.Drawing.Size(525, 23);
+            this.lb_Usage.TabIndex = 94;
+            this.lb_Usage.Text = "--- Finish Usage ---";
             // 
             // PT_listMultiEnd_Alt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 378);
+            this.Controls.Add(this.lb_Instructor_Room);
             this.Controls.Add(this.lb_productName);
             this.Controls.Add(this.lb_Usage);
             this.Controls.Add(this.btn_Done);
@@ -218,8 +236,9 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton btn_StartScan;
         private DevExpress.XtraEditors.SimpleButton btn_Done;
-        private DevExpress.XtraEditors.LabelControl lb_Usage;
+        private DevExpress.XtraEditors.LabelControl lb_Instructor_Room;
         public DevExpress.XtraEditors.LabelControl lb_productName;
+        private DevExpress.XtraEditors.LabelControl lb_Usage;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

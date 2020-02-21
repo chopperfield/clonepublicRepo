@@ -67,6 +67,8 @@ namespace RockStar.Training
             repositoryItemComboBox20.ButtonClick += RepositoryItemComboBox20_ButtonClick; 
             repositoryItemComboBox21.ButtonClick += RepositoryItemComboBox21_ButtonClick;
             repositoryItemComboBox22.ButtonClick += RepositoryItemComboBox22_ButtonClick;
+            repositoryItemComboBox23.ButtonClick += RepositoryItemComboBox23_ButtonClick;
+            repositoryItemComboBox24.ButtonClick += RepositoryItemComboBox24_ButtonClick;
 
 
             ci.DateTimeFormat.ShortDatePattern = "dd MMM yyyy";
@@ -161,6 +163,9 @@ namespace RockStar.Training
             repositoryItemComboBox20.AutoComplete = false;
             repositoryItemComboBox21.AutoComplete = false;
             repositoryItemComboBox22.AutoComplete = false;
+            repositoryItemComboBox23.AutoComplete = false;
+            repositoryItemComboBox24.AutoComplete = false;
+
 
             lb_Version.Text = Utils.getVersion();
             foreach (Control ctl in this.Controls)
@@ -269,15 +274,15 @@ namespace RockStar.Training
             gridView1.Columns["onClubName"].Width = 150;
             gridView1.Columns["onClubName"].Caption = "On Club";
 
-            gridView1.Columns["clubName"].VisibleIndex = 1;//4
+            gridView1.Columns["clubName"].VisibleIndex = 1;
             gridView1.Columns["clubName"].Width = 150;
             gridView1.Columns["clubName"].Caption = "Club";//Club Name
 
-            gridView1.Columns["counter"].VisibleIndex = 2;//1
+            gridView1.Columns["counter"].VisibleIndex = 2;
             gridView1.Columns["counter"].Width = 70;
             gridView1.Columns["counter"].Caption = "Usage No";            
 
-            gridView1.Columns["date"].VisibleIndex = 3;//2
+            gridView1.Columns["date"].VisibleIndex = 3;
             gridView1.Columns["date"].Width = 100;
             gridView1.Columns["date"].Caption = "Date";
             gridView1.Columns["date"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -288,7 +293,7 @@ namespace RockStar.Training
             gridView1.Columns["date"].ColumnEdit.EditFormat.FormatString = "dd MMM yyyy";
 
             gridView1.Columns["memberStart"].Caption = "RGP";
-            gridView1.Columns["memberStart"].VisibleIndex = 4;//1
+            gridView1.Columns["memberStart"].VisibleIndex = 4;
             gridView1.Columns["memberStart"].Width = 70;
             gridView1.Columns["memberStart"].Caption = "RGP";
 
@@ -296,15 +301,23 @@ namespace RockStar.Training
             gridView1.Columns["memberName"].Width = 150;
             gridView1.Columns["memberName"].Caption = "Member Name";
 
-            gridView1.Columns["training"].VisibleIndex = 6;//3
+            gridView1.Columns["training"].VisibleIndex = 6;
             gridView1.Columns["training"].Width = 70;
             gridView1.Columns["training"].Caption = "Package No";
             
-            gridView1.Columns["productName"].VisibleIndex = 7;//6
+            gridView1.Columns["productName"].VisibleIndex = 7;
             gridView1.Columns["productName"].Width = 200;
             gridView1.Columns["productName"].Caption = "Package Name";
 
-            gridView1.Columns["trainingStart"].VisibleIndex = 8;//7
+            gridView1.Columns["employeeStartName"].Caption = "Instructor Start Name";
+            gridView1.Columns["employeeStartName"].VisibleIndex = 8;
+            gridView1.Columns["employeeStartName"].Width = 150;
+
+            gridView1.Columns["room"].VisibleIndex = 9;
+            gridView1.Columns["room"].Width = 150;
+            gridView1.Columns["room"].Caption = "Room";
+
+            gridView1.Columns["trainingStart"].VisibleIndex = 10;
             gridView1.Columns["trainingStart"].Width = 150;
             gridView1.Columns["trainingStart"].Caption = "Time Start";
             gridView1.Columns["trainingStart"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -314,7 +327,7 @@ namespace RockStar.Training
             gridView1.Columns["trainingStart"].ColumnEdit.EditFormat.FormatType = FormatType.DateTime;
             gridView1.Columns["trainingStart"].ColumnEdit.EditFormat.FormatString = "dd MMM yyyy HH:mm:ss";
 
-            gridView1.Columns["trainingEnd"].VisibleIndex = 9;//8
+            gridView1.Columns["trainingEnd"].VisibleIndex = 11;
             gridView1.Columns["trainingEnd"].Width = 150;
             gridView1.Columns["trainingEnd"].Caption = "Time End";
             gridView1.Columns["trainingEnd"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -324,17 +337,27 @@ namespace RockStar.Training
             gridView1.Columns["trainingEnd"].ColumnEdit.EditFormat.FormatType = FormatType.DateTime;
             gridView1.Columns["trainingEnd"].ColumnEdit.EditFormat.FormatString = "dd MMM yyyy HH:mm:ss";
 
-            gridView1.Columns["session"].VisibleIndex = 10;//9
+            gridView1.Columns["session"].VisibleIndex = 12;
             gridView1.Columns["session"].Width = 150;
             gridView1.Columns["session"].Caption = "Session";
 
-            gridView1.Columns["room"].VisibleIndex = 11;//9
-            gridView1.Columns["room"].Width = 150;
-            gridView1.Columns["room"].Caption = "Room";
+        
 
-            gridView1.Columns["note"].VisibleIndex = 12;//10
+            gridView1.Columns["note"].VisibleIndex = 13;
             gridView1.Columns["note"].Width = 150;
             gridView1.Columns["note"].Caption = "Note";
+
+            gridView1.Columns["voidDate"].VisibleIndex = 14;
+            gridView1.Columns["voidDate"].Caption = "Void Date";
+            gridView1.Columns["voidDate"].Width = 150;
+
+            gridView1.Columns["voidBy"].VisibleIndex = 15;
+            gridView1.Columns["voidBy"].Caption = "Void By";
+            gridView1.Columns["voidBy"].Width = 80;
+
+            gridView1.Columns["voidNote"].VisibleIndex = 16;
+            gridView1.Columns["voidNote"].Caption = "voidNote";
+            gridView1.Columns["voidNote"].Width = 150;
 
             gridView1.Columns["type"].Caption = "Type";
             gridView1.Columns["type"].Visible = false;
@@ -357,9 +380,7 @@ namespace RockStar.Training
             gridView1.Columns["firstName"].Caption = "First Name";
             gridView1.Columns["firstName"].Visible = false;
             gridView1.Columns["lastName"].Caption = "Last Name";
-            gridView1.Columns["lastName"].Visible = false;
-            gridView1.Columns["employeeStartName"].Caption = "Employee Start Name";
-            gridView1.Columns["employeeStartName"].Visible = false;
+            gridView1.Columns["lastName"].Visible = false;      
         }
 
                 
@@ -389,6 +410,9 @@ namespace RockStar.Training
             repositoryItemComboBox20.Items.Clear();
             repositoryItemComboBox21.Items.Clear();
             repositoryItemComboBox22.Items.Clear();
+            repositoryItemComboBox23.Items.Clear();
+            repositoryItemComboBox24.Items.Clear();
+
         }
         private void pictureEdit2_MouseClick(object sender, MouseEventArgs e)
         {                        
@@ -609,7 +633,9 @@ namespace RockStar.Training
         RepositoryItemComboBox repositoryItemComboBox19 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox20 = new RepositoryItemComboBox(); 
         RepositoryItemComboBox repositoryItemComboBox21 = new RepositoryItemComboBox(); 
-        RepositoryItemComboBox repositoryItemComboBox22 = new RepositoryItemComboBox(); 
+        RepositoryItemComboBox repositoryItemComboBox22 = new RepositoryItemComboBox();
+        RepositoryItemComboBox repositoryItemComboBox23 = new RepositoryItemComboBox();
+        RepositoryItemComboBox repositoryItemComboBox24 = new RepositoryItemComboBox();
 
         EditorButton clr = new EditorButton(ButtonPredefines.Close);
 
@@ -769,6 +795,21 @@ namespace RockStar.Training
             }
         }
 
+        private void RepositoryItemComboBox23_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Close)
+            {
+                gridView1.Columns["employeeStartName"].ClearFilter();
+            }
+        }
+        private void RepositoryItemComboBox24_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Close)
+            {
+                gridView1.Columns["room"].ClearFilter();
+            }
+        }
+
         public void button_repo()
         {
             repositoryItemComboBox1.Buttons.Add(clr);
@@ -794,6 +835,9 @@ namespace RockStar.Training
             repositoryItemComboBox20.Buttons.Add(clr); 
             repositoryItemComboBox21.Buttons.Add(clr); 
             repositoryItemComboBox22.Buttons.Add(clr);
+            repositoryItemComboBox23.Buttons.Add(clr);
+            repositoryItemComboBox24.Buttons.Add(clr);
+
 
         }
 
@@ -949,6 +993,18 @@ namespace RockStar.Training
                 {
                     repositoryItemComboBox22.Items.Add(lastName);
                 }
+
+                string employeeStartName = gridView1.GetDataRow(i)["employeeStartName"].ToString();
+                if (!repositoryItemComboBox23.Items.Contains(employeeStartName))
+                {
+                    repositoryItemComboBox23.Items.Add(employeeStartName);
+                }
+
+                string room = gridView1.GetDataRow(i)["room"].ToString();
+                if (!repositoryItemComboBox24.Items.Contains(room))
+                {
+                    repositoryItemComboBox24.Items.Add(room);
+                }
             }
         }
 
@@ -1073,6 +1129,16 @@ namespace RockStar.Training
                 e.RepositoryItem = repositoryItemComboBox22;
                 repositoryItemComboBox22.Sorted = true;
             }
+            if (e.Column.FieldName == "employeeStartName" && view.IsFilterRow(e.RowHandle))
+            {
+                e.RepositoryItem = repositoryItemComboBox23;
+                repositoryItemComboBox23.Sorted = true;
+            }
+            if (e.Column.FieldName == "room" && view.IsFilterRow(e.RowHandle))
+            {
+                e.RepositoryItem = repositoryItemComboBox24;
+                repositoryItemComboBox24.Sorted = true;
+            }
         }
 
         private void filterControl1_BeforeShowValueEditor(object sender, DevExpress.XtraEditors.Filtering.ShowValueEditorEventArgs e)
@@ -1164,9 +1230,17 @@ namespace RockStar.Training
             {
                 e.CustomRepositoryItem = repositoryItemComboBox21;
             }
-            if (e.CurrentNode.Property.Name == "lsatName")
+            if (e.CurrentNode.Property.Name == "lastName")
             {
                 e.CustomRepositoryItem = repositoryItemComboBox22;
+            }
+            if (e.CurrentNode.Property.Name == "employeeStartName")
+            {
+                e.CustomRepositoryItem = repositoryItemComboBox23;
+            }
+            if (e.CurrentNode.Property.Name == "room")
+            {
+                e.CustomRepositoryItem = repositoryItemComboBox24;
             }
         }
 

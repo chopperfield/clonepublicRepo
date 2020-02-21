@@ -132,7 +132,15 @@ namespace RockStar.Training
                 gridView1.Columns["productName"].Width = 200;
                 gridView1.Columns["productName"].Caption = "Package Name";
 
-                gridView1.Columns["trainingStart"].VisibleIndex = 7;
+                gridView1.Columns["employeeStartName"].Caption = "Instructor Start Name";
+                gridView1.Columns["employeeStartName"].VisibleIndex = 6;
+                gridView1.Columns["employeeStartName"].Width = 150;
+
+                gridView1.Columns["room"].VisibleIndex = 7;
+                gridView1.Columns["room"].Width = 150;
+                gridView1.Columns["room"].Caption = "Room";
+
+                gridView1.Columns["trainingStart"].VisibleIndex = 8;
                 gridView1.Columns["trainingStart"].Width = 150;
                 gridView1.Columns["trainingStart"].Caption = "Time Start";
                 gridView1.Columns["trainingStart"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -153,9 +161,10 @@ namespace RockStar.Training
                 gridView1.Columns["agreement"].Visible = false;
                 gridView1.Columns["firstName"].Visible = false;
                 gridView1.Columns["lastName"].Visible = false;
-                gridView1.Columns["employeeStartName"].Caption = "Instructor Start Name";
-                gridView1.Columns["employeeStartName"].VisibleIndex = 6;
-                gridView1.Columns["employeeStartName"].Width = 150;
+
+                gridView1.Columns["voidDate"].Visible = false;
+                gridView1.Columns["voidBy"].Visible = false;
+                gridView1.Columns["voidNote"].Visible = false;
             }
         }
 

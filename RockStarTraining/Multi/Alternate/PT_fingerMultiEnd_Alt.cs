@@ -39,7 +39,7 @@ namespace RockStar.Training
             _dt_ins_fingerPrint = dt_finger;
 
             _clubName = clubName;
-            _dt_student = dt_student;            
+            _dt_student = dt_student;
         }
 
         private void PT_fingerMultiEnd_Alt_Load(object sender, EventArgs e)
@@ -50,10 +50,9 @@ namespace RockStar.Training
             lb_clubName.Text = _clubName;
             lb_productName.Text = _dt_student.Rows[0]["productName"].ToString();
             lb_Instructor_Name.Text = "Instructor: "+_dt_student.Rows[0]["employeeStartName"].ToString();
-            lb_PT_use.Text = "";
 
             employeeStart = _dt_student.Rows[0]["employeeStart"].ToString();
-
+            lb_Room.Text = "Room: " + _dt_student.Rows[0]["room"].ToString(); ;
             try //cuman buat getFileCode (pakai throw) karena pada event load execute tiap code sblom di close)
             {
                 myReader = new FPReader();

@@ -50,6 +50,7 @@ namespace RockStar.Training
             pictureEdit_Logo.Image = logo;
 
             lb_productName.Text = "";
+            lb_Instructor_Room.Text = "";
             lb_Usage.Text = "Finish Usage";
 
             dt_grid = new DataTable();
@@ -101,7 +102,7 @@ namespace RockStar.Training
         private void arrangeCol()
         {
             if (gridControl1.DataSource != null)
-            {               
+            {
                 gridView1.Columns["onClubName"].Visible = false;
                 gridView1.Columns["clubName"].Visible = false;
 
@@ -113,7 +114,7 @@ namespace RockStar.Training
                 gridView1.Columns["date"].Width = 100;
                 gridView1.Columns["date"].Caption = "Date";
                 gridView1.Columns["date"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-                gridView1.Columns["date"].DisplayFormat.FormatString = "dd MMM yyyy";                
+                gridView1.Columns["date"].DisplayFormat.FormatString = "dd MMM yyyy";
 
                 gridView1.Columns["memberStart"].Caption = "RGP";
                 gridView1.Columns["memberStart"].VisibleIndex = 2;
@@ -132,16 +133,24 @@ namespace RockStar.Training
                 gridView1.Columns["productName"].Width = 200;
                 gridView1.Columns["productName"].Caption = "Package Name";
 
-                gridView1.Columns["trainingStart"].VisibleIndex = 7;
+                gridView1.Columns["employeeStartName"].Caption = "Instructor Start Name";
+                gridView1.Columns["employeeStartName"].VisibleIndex = 6;
+                gridView1.Columns["employeeStartName"].Width = 150;
+
+                gridView1.Columns["room"].VisibleIndex = 7;
+                gridView1.Columns["room"].Width = 150;
+                gridView1.Columns["room"].Caption = "Room";
+
+                gridView1.Columns["trainingStart"].VisibleIndex = 8;
                 gridView1.Columns["trainingStart"].Width = 150;
                 gridView1.Columns["trainingStart"].Caption = "Time Start";
                 gridView1.Columns["trainingStart"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
                 gridView1.Columns["trainingStart"].DisplayFormat.FormatString = "dd MMM yyyy HH:mm:ss";
-                
-                gridView1.Columns["trainingEnd"].Visible = false;     
+
+                gridView1.Columns["trainingEnd"].Visible = false;
                 gridView1.Columns["session"].Visible = false;
-                gridView1.Columns["note"].Visible = false;                                
-                gridView1.Columns["type"].Visible = false;                
+                gridView1.Columns["note"].Visible = false;
+                gridView1.Columns["type"].Visible = false;
                 gridView1.Columns["club"].Visible = false;
 
                 gridView1.Columns["employeeStart"].Caption = "Employee Start";
@@ -153,9 +162,10 @@ namespace RockStar.Training
                 gridView1.Columns["agreement"].Visible = false;
                 gridView1.Columns["firstName"].Visible = false;
                 gridView1.Columns["lastName"].Visible = false;
-                gridView1.Columns["employeeStartName"].Caption = "Instructor Start Name";
-                gridView1.Columns["employeeStartName"].VisibleIndex = 6 ;
-                gridView1.Columns["employeeStartName"].Width = 150;
+
+                gridView1.Columns["voidDate"].Visible = false;
+                gridView1.Columns["voidBy"].Visible = false;
+                gridView1.Columns["voidNote"].Visible = false;
             }
         }
 
@@ -231,11 +241,8 @@ namespace RockStar.Training
                     if (exist == 1)
                     {
                         lb_productName.Text = dt_grid.Rows[0]["productName"].ToString();
-                        lb_Usage.Text = dt_grid.Rows[0]["employeeStartName"].ToString() + " - Finish Usage";
+                        lb_Instructor_Room.Text = dt_grid.Rows[0]["employeeStartName"].ToString() + " - " + dt_grid.Rows[0]["room"].ToString();
                     }
-
-
-
                     gridView1.RefreshData();
                 }
             }
@@ -247,18 +254,18 @@ namespace RockStar.Training
             if (gridView1.RowCount != 0)
             {
 
-                DataTable dt_tick = new DataTable();
-                dt_tick = dt_grid.Clone();//dari import
+                //DataTable dt_tick = new DataTable();
+                //dt_tick = dt_grid.Clone();//dari import
                 foreach (DataRow dr in dt_grid.Rows)
                 {
-                    dt_tick.ImportRow(dr);
+                    //dt_tick.ImportRow(dr);
                     ModelsCollection.Add(new model(dr["counter"].ToString(), dr["memberName"].ToString(), dr["memberStart"].ToString()));
                 }
-                if (dt_tick.Rows.Count == 0)
-                {
-                    MessageBox.Show("Please scan student card", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                //if (dt_tick.Rows.Count == 0)
+                //{
+                //    MessageBox.Show("Please scan student card", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
 
 
                 if (_isFinger)
