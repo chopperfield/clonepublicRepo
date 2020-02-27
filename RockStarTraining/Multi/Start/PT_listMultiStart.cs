@@ -47,6 +47,8 @@ namespace RockStar.Training
             pictureEdit_Logo.Image = logo;
 
             cmb_Room.DataSource = PT_Session.get_Datatable_Club_RoomList();
+            cmb_Room.ValueMember = "room";
+            cmb_Room.DisplayMember = "room";
             cmb_Room.SelectedIndex = -1;
         }
 

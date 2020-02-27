@@ -166,6 +166,12 @@
     <Compile Include="Cst_Form_Short.Designer.cs">
       <DependentUpon>Cst_Form_Short.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cst_Note.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cst_Note.Designer.cs">
+      <DependentUpon>Cst_Note.cs</DependentUpon>
+    </Compile>
     <Compile Include="fingerPrint_Device.cs" />
     <Compile Include="form_Find.cs">
       <SubType>Form</SubType>
@@ -222,6 +228,24 @@
       <DependentUpon>PT_listMultiEnd.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Verification\PT_fingerVoid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verification\PT_fingerVoid.Designer.cs">
+      <DependentUpon>PT_fingerVoid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Verification\PT_fingerVerify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verification\PT_fingerVerify.Designer.cs">
+      <DependentUpon>PT_fingerVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Verification\PT_Session_Verification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verification\PT_Session_Verification.Designer.cs">
+      <DependentUpon>PT_Session_Verification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Single\End\PT_cardEnd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,11 +332,20 @@
       <DependentUpon>PT_cardStart.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
+    <Compile Include="Verification\PT_verify_Instructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verification\PT_verify_Instructor.Designer.cs">
+      <DependentUpon>PT_verify_Instructor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Cst_Form_Long.resx">
       <DependentUpon>Cst_Form_Long.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cst_Form_Short.resx">
       <DependentUpon>Cst_Form_Short.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cst_Note.resx">
+      <DependentUpon>Cst_Note.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_Find.resx">
       <DependentUpon>form_Find.cs</DependentUpon>
@@ -352,6 +385,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Verification\PT_fingerVoid.resx">
+      <DependentUpon>PT_fingerVoid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Verification\PT_fingerVerify.resx">
+      <DependentUpon>PT_fingerVerify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Verification\PT_Session_Verification.resx">
+      <DependentUpon>PT_Session_Verification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Single\End\PT_cardEnd.resx">
       <DependentUpon>PT_cardEnd.cs</DependentUpon>
     </EmbeddedResource>
@@ -393,6 +435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Single\Start\PT_cardStart.resx">
       <DependentUpon>PT_cardStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Verification\PT_verify_Instructor.resx">
+      <DependentUpon>PT_verify_Instructor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -437,6 +482,8 @@
     <None Include="Resources\startMultiCard.png" />
     <None Include="Resources\startMultiFinger.png" />
     <Content Include="Resources\table.png" />
+    <None Include="Resources\VoidPS.png" />
+    <None Include="Resources\VerifyPS.png" />
     <Content Include="Resources\void_f.png" />
     <Content Include="Resources\warning.png" />
   </ItemGroup>

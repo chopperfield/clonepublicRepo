@@ -90,11 +90,11 @@
             this.lb_ClubName.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_ClubName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.lb_ClubName.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.lb_ClubName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lb_ClubName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lb_ClubName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.lb_ClubName.Location = new System.Drawing.Point(297, 12);
+            this.lb_ClubName.Location = new System.Drawing.Point(229, 12);
             this.lb_ClubName.Name = "lb_ClubName";
-            this.lb_ClubName.Size = new System.Drawing.Size(236, 48);
+            this.lb_ClubName.Size = new System.Drawing.Size(304, 29);
             this.lb_ClubName.TabIndex = 69;
             this.lb_ClubName.Text = "Kota Kasablanka";
             // 

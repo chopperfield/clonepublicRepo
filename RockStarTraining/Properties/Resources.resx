@@ -211,4 +211,10 @@
   <data name="startMultiFinger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\startMultiFinger.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="VerifyPS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VerifyPS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VoidPS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VoidPS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

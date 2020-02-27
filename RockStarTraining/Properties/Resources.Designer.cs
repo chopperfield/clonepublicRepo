@@ -350,9 +350,29 @@ namespace RockStar.Training.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap VerifyPS {
+            get {
+                object obj = ResourceManager.GetObject("VerifyPS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap void_f {
             get {
                 object obj = ResourceManager.GetObject("void_f", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VoidPS {
+            get {
+                object obj = ResourceManager.GetObject("VoidPS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

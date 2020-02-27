@@ -16,28 +16,28 @@ using System.Globalization;
 
 namespace RockStar.Training
 {
-    public partial class PT_Session : Form
+    public partial class PT_Session_Verification : Form
     {
         SqlConnection myConnection = new SqlConnection(Partner.configConnection);
         setup_Datatable setup_Datatable;
 
         private ToolStripProgressBar myProgressBar4;
         private NotifyIcon myNotify4;
-     
+
         Bitmap gbr_inf = new Bitmap(Properties.Resources.info_icon, 25, 25);
 
 
         CultureInfo ci = new CultureInfo("EN-us");
 
-        private string code_UserClub="";
+        private string code_UserClub = "";
         private string code_UserClubName = "";
-        bool _isSingleClub = false;
 
         private DataTable dt_ins_fingerPrint;//instantiate on get fingerinstructor
 
-        private static DataTable dt_club_listRoom;
-        
-        public PT_Session(ToolStripProgressBar statusProgressBar4, NotifyIcon statusNotify4)
+        private string IP_ADDRESS = "";
+
+
+        public PT_Session_Verification(ToolStripProgressBar statusProgressBar4, NotifyIcon statusNotify4)
         {
             InitializeComponent();
             myProgressBar4 = statusProgressBar4;
@@ -64,12 +64,13 @@ namespace RockStar.Training
             repositoryItemComboBox18.ButtonClick += RepositoryItemComboBox18_ButtonClick;
             repositoryItemComboBox19.ButtonClick += RepositoryItemComboBox19_ButtonClick;
 
-            repositoryItemComboBox20.ButtonClick += RepositoryItemComboBox20_ButtonClick; 
+            repositoryItemComboBox20.ButtonClick += RepositoryItemComboBox20_ButtonClick;
             repositoryItemComboBox21.ButtonClick += RepositoryItemComboBox21_ButtonClick;
             repositoryItemComboBox22.ButtonClick += RepositoryItemComboBox22_ButtonClick;
             repositoryItemComboBox23.ButtonClick += RepositoryItemComboBox23_ButtonClick;
             repositoryItemComboBox24.ButtonClick += RepositoryItemComboBox24_ButtonClick;
 
+            repositoryItemTextEdit1.CustomDisplayText += RepositoryItemTextEdit1_CustomDisplayText;            
 
             ci.DateTimeFormat.ShortDatePattern = "dd MMM yyyy";
             ci.DateTimeFormat.LongDatePattern = "dd MMM yyyy";
@@ -81,8 +82,9 @@ namespace RockStar.Training
             DevExpress.Utils.FormatInfo.AlwaysUseThreadFormat = true;
         }
 
+      
 
-        private void PT_Session_Load(object sender, EventArgs e)
+        private void PT_Session_Verification_Load(object sender, EventArgs e)
         {
             setup_Datatable = new setup_Datatable();
 
@@ -91,28 +93,17 @@ namespace RockStar.Training
 
             this.Text = Partner.FormName.TrimStart();
 
-            _isSingleClub = System.Text.RegularExpressions.Regex.IsMatch(Partner.FormParameter, @"\bclub\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-     
+
             if (Partner.AllowOther1 == false)//start PI Finger
             {
-                pictureEdit_PI_Start_Finger.Visible = false;
-                pictureEdit_PI_Start_Finger.Enabled = false;
+                pictureEdit_Verify_PS.Visible = false;
+                pictureEdit_Verify_PS.Enabled = false;
             }
             if (Partner.AllowOther2 == false)//finish PI Finger
             {
-                pictureEdit_PI_End_Finger.Visible = false;
-                pictureEdit_PI_End_Finger.Enabled = false;
-            }
-            if (Partner.AllowOther3 == false)//start PI Card
-            {
-                pictureEdit_PI_Start_Card.Visible = false;
-                pictureEdit_PI_Start_Card.Enabled = false;
-            }
-            if (Partner.AllowOther4 == false)//finish PI Card
-            {
-                pictureEdit_PI_End_Card.Visible = false;
-                pictureEdit_PI_End_Card.Enabled = false;
-            }
+                pictureEdit_Void_PS.Visible = false;
+                pictureEdit_Void_PS.Enabled = false;
+            }            
             if (Partner.AllowPrint == false)
             {
                 pictureEdit_Print.Visible = false;
@@ -124,22 +115,7 @@ namespace RockStar.Training
                 pictureEdit_Sheet.Enabled = false;
             }
 
-            if(Partner.AllowOther5 == false)//start PI Finger Multi
-            {
-                pictureEdit_PI_Start_Finger_Multi.Visible = false;
-            }
-            if (Partner.AllowOther6 == false)//end PI Finger Multi
-            {                
-                pictureEdit_PI_End_Finger_Multi.Visible = false;
-            }
-            if (Partner.AllowOther7 == false)//start PI card Multi
-            {
-                pictureEdit_PI_Start_Card_Multi.Visible = false;
-            }
-            if (Partner.AllowOther8 == false)//end PI card Multi
-            {
-                pictureEdit_PI_End_Card_Multi.Visible = false;
-            }
+
 
             repositoryItemComboBox1.AutoComplete = false;
             repositoryItemComboBox2.AutoComplete = false;
@@ -168,13 +144,15 @@ namespace RockStar.Training
 
 
             lb_Version.Text = Utils.getVersion();
+            IP_ADDRESS = Utils.getIPAddress();
+
             foreach (Control ctl in this.Controls)
             {
                 ctl.Enabled = false;
             }
         }
 
-        private void PT_Session_Shown(object sender, EventArgs e)
+        private void PT_Session_Verification_Shown(object sender, EventArgs e)
         {
             try
             {
@@ -183,14 +161,8 @@ namespace RockStar.Training
                 get_UserClub();
                 get_Club_RoomList();
 
-                if (!_isSingleClub)//all club
-                {
-                    lb_UserClub.Text = "All Clubs";
-                }            
-                
-                load_PrivateSession();
+                load_PrivateSession_Room();
                 arrangeCol();
-
                 splashScreenManager1.SetWaitFormDescription("Fetching Biometric Data");
                 get_Finger_Instructor();
 
@@ -203,7 +175,7 @@ namespace RockStar.Training
             try
             {
 
-                splashScreenManager1.CloseWaitForm();               
+                splashScreenManager1.CloseWaitForm();
                 filterControl1.SourceControl = gridControl1;
 
                 if (gridView1.RowCount != 0)
@@ -234,13 +206,15 @@ namespace RockStar.Training
 
         private void get_Club_RoomList()
         {
-            dt_club_listRoom = setup_Datatable.datatable_Room(code_UserClub);
+            DataTable dt = new DataTable();
+            dt = setup_Datatable.datatable_Room(code_UserClub);
+            cmb_Room.DataSource = dt;
+            cmb_Room.DisplayMember = "room";
+            cmb_Room.ValueMember = "room";
+            cmb_Room.SelectedIndex = 0;
         }
 
-        public static DataTable get_Datatable_Club_RoomList()
-        {
-            return dt_club_listRoom;
-        }
+
 
         private void get_Finger_Instructor()
         {
@@ -248,14 +222,13 @@ namespace RockStar.Training
             dt_ins_fingerPrint = setup_Datatable.dataTable_fingerPrint(true, "");
         }
 
-        private void load_PrivateSession()
+        private void load_PrivateSession_Room()
         {
             clear_repo();
             SqlCommand command = new SqlCommand();
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable dt = new DataTable();
-            bool allClub = !_isSingleClub;
-            dt = setup_Datatable.datatable_Training_Running(allClub, code_UserClub);          
+            dt = setup_Datatable.datatable_Training_Running_Club_Room(cmb_Room.Text.Trim(), code_UserClub);
 
             if (dt != null || dt.Rows.Count != 0)
             {
@@ -267,9 +240,10 @@ namespace RockStar.Training
                 gridControl1.DataSource = null;
             }
         }
-         
+
         private void arrangeCol()
         {
+
             gridView1.Columns["onClubName"].VisibleIndex = 0;
             gridView1.Columns["onClubName"].Width = 150;
             gridView1.Columns["onClubName"].Caption = "On Club";
@@ -280,7 +254,7 @@ namespace RockStar.Training
 
             gridView1.Columns["counter"].VisibleIndex = 2;
             gridView1.Columns["counter"].Width = 70;
-            gridView1.Columns["counter"].Caption = "Usage No";            
+            gridView1.Columns["counter"].Caption = "Usage No";
 
             gridView1.Columns["date"].VisibleIndex = 3;
             gridView1.Columns["date"].Width = 100;
@@ -304,7 +278,7 @@ namespace RockStar.Training
             gridView1.Columns["training"].VisibleIndex = 6;
             gridView1.Columns["training"].Width = 70;
             gridView1.Columns["training"].Caption = "Package No";
-            
+
             gridView1.Columns["productName"].VisibleIndex = 7;
             gridView1.Columns["productName"].Width = 200;
             gridView1.Columns["productName"].Caption = "Package Name";
@@ -341,7 +315,7 @@ namespace RockStar.Training
             gridView1.Columns["session"].Width = 150;
             gridView1.Columns["session"].Caption = "Session";
 
-        
+
 
             gridView1.Columns["note"].VisibleIndex = 13;
             gridView1.Columns["note"].Width = 150;
@@ -364,7 +338,7 @@ namespace RockStar.Training
 
             gridView1.Columns["club"].Caption = "Club";
             gridView1.Columns["club"].Visible = false;
-         
+
             gridView1.Columns["employeeStart"].Caption = "Employee Start";
             gridView1.Columns["employeeStart"].Visible = false;
             gridView1.Columns["memberEnd"].Caption = "Member End";
@@ -380,10 +354,22 @@ namespace RockStar.Training
             gridView1.Columns["firstName"].Caption = "First Name";
             gridView1.Columns["firstName"].Visible = false;
             gridView1.Columns["lastName"].Caption = "Last Name";
-            gridView1.Columns["lastName"].Visible = false;      
+            gridView1.Columns["lastName"].Visible = false;
+
+            gridView1.Columns["isVerified"].VisibleIndex = 0;
+            gridView1.Columns["isVerified"].Caption = "Verification";
+            gridView1.Columns["isVerified"].Width = 80;
+            gridView1.Columns["isVerified"].ColumnEdit = repositoryItemTextEdit1;
         }
 
-                
+        private void RepositoryItemTextEdit1_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(e.DisplayText))
+            {
+                e.DisplayText = e.DisplayText == "1" ? "Verified" : "-";
+            }
+        }
+
 
 
         public void clear_repo()
@@ -415,7 +401,7 @@ namespace RockStar.Training
 
         }
         private void pictureEdit2_MouseClick(object sender, MouseEventArgs e)
-        {                        
+        {
             printview();
         }
         private void printview()
@@ -438,41 +424,18 @@ namespace RockStar.Training
             this.Close();
         }
 
-        private void PT_Session_KeyDown(object sender, KeyEventArgs e)
+        private void PT_Session_Verification_KeyDown(object sender, KeyEventArgs e)
         {
-            GridView view = sender as GridView;        
-            if(e.KeyCode == Keys.F1 && pictureEdit_PI_Start_Finger.Visible == true)
+            GridView view = sender as GridView;
+            if (e.KeyCode == Keys.F1 && pictureEdit_Verify_PS.Visible == true)
             {
-                startPI_Finger();
+                session_Verify();
             }
-            if(e.KeyCode == Keys.F2 && pictureEdit_PI_End_Finger.Visible == true)
+            if (e.KeyCode == Keys.F2 && pictureEdit_Void_PS.Visible == true)
             {
-                endPI_Finger();
+                session_Void();
             }
-            if (e.KeyCode == Keys.F3 && pictureEdit_PI_Start_Card.Visible == true)
-            {
-                startPI_Card();
-            }
-            if (e.KeyCode == Keys.F4 && pictureEdit_PI_End_Card.Visible == true)
-            {
-                endPI_Card();
-            }
-            if (e.KeyCode == Keys.F5 && pictureEdit_PI_Start_Finger_Multi.Visible == true)
-            {
-                startPI_Finger_Multi();
-            }
-            if (e.KeyCode == Keys.F6 && pictureEdit_PI_End_Finger_Multi.Visible == true)
-            {
-                endPI_Finger_Multi();
-            }
-            if (e.KeyCode == Keys.F7 && pictureEdit_PI_Start_Card_Multi.Visible == true)
-            {
-                startPI_Card_Multi();
-            }
-            if (e.KeyCode == Keys.F8 && pictureEdit_PI_End_Card_Multi.Visible == true)
-            {
-                endPI_Card_Multi();
-            }
+            
             if (e.Control && e.KeyCode == Keys.T && pictureEdit_Print.Visible == true)
             {
                 savefile();
@@ -489,35 +452,39 @@ namespace RockStar.Training
 
         private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-            //GridView View = sender as GridView;
-           
-            //if (e.RowHandle >= 0)
-            //{ 
-            //    string voidBy = View.GetRowCellDisplayText(e.RowHandle, View.Columns["voidBy"]);
-            //    if (voidBy.Trim() != string.Empty)
-            //    {
-            //        e.Appearance.ForeColor = Color.DimGray;
-            //        e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
-            //        View.Appearance.HideSelectionRow.ForeColor = Color.DimGray;
-
-            //    }
-            //}
-            
+            GridView View = sender as GridView;            
+            if (View == null) return;
+            if (e.RowHandle >= 0)
+            {
+                string voidBy = View.GetRowCellDisplayText(e.RowHandle, View.Columns["voidBy"]);
+                if (voidBy.Trim() != string.Empty)
+                {
+                    e.Appearance.ForeColor = Color.DimGray;
+                    e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
+                    View.Appearance.HideSelectionRow.ForeColor = Color.DimGray;
+                }
+            }
         }
 
+        private void cmb_Room_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            splashScreenManager1.ShowWaitForm();
+            load_PrivateSession_Room();
+            splashScreenManager1.CloseWaitForm();
+        }
 
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             splashScreenManager1.ShowWaitForm();
-            load_PrivateSession();
+            load_PrivateSession_Room();
             splashScreenManager1.CloseWaitForm();
 
             alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
         }
 
         private void filterToolStripMenuItem_Click(object sender, EventArgs e)
-        {         
+        {
             if (filterToolStripMenuItem.Checked == true)
             {
                 splitContainerControl1.PanelVisibility = SplitPanelVisibility.Both;
@@ -608,12 +575,12 @@ namespace RockStar.Training
 
         private void filterControl1_FilterChanged(object sender, FilterChangedEventArgs e)
         {
-            filterControl1.ApplyFilter();           
-            
+            filterControl1.ApplyFilter();
+
         }
 
         RepositoryItemComboBox repositoryItemComboBox1 = new RepositoryItemComboBox();
-        RepositoryItemComboBox repositoryItemComboBox2 = new RepositoryItemComboBox();        
+        RepositoryItemComboBox repositoryItemComboBox2 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox3 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox4 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox5 = new RepositoryItemComboBox();
@@ -631,11 +598,12 @@ namespace RockStar.Training
         RepositoryItemComboBox repositoryItemComboBox17 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox18 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox19 = new RepositoryItemComboBox();
-        RepositoryItemComboBox repositoryItemComboBox20 = new RepositoryItemComboBox(); 
-        RepositoryItemComboBox repositoryItemComboBox21 = new RepositoryItemComboBox(); 
+        RepositoryItemComboBox repositoryItemComboBox20 = new RepositoryItemComboBox();
+        RepositoryItemComboBox repositoryItemComboBox21 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox22 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox23 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox24 = new RepositoryItemComboBox();
+        RepositoryItemTextEdit repositoryItemTextEdit1 = new RepositoryItemTextEdit();
 
         EditorButton clr = new EditorButton(ButtonPredefines.Close);
 
@@ -832,8 +800,8 @@ namespace RockStar.Training
             repositoryItemComboBox18.Buttons.Add(clr);
             repositoryItemComboBox19.Buttons.Add(clr);
 
-            repositoryItemComboBox20.Buttons.Add(clr); 
-            repositoryItemComboBox21.Buttons.Add(clr); 
+            repositoryItemComboBox20.Buttons.Add(clr);
+            repositoryItemComboBox21.Buttons.Add(clr);
             repositoryItemComboBox22.Buttons.Add(clr);
             repositoryItemComboBox23.Buttons.Add(clr);
             repositoryItemComboBox24.Buttons.Add(clr);
@@ -842,7 +810,7 @@ namespace RockStar.Training
         }
 
         public void fill_repo()
-        {          
+        {
             for (int i = 0; i < gridView1.RowCount; i++)
             {
                 if (gridView1.GetDataRow(i) == null)
@@ -940,7 +908,7 @@ namespace RockStar.Training
                     repositoryItemComboBox13.Items.Add(club);
                 }
 
-                string memberStart =gridView1.GetDataRow(i)["memberStart"].ToString();
+                string memberStart = gridView1.GetDataRow(i)["memberStart"].ToString();
                 if (!repositoryItemComboBox14.Items.Contains(memberStart))
                 {
                     repositoryItemComboBox14.Items.Add(memberStart);
@@ -1145,15 +1113,15 @@ namespace RockStar.Training
         {
             clr.Visible = false;
             if (e.CurrentNode.Property.Name == "onClubName")
-            {               
+            {
                 e.CustomRepositoryItem = repositoryItemComboBox1;
             }
             if (e.CurrentNode.Property.Name == "counter")
-            {               
-                e.CustomRepositoryItem = repositoryItemComboBox2;                
+            {
+                e.CustomRepositoryItem = repositoryItemComboBox2;
             }
             if (e.CurrentNode.Property.Name == "date")
-            {             
+            {
                 e.CustomRepositoryItem = repositoryItemComboBox3;
             }
             if (e.CurrentNode.Property.Name == "training")
@@ -1220,7 +1188,7 @@ namespace RockStar.Training
             if (e.CurrentNode.Property.Name == "code")
             {
                 e.CustomRepositoryItem = repositoryItemComboBox19;
-               
+
             }
             if (e.CurrentNode.Property.Name == "agreement")
             {
@@ -1260,271 +1228,128 @@ namespace RockStar.Training
             e.AlertForm.OpacityLevel = 3;
         }
 
-        private void pictureEdit_PI_Start_Finger_MouseClick(object sender, MouseEventArgs e)
+        private void pictureEdit_Verify_PS_MouseClick(object sender, MouseEventArgs e)
         {
-            startPI_Finger();  
+            session_Verify();
         }
 
-        private void pictureEdit_PI_Start_Card_Click(object sender, EventArgs e)
+
+        private void pictureEdit_Void_PS_Click(object sender, EventArgs e)
         {
-            startPI_Card();
+            session_Void();
         }
 
-        private void pictureEdit_PI_End_Finger_Click(object sender, EventArgs e)
-        {
-            endPI_Finger();
-        }
-        private void pictureEdit_PI_End_Card_Click(object sender, EventArgs e)
-        {
-            endPI_Card();
-        }
 
-        private void pictureEdit_PI_Start_Finger_Multi_Click(object sender, EventArgs e)
+        private void session_Verify()
         {
-            startPI_Finger_Multi();
-        }
-
-        private void pictureEdit_PI_Start_Card_Multi_Click(object sender, EventArgs e)
-        {
-            startPI_Card_Multi();
-        }
-
-        private void pictureEdit_PI_End_Finger_Multi_Click(object sender, EventArgs e)
-        {
-            endPI_Finger_Multi();
-        }
-        private void pictureEdit_PI_End_Card_Multi_Click(object sender, EventArgs e)
-        {
-            endPI_Card_Multi();
-        }
-
-        private void startPI_Finger()
-        {
-            using (PT_formStart pt_formStart = new PT_formStart(code_UserClubName, code_UserClub, dt_ins_fingerPrint, true))
+            if(gridView1.RowCount == 0 || gridView1.FocusedRowHandle<0)
             {
-                if (pt_formStart.ShowDialog() == DialogResult.OK)
-                {
-                    load_PrivateSession();
-                    alertControl1.Show(this, "Data center", "Training has start", gbr_inf);
-                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
-                }
+                return;
             }
-        }
-        private void startPI_Card()
-        {
-            using (PT_formStart pt_formStart = new PT_formStart(code_UserClubName, code_UserClub, null, false))
-            {
-                if (pt_formStart.ShowDialog() == DialogResult.OK)
-                {
-                    load_PrivateSession();
-                    alertControl1.Show(this, "Data center", "Training has start", gbr_inf);
-                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
-                }
-            }
-        }
 
-  
-        private void endPI_Finger()
-        {
-            if (gridView1.RowCount == 0) { return; }
-            string counter_Session = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
+            if(gridView1.GetFocusedRowCellValue("isVerified").ToString() == "1")
+            {
+                return;
+            }
+            if (!string.IsNullOrEmpty(gridView1.GetFocusedRowCellValue("voidBy").ToString().Trim()))
+            {
+                return;
+            }
+
+            bool allow_Verify = setup_Datatable.bool_IPAddress(code_UserClub, cmb_Room.Text.Trim(), IP_ADDRESS);
+            if (allow_Verify != true)
+            {
+                MessageBox.Show("You can only verify this class schedule in " + cmb_Room.Text.Trim(), "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            
+
+            string trainingUsage = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
             string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
-            string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
-            string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
-            string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
-            string employee_StartName = gridView1.GetFocusedRowCellDisplayText("employeeStartName").ToString().Trim();
-            string room = gridView1.GetFocusedRowCellDisplayText("room").ToString().Trim();
-            //PT_formEnd pt_formEnd = new PT_formEnd(code_UserClubName, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start);
-            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, room, counter_Session, student_Name, student_RGP, product_Name, dt_ins_fingerPrint, employee_Start, employee_StartName , true))
-            {
-                if (pt_formEnd.ShowDialog() == DialogResult.OK)
-                {
-                    splashScreenManager1.ShowWaitForm();
-                    load_PrivateSession();                 
-                    Report rv = new Report(counter_Session);
-                    rv.Text = "Report -  " + student_Name + "(" + student_RGP + ") || Training Usage: "+counter_Session;
-                    rv.Show();
-                    splashScreenManager1.CloseWaitForm();
-
-                    alertControl1.Show(this, "Data center", "Training has end", gbr_inf);
-                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
-                }
-            }
-        }
-
-        private void endPI_Card()
-        {
-            if (gridView1.RowCount == 0) { return; }
-            string counter_Session = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
-            string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
-            string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
             string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
             string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
             string employee_StartName = gridView1.GetFocusedRowCellDisplayText("employeeStartName").ToString().Trim();
             string room = gridView1.GetFocusedRowCellDisplayText("room").ToString().Trim();
 
-            using (PT_formEnd2 pt_formEnd = new PT_formEnd2(code_UserClubName, room, counter_Session, student_Name, student_RGP, product_Name, null, employee_Start, employee_StartName,false))
+
+            using (PT_fingerVerify pt_fingerVerify = new PT_fingerVerify(dt_ins_fingerPrint, lb_UserClub.Text.Trim(), cmb_Room.Text.Trim(), product_Name, student_Name, employee_StartName))
             {
-                if (pt_formEnd.ShowDialog() == DialogResult.OK)
-                {
-                    splashScreenManager1.ShowWaitForm();
-                    load_PrivateSession();                   
-                    Report rv = new Report(counter_Session);
-                    rv.Text = "Report -  " + student_Name + "(" + student_RGP + ") || Training Usage: " + counter_Session;
-                    rv.Show();
-                    splashScreenManager1.CloseWaitForm();
-                    alertControl1.Show(this, "Data center", "Training has end", gbr_inf);
-                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
-                }
-            }
-        }
-
-        private void startPI_Finger_Multi()
-        {
-            using (PT_listMultiStart pt_formStart = new PT_listMultiStart(code_UserClubName, code_UserClub, dt_ins_fingerPrint, true))
-            {
-                if (pt_formStart.ShowDialog() == DialogResult.OK)
-                {
-                    load_PrivateSession();
-                    alertControl1.Show(this, "Data center", "Training has start", gbr_inf);
-                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
-                }
-            }
-        }
-
-        private void startPI_Card_Multi()
-        {
-            using (PT_listMultiStart pt_formStart = new PT_listMultiStart(code_UserClubName, code_UserClub, null, false))
-            {
-                if (pt_formStart.ShowDialog() == DialogResult.OK)
-                {
-                    load_PrivateSession();
-                    alertControl1.Show(this, "Data center", "Training has start", gbr_inf);
-                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
-                }
-            }
-        }
-
-    
-
-        private void endPI_Finger_Multi()
-        {
-            if (gridView1.RowCount == 0) { return; }
-            //string counter_Session = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
-            //string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
-            //string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
-            string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
-            string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
-            //string employee_StartName = gridView1.GetFocusedRowCellDisplayText("employeeStartName").ToString().Trim();
-            DataTable dt = new DataTable();
-            dt = (DataTable) gridControl1.DataSource;
-            DataTable dtFilter = new DataTable();            
-            string expression = "productName = '" + product_Name+"' and employeeStart = '"+employee_Start+"'";        
-            DataRow[] datarow = dt.Select(expression);
-            if (datarow.Length == 0)
-            {                
-                return;
-            }
-            else { dtFilter = dt.Select(expression).CopyToDataTable(); }
-
-            using (PT_listMultiEnd pt_formEnd = new PT_listMultiEnd(code_UserClubName, dt_ins_fingerPrint, true, dtFilter ))
-            {
-                if (pt_formEnd.ShowDialog() == DialogResult.OK)
-                {
-                    splashScreenManager1.ShowWaitForm();
-                    load_PrivateSession();                                            
-                    if (pt_formEnd.ModelsCollection.Count != 0)
+                if (pt_fingerVerify.ShowDialog() == DialogResult.OK)
+                {                  
+                    DataTable dt_verify = new DataTable();
+                    dt_verify.Columns.Add("counter", typeof(string));
+                    dt_verify.Columns.Add("memberName", typeof(string));
+                    dt_verify.Columns.Add("productName", typeof(string));
+                    dt_verify.Columns.Add("employeeStart", typeof(string));
+                    dt_verify.Columns.Add("employeeStartName", typeof(string));
+                    dt_verify.Columns.Add("room", typeof(string));
+                    dt_verify.Rows.Add(new object[] { trainingUsage, student_Name, product_Name, employee_Start, employee_StartName, room });
+                    using (PT_verify_Instructor pt_verify_instructor = new PT_verify_Instructor(dt_verify, lb_UserClub.Text.Trim()))
                     {
-                        foreach(RockStar.Training.PT_listMultiEnd.model item in pt_formEnd.ModelsCollection)
+                        if (pt_verify_instructor.ShowDialog() == DialogResult.OK)
                         {
-                            Report report = new Report(item.TrainingUsage.ToString());                                                        
-                            report.Text = "Report -  " + item.StudentName + "(" + item.StudentRGP + ") || Training Usage: " + item.TrainingUsage;
-                            report.Show();
+                            splashScreenManager1.ShowWaitForm();
+                            load_PrivateSession_Room();
+                            splashScreenManager1.CloseWaitForm();
+                            alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
                         }
                     }
-                    else { MessageBox.Show("Report not shown. \n Please contact IT Dept", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                    splashScreenManager1.CloseWaitForm();
-                    alertControl1.Show(this, "Data center", "Training has end", gbr_inf);
-                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
                 }
             }
-
         }
 
-   
 
-        private void endPI_Card_Multi()
+
+        private void session_Void()
         {
-            if (gridView1.RowCount == 0) { return; }          
-            string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
-            string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
-            DataTable dt = new DataTable();
-            dt = (DataTable)gridControl1.DataSource;
-            DataTable dtFilter = new DataTable();
-            string expression = "productName = '" + product_Name + "' and employeeStart = '" + employee_Start + "'";
-            DataRow[] datarow = dt.Select(expression);
-            if (datarow.Length == 0)
+            if (gridView1.RowCount == 0 || gridView1.FocusedRowHandle < 0)
             {
                 return;
             }
-            else { dtFilter = dt.Select(expression).CopyToDataTable(); }
-
-            using (PT_listMultiEnd pt_formEnd = new PT_listMultiEnd(code_UserClubName, null, false, dtFilter))
+            if (!string.IsNullOrEmpty(gridView1.GetFocusedRowCellValue("voidBy").ToString().Trim()))
             {
-                if (pt_formEnd.ShowDialog() == DialogResult.OK)
+                return;
+            }
+           
+            string trainingUsage = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
+            string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
+            string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
+            string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
+            string employee_StartName = gridView1.GetFocusedRowCellDisplayText("employeeStartName").ToString().Trim();
+            string room = gridView1.GetFocusedRowCellDisplayText("room").ToString().Trim();
+
+            using (PT_fingerVoid pt_fingerVoid = new PT_fingerVoid(dt_ins_fingerPrint, lb_UserClub.Text.Trim(), cmb_Room.Text.Trim(), product_Name, student_Name, employee_StartName, trainingUsage))
+            {
+                if (pt_fingerVoid.ShowDialog() == DialogResult.OK)
                 {
                     splashScreenManager1.ShowWaitForm();
-                    load_PrivateSession();                   
-                    if (pt_formEnd.ModelsCollection.Count != 0)
-                    {
-                        foreach (RockStar.Training.PT_listMultiEnd.model item in pt_formEnd.ModelsCollection)
-                        {
-                            Report report = new Report(item.TrainingUsage.ToString());
-                            report.Text = "Report -  " + item.StudentName + "(" + item.StudentRGP + ") || Training Usage: " + item.TrainingUsage;
-                            report.Show();
-                        }
-                    }
-                    else { MessageBox.Show("Report not shown. \n Please contact IT Dept", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                    load_PrivateSession_Room();
                     splashScreenManager1.CloseWaitForm();
-                    alertControl1.Show(this, "Data center", "Training has end", gbr_inf);
                     alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
                 }
             }
         }
-     
-
-        private void pictureEdit_End_Alt_Click(object sender, EventArgs e)
-        {
-            if (gridView1.RowCount == 0) { return; }
         
-            DataTable dt = new DataTable();
-            dt = (DataTable)gridControl1.DataSource;       
-
-            using (PT_listMultiEnd_Alt pt_formEndAlt = new PT_listMultiEnd_Alt(code_UserClubName, dt_ins_fingerPrint, true, dt))
+        private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName == "isVerified")
             {
-                if (pt_formEndAlt.ShowDialog() == DialogResult.OK)
+                string voidBy = view.GetRowCellDisplayText(e.RowHandle, view.Columns["voidBy"]).ToString().Trim();
+                string txt = view.GetRowCellValue(e.RowHandle, "isVerified").ToString();
+
+                if (txt == "1" && string.IsNullOrEmpty(voidBy))
                 {
-                    splashScreenManager1.ShowWaitForm();
-                    load_PrivateSession();
-                    if (pt_formEndAlt.ModelsCollection.Count != 0)
-                    {
-                        foreach (RockStar.Training.PT_listMultiEnd_Alt.model item in pt_formEndAlt.ModelsCollection)
-                        {
-                            Report report = new Report(item.TrainingUsage.ToString());
-                            report.Text = "Report -  " + item.StudentName + "(" + item.StudentRGP + ") || Training Usage: " + item.TrainingUsage;
-                            report.Show();
-                        }
-                    }
-                    else { MessageBox.Show("Report not shown. \n Please contact IT Dept", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                    splashScreenManager1.CloseWaitForm();
-                    alertControl1.Show(this, "Data center", "Training has end", gbr_inf);
-                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
+                    e.Appearance.ForeColor = Color.MediumSeaGreen;
+                    FontStyle fs = e.Appearance.Font.Style;
+                    fs |= FontStyle.Bold;                    
+                    e.Appearance.Font = new Font(e.Appearance.Font, fs);
                 }
             }
         }
-
-
-    }
+    } 
 
     
 }

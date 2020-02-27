@@ -49,7 +49,7 @@
             // 
             this.lb_ClubName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_ClubName.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lb_ClubName.Appearance.Font = new System.Drawing.Font("Tahoma", 18.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lb_ClubName.Appearance.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.lb_ClubName.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_ClubName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
@@ -57,7 +57,7 @@
             this.lb_ClubName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_ClubName.Location = new System.Drawing.Point(344, 12);
             this.lb_ClubName.Name = "lb_ClubName";
-            this.lb_ClubName.Size = new System.Drawing.Size(512, 29);
+            this.lb_ClubName.Size = new System.Drawing.Size(512, 30);
             this.lb_ClubName.TabIndex = 69;
             this.lb_ClubName.Text = "Kota Kasablanka";
             // 
@@ -167,7 +167,7 @@
             // 
             this.lb_Room.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_Room.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lb_Room.Appearance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lb_Room.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lb_Room.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_Room.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
@@ -175,7 +175,7 @@
             this.lb_Room.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_Room.Location = new System.Drawing.Point(525, 69);
             this.lb_Room.Name = "lb_Room";
-            this.lb_Room.Size = new System.Drawing.Size(73, 23);
+            this.lb_Room.Size = new System.Drawing.Size(73, 25);
             this.lb_Room.TabIndex = 93;
             this.lb_Room.Text = "Room:";
             // 
@@ -184,11 +184,11 @@
             this.cmb_Room.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmb_Room.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Room.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.cmb_Room.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.cmb_Room.FormattingEnabled = true;
             this.cmb_Room.Location = new System.Drawing.Point(604, 68);
             this.cmb_Room.Name = "cmb_Room";
-            this.cmb_Room.Size = new System.Drawing.Size(252, 31);
+            this.cmb_Room.Size = new System.Drawing.Size(252, 29);
             this.cmb_Room.TabIndex = 94;
             // 
             // PT_listMultiStart

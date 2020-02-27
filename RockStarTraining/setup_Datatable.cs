@@ -343,5 +343,87 @@ namespace RockStar.Training
             dt.DefaultView.Sort = "room ASC";
             return dt;
         }
+
+        /// <summary>
+        /// load private running base in room (club)
+        /// </summary>
+        /// <param name="room"></param>
+        /// <param name="codeClub"></param>
+        /// <returns></returns>
+        public DataTable datatable_Training_Running_Club_Room(string room, string codeClub)
+        {
+            SqlCommand command = new SqlCommand();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+
+            if (myConnection.State == ConnectionState.Open)
+            {
+                myConnection.Close();
+            }
+            try
+            {
+                myConnection.Open();
+
+                command.Connection = myConnection;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandTimeout = 180;
+                command.CommandText = "Module.SP_Training_Running_Room";
+                command.Parameters.Add("@room", SqlDbType.NVarChar, 12).Value = room;
+                command.Parameters.Add("@club", SqlDbType.NChar, 3).Value = codeClub;
+                adapter.SelectCommand = command;
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error" + ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dt;
+        }
+
+        /// <summary>
+        /// IP Address Based on Club and Room, True = Allow; False = Decline
+        /// </summary>
+        /// <returns>Bool</returns>
+        public bool bool_IPAddress(string codeClub, string roomName, string IPAddress)
+        {
+            SqlCommand command = new SqlCommand();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            bool allow_Signin = false;
+
+            if (myConnection.State == ConnectionState.Open)
+            {
+                myConnection.Close();
+            }
+            try
+            {
+                myConnection.Open();
+
+                command.Connection = myConnection;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandTimeout = 180;
+                command.CommandText = "Addon.SP_clubroomAddress";
+                command.Parameters.Add("@club", SqlDbType.NChar, 3).Value = codeClub;
+                command.Parameters.Add("@room", SqlDbType.NVarChar, 12).Value = roomName;
+                command.Parameters.Add("@ip", SqlDbType.NVarChar, 15).Value = IPAddress;
+                adapter.SelectCommand = command;
+                allow_Signin = (Convert.ToInt16(command.ExecuteScalar()) == 1) ? allow_Signin = true : allow_Signin = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error" + ex);
+                allow_Signin = false;
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return allow_Signin;
+        }
+
+
     }
 }

@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lb_Info = new DevExpress.XtraEditors.LabelControl();
             this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
             this.lb_ClubName = new DevExpress.XtraEditors.LabelControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.timer2 = new System.Windows.Forms.Timer();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pictureEdit_Student_Attendees = new DevExpress.XtraEditors.PictureEdit();
             this.lb_Student_Name = new DevExpress.XtraEditors.LabelControl();
             this.lb_Student_RGP = new DevExpress.XtraEditors.LabelControl();
@@ -90,7 +91,7 @@
             // 
             this.lb_ClubName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_ClubName.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lb_ClubName.Appearance.Font = new System.Drawing.Font("Tahoma", 18.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lb_ClubName.Appearance.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.lb_ClubName.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lb_ClubName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
@@ -271,7 +272,7 @@
         private DevExpress.XtraEditors.LabelControl lb_Student_Name;
         private DevExpress.XtraEditors.LabelControl lb_Student_RGP;
         public DevExpress.XtraEditors.LabelControl lb_productName;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         public DevExpress.XtraEditors.LabelControl lb_Instructor_Name;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }
