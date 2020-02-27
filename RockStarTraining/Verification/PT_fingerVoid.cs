@@ -51,7 +51,7 @@ namespace RockStar.Training
             pictureEdit_Logo.Image = logo;
 
             lb_clubName.Text = _clubName;
-            lb_productName.Text = _productName;
+            lb_productName.Text = @"_productName";
             lb_Instructor_Name.Text = "Instructor: "+_instructorName;
             lb_Room.Text = "Room: " + _room;
             lb_Student_Name.Text = _studentName.Trim();

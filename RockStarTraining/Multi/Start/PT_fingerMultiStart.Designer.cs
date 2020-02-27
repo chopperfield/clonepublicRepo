@@ -95,6 +95,7 @@
             this.lb_productName.Size = new System.Drawing.Size(331, 71);
             this.lb_productName.TabIndex = 70;
             this.lb_productName.Text = "Jump Start - Welcome";
+            this.lb_productName.UseMnemonic = false;
             // 
             // lb_clubName
             // 

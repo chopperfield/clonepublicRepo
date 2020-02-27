@@ -181,6 +181,7 @@
             this.lb_productName.Size = new System.Drawing.Size(512, 23);
             this.lb_productName.TabIndex = 92;
             this.lb_productName.Text = "Gymnastic U/8";
+            this.lb_productName.UseMnemonic = false;
             // 
             // lb_Instructor_Room
             // 
