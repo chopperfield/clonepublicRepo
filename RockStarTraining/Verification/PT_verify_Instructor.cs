@@ -22,7 +22,7 @@ namespace RockStar.Training
         public PT_verify_Instructor(DataTable dt_verify, string clubName)
         {
             InitializeComponent();            
-            lb_Info.Text = "Instructors Outfit";
+            lb_Info.Text = "Instructor Verification";
             _dt_verify = dt_verify;
             _trainingUsage = dt_verify.Rows[0]["counter"].ToString().Trim();
             _employeeCode = _dt_verify.Rows[0]["employeeStart"].ToString().Trim();
@@ -117,7 +117,7 @@ namespace RockStar.Training
             gridView1.EndUpdate();
 
 
-            gridView1.Columns["counter"].Caption = "Training Usage";
+            gridView1.Columns["counter"].Caption = "Usage No.";
             gridView1.Columns["counter"].Width = 100;
             gridView1.Columns["counter"].OptionsColumn.AllowEdit = false;
 

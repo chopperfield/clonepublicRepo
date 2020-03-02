@@ -162,7 +162,7 @@ namespace RockStar.Training
                     else
                     {
                         gridControl1.DataSource = null;
-                        alertControl1.Show(this, "Data center", "Training not found !", gbr_error);
+                        alertControl1.Show(this, "Data center", "Training package not found !", gbr_error);
                         timer1.Start();
                         textBox1.Focus();
                     }                    

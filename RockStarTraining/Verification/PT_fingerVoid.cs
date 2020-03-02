@@ -51,7 +51,7 @@ namespace RockStar.Training
             pictureEdit_Logo.Image = logo;
 
             lb_clubName.Text = _clubName;
-            lb_productName.Text = @"_productName";
+            lb_productName.Text = _productName;
             lb_Instructor_Name.Text = "Instructor: "+_instructorName;
             lb_Room.Text = "Room: " + _room;
             lb_Student_Name.Text = _studentName.Trim();
@@ -197,11 +197,11 @@ namespace RockStar.Training
             {
                 timer1.Stop();
 
-                string info_Text = "Are you sure to <b><color=red>void this private session</color></b>  ?";
+                string info_Text = "Are you sure to <b><color=red>void</color></b> this private instruction session ?";
                 Cst_Form_Short f1 = new Cst_Form_Short(info_Text);
                 if (f1.ShowDialog() == DialogResult.Yes)
                 {
-                    Cst_Note formnote = new Cst_Note(_productName, _instructorName +" - "+_room, "Void Private Session");
+                    Cst_Note formnote = new Cst_Note(_productName, _instructorName +" - "+_room, "Void Private Instruction Session");
                     if (formnote.ShowDialog() == DialogResult.OK)
                     {
                         string text_note = formnote.Note;

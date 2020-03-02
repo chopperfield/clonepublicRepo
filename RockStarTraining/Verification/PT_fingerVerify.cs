@@ -194,7 +194,7 @@ namespace RockStar.Training
 
             if (dt.Rows.Count != 0)
             {
-                string info_Text = "Are you sure to <b><color=green>verify this private session</color></b>  ?";
+                string info_Text = "Are you sure to <b><color=green>verify</color></b> this private instruction session?";
                 Cst_Form_Short f1 = new Cst_Form_Short(info_Text);
                 if (f1.ShowDialog() == DialogResult.Yes)
                 {                  

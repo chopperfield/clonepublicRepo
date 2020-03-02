@@ -258,6 +258,8 @@
             this.cmb_Room.Name = "cmb_Room";
             this.cmb_Room.Size = new System.Drawing.Size(252, 29);
             this.cmb_Room.TabIndex = 91;
+            this.cmb_Room.SelectedIndexChanged += new System.EventHandler(this.cmb_Room_SelectedIndexChanged);
+            this.cmb_Room.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmb_Room_KeyDown);
             // 
             // PT_formStart
             // 

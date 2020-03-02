@@ -76,6 +76,7 @@
             this.lb_Version = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::RockStar.Training.form_Wait), true, true);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -495,6 +496,11 @@
             this.pictureEdit_Logo.Size = new System.Drawing.Size(72, 41);
             this.pictureEdit_Logo.TabIndex = 114;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // PT_Session_Verification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,6 +513,7 @@
             this.KeyPreview = true;
             this.Name = "PT_Session_Verification";
             this.Text = "PT_Session_Verification";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PT_Session_Verification_FormClosing);
             this.Load += new System.EventHandler(this.PT_Session_Verification_Load);
             this.Shown += new System.EventHandler(this.PT_Session_Verification_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_Session_Verification_KeyDown);
@@ -564,6 +571,7 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit_Void_PS;
         private System.Windows.Forms.ComboBox cmb_Room;
         private DevExpress.XtraEditors.LabelControl lb_Room;
+        private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

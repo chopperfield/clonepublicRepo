@@ -189,11 +189,11 @@
             // 
             this.lb_Info.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.lb_Info.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lb_Info.Location = new System.Drawing.Point(12, 3);
+            this.lb_Info.Location = new System.Drawing.Point(12, 7);
             this.lb_Info.Name = "lb_Info";
-            this.lb_Info.Size = new System.Drawing.Size(93, 16);
+            this.lb_Info.Size = new System.Drawing.Size(129, 16);
             this.lb_Info.TabIndex = 56;
-            this.lb_Info.Text = "Instructors Outfit";
+            this.lb_Info.Text = "Instructors Verification";
             // 
             // timer1
             // 

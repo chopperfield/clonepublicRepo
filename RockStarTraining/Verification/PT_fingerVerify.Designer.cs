@@ -76,11 +76,11 @@
             this.lb_Usage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_Usage.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Usage.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lb_Usage.Location = new System.Drawing.Point(519, 5);
+            this.lb_Usage.Location = new System.Drawing.Point(456, 5);
             this.lb_Usage.Name = "lb_Usage";
-            this.lb_Usage.Size = new System.Drawing.Size(117, 14);
+            this.lb_Usage.Size = new System.Drawing.Size(180, 14);
             this.lb_Usage.TabIndex = 71;
-            this.lb_Usage.Text = "Verify Private Session";
+            this.lb_Usage.Text = "Verify Private Instruction Session";
             // 
             // lb_productName
             // 

@@ -184,7 +184,7 @@ namespace RockStar.Training
                     else
                     {
                         gridControl1.DataSource = null;
-                        alertControl1.Show(this, "Data center", "Training not found !", gbr_error);
+                        alertControl1.Show(this, "Data center", "Training package not found !", gbr_error);
                         lb_Info.Text = "Please Tap Student Card";
                         timer1.Start();
                         textBox1.Focus();                        
@@ -357,5 +357,17 @@ namespace RockStar.Training
             else { e.Handled = true; }
         }
 
+        private void cmb_Room_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void cmb_Room_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(gridView1.RowCount != 0)
+            {
+                gridView1.Focus();
+            }
+        }
     }
 }

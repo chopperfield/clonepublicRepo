@@ -52,8 +52,6 @@ namespace RockStar.Training
             repositoryItemComboBox6.ButtonClick += RepositoryItemComboBox6_ButtonClick;
             repositoryItemComboBox7.ButtonClick += RepositoryItemComboBox7_ButtonClick;
             repositoryItemComboBox8.ButtonClick += RepositoryItemComboBox8_ButtonClick;
-            repositoryItemComboBox9.ButtonClick += RepositoryItemComboBox9_ButtonClick;
-            repositoryItemComboBox10.ButtonClick += RepositoryItemComboBox10_ButtonClick;
             repositoryItemComboBox11.ButtonClick += RepositoryItemComboBox11_ButtonClick;
             repositoryItemComboBox12.ButtonClick += RepositoryItemComboBox12_ButtonClick;
             repositoryItemComboBox13.ButtonClick += RepositoryItemComboBox13_ButtonClick;
@@ -125,8 +123,6 @@ namespace RockStar.Training
             repositoryItemComboBox6.AutoComplete = false;
             repositoryItemComboBox7.AutoComplete = false;
             repositoryItemComboBox8.AutoComplete = false;
-            repositoryItemComboBox9.AutoComplete = false;
-            repositoryItemComboBox10.AutoComplete = false;
             repositoryItemComboBox11.AutoComplete = false;
             repositoryItemComboBox12.AutoComplete = false;
             repositoryItemComboBox13.AutoComplete = false;
@@ -300,21 +296,7 @@ namespace RockStar.Training
             gridView1.Columns["trainingStart"].ColumnEdit = repositoryItemComboBox8;
             gridView1.Columns["trainingStart"].ColumnEdit.EditFormat.FormatType = FormatType.DateTime;
             gridView1.Columns["trainingStart"].ColumnEdit.EditFormat.FormatString = "dd MMM yyyy HH:mm:ss";
-
-            gridView1.Columns["trainingEnd"].VisibleIndex = 11;
-            gridView1.Columns["trainingEnd"].Width = 150;
-            gridView1.Columns["trainingEnd"].Caption = "Time End";
-            gridView1.Columns["trainingEnd"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            gridView1.Columns["trainingEnd"].DisplayFormat.FormatString = "dd MMM yyyy HH:mm:ss";
-            gridView1.Columns["trainingEnd"].OptionsFilter.AutoFilterCondition = AutoFilterCondition.Equals;
-            gridView1.Columns["trainingEnd"].ColumnEdit = repositoryItemComboBox9;
-            gridView1.Columns["trainingEnd"].ColumnEdit.EditFormat.FormatType = FormatType.DateTime;
-            gridView1.Columns["trainingEnd"].ColumnEdit.EditFormat.FormatString = "dd MMM yyyy HH:mm:ss";
-
-            gridView1.Columns["session"].VisibleIndex = 12;
-            gridView1.Columns["session"].Width = 150;
-            gridView1.Columns["session"].Caption = "Session";
-
+            
 
 
             gridView1.Columns["note"].VisibleIndex = 13;
@@ -382,8 +364,6 @@ namespace RockStar.Training
             repositoryItemComboBox6.Items.Clear();
             repositoryItemComboBox7.Items.Clear();
             repositoryItemComboBox8.Items.Clear();
-            repositoryItemComboBox9.Items.Clear();
-            repositoryItemComboBox10.Items.Clear();
             repositoryItemComboBox11.Items.Clear();
             repositoryItemComboBox12.Items.Clear();
             repositoryItemComboBox13.Items.Clear();
@@ -587,8 +567,6 @@ namespace RockStar.Training
         RepositoryItemComboBox repositoryItemComboBox6 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox7 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox8 = new RepositoryItemComboBox();
-        RepositoryItemComboBox repositoryItemComboBox9 = new RepositoryItemComboBox();
-        RepositoryItemComboBox repositoryItemComboBox10 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox11 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox12 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox13 = new RepositoryItemComboBox();
@@ -663,20 +641,8 @@ namespace RockStar.Training
                 gridView1.Columns["trainingStart"].ClearFilter();
             }
         }
-        private void RepositoryItemComboBox9_ButtonClick(object sender, ButtonPressedEventArgs e)
-        {
-            if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Close)
-            {
-                gridView1.Columns["trainingEnd"].ClearFilter();
-            }
-        }
-        private void RepositoryItemComboBox10_ButtonClick(object sender, ButtonPressedEventArgs e)
-        {
-            if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Close)
-            {
-                gridView1.Columns["session"].ClearFilter();
-            }
-        }
+       
+    
         private void RepositoryItemComboBox11_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Close)
@@ -788,8 +754,6 @@ namespace RockStar.Training
             repositoryItemComboBox6.Buttons.Add(clr);
             repositoryItemComboBox7.Buttons.Add(clr);
             repositoryItemComboBox8.Buttons.Add(clr);
-            repositoryItemComboBox9.Buttons.Add(clr);
-            repositoryItemComboBox10.Buttons.Add(clr);
             repositoryItemComboBox11.Buttons.Add(clr);
             repositoryItemComboBox12.Buttons.Add(clr);
             repositoryItemComboBox13.Buttons.Add(clr);
@@ -873,22 +837,7 @@ namespace RockStar.Training
                         repositoryItemComboBox8.Items.Add(trainingStart);
                     }
                 }
-
-                if (gridView1.GetDataRow(i)["trainingEnd"] != DBNull.Value)
-                {
-                    DateTime trainingEnd = Convert.ToDateTime(gridView1.GetDataRow(i)["trainingEnd"]);
-                    if (!repositoryItemComboBox9.Items.Contains(trainingEnd))
-                    {
-                        repositoryItemComboBox9.Items.Add(trainingEnd);
-                    }
-                }
-
-
-                int session = int.Parse(gridView1.GetDataRow(i)["session"].ToString());
-                if (!repositoryItemComboBox10.Items.Contains(session))
-                {
-                    repositoryItemComboBox10.Items.Add(session);
-                }
+                          
 
                 string note = gridView1.GetDataRow(i)["note"].ToString();
                 if (!repositoryItemComboBox11.Items.Contains(note))
@@ -1026,16 +975,7 @@ namespace RockStar.Training
                 repositoryItemComboBox8.Sorted = true;
 
             }
-            if (e.Column.FieldName == "trainingEnd" && view.IsFilterRow(e.RowHandle))
-            {
-                e.RepositoryItem = repositoryItemComboBox9;
-                repositoryItemComboBox9.Sorted = true;
-            }
-            if (e.Column.FieldName == "session" && view.IsFilterRow(e.RowHandle))
-            {
-                e.RepositoryItem = repositoryItemComboBox10;
-                repositoryItemComboBox10.Sorted = true;
-            }
+                      
             if (e.Column.FieldName == "note" && view.IsFilterRow(e.RowHandle))
             {
                 e.RepositoryItem = repositoryItemComboBox11;
@@ -1144,15 +1084,7 @@ namespace RockStar.Training
             {
                 e.CustomRepositoryItem = repositoryItemComboBox8;
             }
-            if (e.CurrentNode.Property.Name == "trainingEnd")
-            {
-
-                e.CustomRepositoryItem = repositoryItemComboBox9;
-            }
-            if (e.CurrentNode.Property.Name == "session")
-            {
-                e.CustomRepositoryItem = repositoryItemComboBox10;
-            }
+                     
             if (e.CurrentNode.Property.Name == "note")
             {
                 e.CustomRepositoryItem = repositoryItemComboBox11;
@@ -1259,7 +1191,7 @@ namespace RockStar.Training
             bool allow_Verify = setup_Datatable.bool_IPAddress(code_UserClub, cmb_Room.Text.Trim(), IP_ADDRESS);
             if (allow_Verify != true)
             {
-                MessageBox.Show("You can only verify this class schedule in " + cmb_Room.Text.Trim(), "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You can only verify this private instruction session in " + cmb_Room.Text.Trim(), "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -1297,6 +1229,7 @@ namespace RockStar.Training
                     }
                 }
             }
+            timer1_Reset();            
         }
 
 
@@ -1311,7 +1244,15 @@ namespace RockStar.Training
             {
                 return;
             }
-           
+
+            bool allow_Void = setup_Datatable.bool_IPAddress(code_UserClub, cmb_Room.Text.Trim(), IP_ADDRESS);
+            if (allow_Void != true)
+            {
+                MessageBox.Show("You can only void this private instruction session in " + cmb_Room.Text.Trim(), "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             string trainingUsage = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
             string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
             string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
@@ -1329,6 +1270,7 @@ namespace RockStar.Training
                     alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
                 }
             }
+            timer1_Reset();
         }
         
         private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
@@ -1348,6 +1290,31 @@ namespace RockStar.Training
                     e.Appearance.Font = new Font(e.Appearance.Font, fs);
                 }
             }
+        }
+
+        int tick = 5 * 60;//5menit
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            tick = tick - 1;
+            if(tick == 0)
+            {
+                timer1.Stop();
+                load_PrivateSession_Room();
+                tick = 5 * 60;
+                timer1.Start();
+            }
+        }
+
+        private void timer1_Reset()
+        {
+            timer1.Stop();
+            tick = 5 * 60;
+            timer1.Start();
+        }
+
+        private void PT_Session_Verification_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Stop();
         }
     } 
 
