@@ -1415,11 +1415,12 @@ namespace RockStar.Training
             //string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
             string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
             string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
+            string room = gridView1.GetFocusedRowCellDisplayText("room").ToString().Trim();
             //string employee_StartName = gridView1.GetFocusedRowCellDisplayText("employeeStartName").ToString().Trim();
             DataTable dt = new DataTable();
             dt = (DataTable) gridControl1.DataSource;
             DataTable dtFilter = new DataTable();            
-            string expression = "productName = '" + product_Name+"' and employeeStart = '"+employee_Start+"'";        
+            string expression = "productName = '" + product_Name+"' and employeeStart = '"+employee_Start+"' and room= '"+room+"'";        
             DataRow[] datarow = dt.Select(expression);
             if (datarow.Length == 0)
             {                
@@ -1458,10 +1459,11 @@ namespace RockStar.Training
             if (gridView1.RowCount == 0) { return; }          
             string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
             string employee_Start = gridView1.GetFocusedRowCellDisplayText("employeeStart").ToString().Trim();
+            string room = gridView1.GetFocusedRowCellDisplayText("room").ToString().Trim();
             DataTable dt = new DataTable();
             dt = (DataTable)gridControl1.DataSource;
             DataTable dtFilter = new DataTable();
-            string expression = "productName = '" + product_Name + "' and employeeStart = '" + employee_Start + "'";
+            string expression = "productName = '" + product_Name + "' and employeeStart = '" + employee_Start + "' and room = '"+room+"'";
             DataRow[] datarow = dt.Select(expression);
             if (datarow.Length == 0)
             {

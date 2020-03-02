@@ -184,6 +184,7 @@ namespace RockStar.Training
                 {
                     ctl.Enabled = true;
                 }
+                timer1.Start();
             }
             catch (Exception ex)
             {
@@ -459,7 +460,7 @@ namespace RockStar.Training
             splashScreenManager1.ShowWaitForm();
             load_PrivateSession_Room();
             splashScreenManager1.CloseWaitForm();
-
+            timer1_Reset();
             alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
         }
 
@@ -1299,7 +1300,9 @@ namespace RockStar.Training
             if(tick == 0)
             {
                 timer1.Stop();
+                splashScreenManager1.ShowWaitForm();
                 load_PrivateSession_Room();
+                splashScreenManager1.CloseWaitForm();
                 tick = 5 * 60;
                 timer1.Start();
             }
