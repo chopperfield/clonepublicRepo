@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lb_Info = new DevExpress.XtraEditors.LabelControl();
             this.lb_Usage = new DevExpress.XtraEditors.LabelControl();
             this.lb_ClubName = new DevExpress.XtraEditors.LabelControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
             this.pictureEdit_Logo = new DevExpress.XtraEditors.PictureEdit();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer();
             this.pictureEdit_Student_Attendees = new DevExpress.XtraEditors.PictureEdit();
             this.lb_Student_Name = new DevExpress.XtraEditors.LabelControl();
             this.lb_Student_RGP = new DevExpress.XtraEditors.LabelControl();

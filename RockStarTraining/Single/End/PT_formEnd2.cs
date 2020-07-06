@@ -93,10 +93,12 @@ namespace RockStar.Training
         {
             try
             {
-                splashScreenManager1.ShowWaitForm();
-                splashScreenManager1.SetWaitFormDescription("Getting Url address");
+                //splashScreenManager1.ShowWaitForm();
+                //splashScreenManager1.SetWaitFormDescription("Getting Url address");                
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(form_Wait));
+                
                 Img_member_Url = utils.get_Student_Image_URL();
-
+                
                 //set image
                 string img_path = utils.get_Student_Image(Img_member_Url, _student_RGP.ToString());
                 if (!string.IsNullOrEmpty(img_path))
@@ -119,16 +121,12 @@ namespace RockStar.Training
                 timer2.Start();
             }
             catch (Exception ex)
-            {
-                splashScreenManager1.CloseWaitForm();
+            {                
                 MessageBox.Show(ex.Message);
             }
             finally
-            {
-                if (splashScreenManager1.IsSplashFormVisible == true)
-                {
-                    splashScreenManager1.CloseWaitForm();
-                }
+            {             
+                DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();               
             }
         }
 
@@ -168,7 +166,7 @@ namespace RockStar.Training
                 textBox1.Text = "";
             }
         }
-
+       
         private void get_Student_RGP(string rfid)
         {
             try
@@ -276,7 +274,8 @@ namespace RockStar.Training
         private void PT_formEnd2_FormClosed(object sender, FormClosedEventArgs e)
         {
           
-        }            
+        }
 
+       
     }
 }
