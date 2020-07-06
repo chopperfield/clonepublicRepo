@@ -153,6 +153,26 @@ namespace RockStar.Training.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap finishMultiCard {
+            get {
+                object obj = ResourceManager.GetObject("finishMultiCard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap finishMultiFinger {
+            get {
+                object obj = ResourceManager.GetObject("finishMultiFinger", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap finishPI {
             get {
                 object obj = ResourceManager.GetObject("finishPI", resourceCulture);
@@ -280,6 +300,26 @@ namespace RockStar.Training.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap startMultiCard {
+            get {
+                object obj = ResourceManager.GetObject("startMultiCard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap startMultiFinger {
+            get {
+                object obj = ResourceManager.GetObject("startMultiFinger", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap startPI {
             get {
                 object obj = ResourceManager.GetObject("startPI", resourceCulture);
@@ -310,9 +350,29 @@ namespace RockStar.Training.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap VerifyPS {
+            get {
+                object obj = ResourceManager.GetObject("VerifyPS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap void_f {
             get {
                 object obj = ResourceManager.GetObject("void_f", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VoidPS {
+            get {
+                object obj = ResourceManager.GetObject("VoidPS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -129,7 +129,7 @@
       <HintPath>D:\Projects\1.Axioma\RockStar\RockStar\bin\Debug\DevExpress.XtraVerticalGrid.v12.2.dll</HintPath>
     </Reference>
     <Reference Include="FastCodeSDK">
-      <HintPath>D:\Projects\1.Axioma\RockStar\RockStar\bin\Debug\FastCodeSDK.dll</HintPath>
+      <HintPath>..\..\..\..\Dummy ClubManagement - Dummy - NEW DLL\FastCodeSDK.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -166,6 +166,12 @@
     <Compile Include="Cst_Form_Short.Designer.cs">
       <DependentUpon>Cst_Form_Short.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cst_Note.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cst_Note.Designer.cs">
+      <DependentUpon>Cst_Note.cs</DependentUpon>
+    </Compile>
     <Compile Include="fingerPrint_Device.cs" />
     <Compile Include="form_Find.cs">
       <SubType>Form</SubType>
@@ -185,35 +191,101 @@
     <Compile Include="form_Wait.Designer.cs">
       <DependentUpon>form_Wait.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PT_cardEnd.cs">
+    <Compile Include="Multi\Alternate\PT_fingerMultiEnd_Alt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PT_cardEnd.Designer.cs">
+    <Compile Include="Multi\Alternate\PT_fingerMultiEnd_Alt.Designer.cs">
+      <DependentUpon>PT_fingerMultiEnd_Alt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Multi\Alternate\PT_studentMultiEnd_Alt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multi\Alternate\PT_studentMultiEnd_Alt.Designer.cs">
+      <DependentUpon>PT_studentMultiEnd_Alt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Multi\End\PT_cardMultiEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multi\End\PT_cardMultiEnd.Designer.cs">
+      <DependentUpon>PT_cardMultiEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Multi\End\PT_fingerMultiEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multi\End\PT_fingerMultiEnd.Designer.cs">
+      <DependentUpon>PT_fingerMultiEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Multi\Alternate\PT_listMultiEnd_Alt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multi\Alternate\PT_listMultiEnd_Alt.Designer.cs">
+      <DependentUpon>PT_listMultiEnd_Alt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Multi\End\PT_listMultiEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multi\End\PT_listMultiEnd.Designer.cs">
+      <DependentUpon>PT_listMultiEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Verification\PT_fingerVoid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verification\PT_fingerVoid.Designer.cs">
+      <DependentUpon>PT_fingerVoid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Verification\PT_fingerVerify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verification\PT_fingerVerify.Designer.cs">
+      <DependentUpon>PT_fingerVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Verification\PT_Session_Verification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verification\PT_Session_Verification.Designer.cs">
+      <DependentUpon>PT_Session_Verification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Single\End\PT_cardEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Single\End\PT_cardEnd.Designer.cs">
       <DependentUpon>PT_cardEnd.cs</DependentUpon>
     </Compile>
-    <Compile Include="PT_fingerEnd.cs">
+    <Compile Include="Multi\Start\PT_cardMultiStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PT_fingerEnd.Designer.cs">
+    <Compile Include="Multi\Start\PT_cardMultiStart.Designer.cs">
+      <DependentUpon>PT_cardMultiStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Single\End\PT_fingerEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Single\End\PT_fingerEnd.Designer.cs">
       <DependentUpon>PT_fingerEnd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Multi\PT_fingerMultiStart.cs">
+    <Compile Include="Multi\Start\PT_fingerMultiStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Multi\PT_fingerMultiStart.Designer.cs">
+    <Compile Include="Multi\Start\PT_fingerMultiStart.Designer.cs">
       <DependentUpon>PT_fingerMultiStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="PT_fingerStart.cs">
+    <Compile Include="Multi\End\PT_studentMultiEnd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PT_fingerStart.Designer.cs">
+    <Compile Include="Multi\End\PT_studentMultiEnd.Designer.cs">
+      <DependentUpon>PT_studentMultiEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Single\Start\PT_fingerStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Single\Start\PT_fingerStart.Designer.cs">
       <DependentUpon>PT_fingerStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="PT_formEnd2.cs">
+    <Compile Include="Single\End\PT_formEnd2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PT_formEnd2.Designer.cs">
+    <Compile Include="Single\End\PT_formEnd2.Designer.cs">
       <DependentUpon>PT_formEnd2.cs</DependentUpon>
     </Compile>
     <Compile Include="PT_formEnd.cs">
@@ -222,17 +294,17 @@
     <Compile Include="PT_formEnd.Designer.cs">
       <DependentUpon>PT_formEnd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Multi\PT_formMultiList.cs">
+    <Compile Include="Multi\Start\PT_listMultiStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Multi\PT_formMultiList.Designer.cs">
-      <DependentUpon>PT_formMultiList.cs</DependentUpon>
+    <Compile Include="Multi\Start\PT_listMultiStart.Designer.cs">
+      <DependentUpon>PT_listMultiStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Multi\PT_formMultiStart.cs">
+    <Compile Include="Multi\Start\PT_studentMultiStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Multi\PT_formMultiStart.Designer.cs">
-      <DependentUpon>PT_formMultiStart.cs</DependentUpon>
+    <Compile Include="Multi\Start\PT_studentMultiStart.Designer.cs">
+      <DependentUpon>PT_studentMultiStart.cs</DependentUpon>
     </Compile>
     <Compile Include="PT_Session.cs">
       <SubType>Form</SubType>
@@ -247,24 +319,33 @@
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
     <Compile Include="setup_Datatable.cs" />
-    <Compile Include="PT_formStart.cs">
+    <Compile Include="Single\Start\PT_formStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PT_formStart.Designer.cs">
+    <Compile Include="Single\Start\PT_formStart.Designer.cs">
       <DependentUpon>PT_formStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="PT_cardStart.cs">
+    <Compile Include="Single\Start\PT_cardStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PT_cardStart.Designer.cs">
+    <Compile Include="Single\Start\PT_cardStart.Designer.cs">
       <DependentUpon>PT_cardStart.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
+    <Compile Include="Verification\PT_verify_Instructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Verification\PT_verify_Instructor.Designer.cs">
+      <DependentUpon>PT_verify_Instructor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Cst_Form_Long.resx">
       <DependentUpon>Cst_Form_Long.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cst_Form_Short.resx">
       <DependentUpon>Cst_Form_Short.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cst_Note.resx">
+      <DependentUpon>Cst_Note.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_Find.resx">
       <DependentUpon>form_Find.cs</DependentUpon>
@@ -274,6 +355,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form_Wait.resx">
       <DependentUpon>form_Wait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multi\Alternate\PT_fingerMultiEnd_Alt.resx">
+      <DependentUpon>PT_fingerMultiEnd_Alt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multi\Alternate\PT_studentMultiEnd_Alt.resx">
+      <DependentUpon>PT_studentMultiEnd_Alt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multi\End\PT_cardMultiEnd.resx">
+      <DependentUpon>PT_cardMultiEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multi\End\PT_fingerMultiEnd.resx">
+      <DependentUpon>PT_fingerMultiEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multi\Alternate\PT_listMultiEnd_Alt.resx">
+      <DependentUpon>PT_listMultiEnd_Alt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multi\End\PT_listMultiEnd.resx">
+      <DependentUpon>PT_listMultiEnd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -286,41 +385,59 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="PT_cardEnd.resx">
+    <EmbeddedResource Include="Verification\PT_fingerVoid.resx">
+      <DependentUpon>PT_fingerVoid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Verification\PT_fingerVerify.resx">
+      <DependentUpon>PT_fingerVerify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Verification\PT_Session_Verification.resx">
+      <DependentUpon>PT_Session_Verification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Single\End\PT_cardEnd.resx">
       <DependentUpon>PT_cardEnd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PT_fingerEnd.resx">
+    <EmbeddedResource Include="Multi\Start\PT_cardMultiStart.resx">
+      <DependentUpon>PT_cardMultiStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Single\End\PT_fingerEnd.resx">
       <DependentUpon>PT_fingerEnd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Multi\PT_fingerMultiStart.resx">
+    <EmbeddedResource Include="Multi\Start\PT_fingerMultiStart.resx">
       <DependentUpon>PT_fingerMultiStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PT_fingerStart.resx">
+    <EmbeddedResource Include="Multi\End\PT_studentMultiEnd.resx">
+      <DependentUpon>PT_studentMultiEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Single\Start\PT_fingerStart.resx">
       <DependentUpon>PT_fingerStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PT_formEnd2.resx">
+    <EmbeddedResource Include="Single\End\PT_formEnd2.resx">
       <DependentUpon>PT_formEnd2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PT_formEnd.resx">
       <DependentUpon>PT_formEnd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Multi\PT_formMultiList.resx">
-      <DependentUpon>PT_formMultiList.cs</DependentUpon>
+    <EmbeddedResource Include="Multi\Start\PT_listMultiStart.resx">
+      <DependentUpon>PT_listMultiStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Multi\PT_formMultiStart.resx">
-      <DependentUpon>PT_formMultiStart.cs</DependentUpon>
+    <EmbeddedResource Include="Multi\Start\PT_studentMultiStart.resx">
+      <DependentUpon>PT_studentMultiStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PT_Session.resx">
       <DependentUpon>PT_Session.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PT_formStart.resx">
+    <EmbeddedResource Include="Single\Start\PT_formStart.resx">
       <DependentUpon>PT_formStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PT_cardStart.resx">
+    <EmbeddedResource Include="Single\Start\PT_cardStart.resx">
       <DependentUpon>PT_cardStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Verification\PT_verify_Instructor.resx">
+      <DependentUpon>PT_verify_Instructor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -348,6 +465,8 @@
     <Content Include="Resources\filter.png" />
     <None Include="Resources\finishPI_Card.png" />
     <None Include="Resources\finishPI.png" />
+    <None Include="Resources\finishMultiCard.png" />
+    <None Include="Resources\finishMultiFinger.png" />
     <Content Include="Resources\info-icon.png" />
     <Content Include="Resources\minus.png" />
     <Content Include="Resources\msg.wav" />
@@ -360,7 +479,11 @@
     <Content Include="Resources\sigma.png" />
     <None Include="Resources\startPI_Card.png" />
     <None Include="Resources\startPI.png" />
+    <None Include="Resources\startMultiCard.png" />
+    <None Include="Resources\startMultiFinger.png" />
     <Content Include="Resources\table.png" />
+    <None Include="Resources\VoidPS.png" />
+    <None Include="Resources\VerifyPS.png" />
     <Content Include="Resources\void_f.png" />
     <Content Include="Resources\warning.png" />
   </ItemGroup>

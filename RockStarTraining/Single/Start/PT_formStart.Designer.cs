@@ -1,6 +1,6 @@
 ﻿namespace RockStar.Training
 {
-    partial class PT_formEnd
+    partial class PT_formStart
     {
         /// <summary>
         /// Required designer variable.
@@ -38,20 +38,25 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.pictureEdit_Student_Attendees = new DevExpress.XtraEditors.PictureEdit();
             this.lb_Student_Name = new DevExpress.XtraEditors.LabelControl();
             this.lb_Student_RGP = new DevExpress.XtraEditors.LabelControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::RockStar.Training.form_Wait), true, true);
-            this.lb_productName = new DevExpress.XtraEditors.LabelControl();
+            this.lb_Room = new DevExpress.XtraEditors.LabelControl();
+            this.cmb_Room = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Student_Attendees.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
-            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(26)))), ((int)(((byte)(77)))));
             this.panelControl1.Appearance.Options.UseBackColor = true;
@@ -80,11 +85,11 @@
             this.lb_Usage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_Usage.Appearance.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Usage.Appearance.ForeColor = System.Drawing.Color.White;
-            this.lb_Usage.Location = new System.Drawing.Point(677, 5);
+            this.lb_Usage.Location = new System.Drawing.Point(687, 5);
             this.lb_Usage.Name = "lb_Usage";
-            this.lb_Usage.Size = new System.Drawing.Size(83, 18);
+            this.lb_Usage.Size = new System.Drawing.Size(79, 18);
             this.lb_Usage.TabIndex = 71;
-            this.lb_Usage.Text = "Finish Usage";
+            this.lb_Usage.Text = "Start Usage";
             // 
             // lb_ClubName
             // 
@@ -146,6 +151,46 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // gridControl1
+            // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControl1.Location = new System.Drawing.Point(3, 235);
+            this.gridControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.gridControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(769, 140);
+            this.gridControl1.TabIndex = 85;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.HeaderPanel.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.HeaderPanel.BackColor2 = System.Drawing.Color.CornflowerBlue;
+            this.gridView1.Appearance.HeaderPanel.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.gridView1.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsMenu.EnableColumnMenu = false;
+            this.gridView1.OptionsMenu.EnableFooterMenu = false;
+            this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
+            this.gridView1.OptionsPrint.AutoWidth = false;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.OptionsView.ShowIndicator = false;
+            this.gridView1.CustomDrawColumnHeader += new DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventHandler(this.gridView1_CustomDrawColumnHeader);
+            this.gridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridView1_KeyDown);
+            // 
             // pictureEdit_Student_Attendees
             // 
             this.pictureEdit_Student_Attendees.Location = new System.Drawing.Point(9, 59);
@@ -168,7 +213,7 @@
             this.lb_Student_Name.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_Student_Name.Location = new System.Drawing.Point(115, 91);
             this.lb_Student_Name.Name = "lb_Student_Name";
-            this.lb_Student_Name.Size = new System.Drawing.Size(648, 47);
+            this.lb_Student_Name.Size = new System.Drawing.Size(648, 56);
             this.lb_Student_Name.TabIndex = 87;
             this.lb_Student_Name.Text = "Student Name";
             // 
@@ -188,51 +233,66 @@
             this.lb_Student_RGP.TabIndex = 88;
             this.lb_Student_RGP.Text = "RGP : 825";
             // 
-            // lb_productName
+            // lb_Room
             // 
-            this.lb_productName.AllowHtmlString = true;
-            this.lb_productName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lb_Room.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_productName.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_productName.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lb_productName.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
-            this.lb_productName.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.lb_productName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lb_productName.Location = new System.Drawing.Point(115, 144);
-            this.lb_productName.Name = "lb_productName";
-            this.lb_productName.Size = new System.Drawing.Size(648, 35);
-            this.lb_productName.TabIndex = 89;
-            this.lb_productName.Text = "Jump Start - Welcome";
+            this.lb_Room.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Room.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lb_Room.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.lb_Room.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.lb_Room.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lb_Room.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.lb_Room.Location = new System.Drawing.Point(115, 153);
+            this.lb_Room.Name = "lb_Room";
+            this.lb_Room.Size = new System.Drawing.Size(66, 26);
+            this.lb_Room.TabIndex = 89;
+            this.lb_Room.Text = "Room: ";
             // 
-            // PT_formEnd
+            // cmb_Room
+            // 
+            this.cmb_Room.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Room.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cmb_Room.FormattingEnabled = true;
+            this.cmb_Room.Location = new System.Drawing.Point(180, 150);
+            this.cmb_Room.Name = "cmb_Room";
+            this.cmb_Room.Size = new System.Drawing.Size(252, 29);
+            this.cmb_Room.TabIndex = 91;
+            this.cmb_Room.SelectedIndexChanged += new System.EventHandler(this.cmb_Room_SelectedIndexChanged);
+            this.cmb_Room.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmb_Room_KeyDown);
+            // 
+            // PT_formStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 232);
-            this.Controls.Add(this.lb_productName);
+            this.ClientSize = new System.Drawing.Size(775, 378);
+            this.Controls.Add(this.cmb_Room);
+            this.Controls.Add(this.lb_Room);
             this.Controls.Add(this.lb_Student_RGP);
             this.Controls.Add(this.lb_Student_Name);
             this.Controls.Add(this.pictureEdit_Student_Attendees);
+            this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureEdit_Logo);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.lb_ClubName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Name = "PT_formEnd";
+            this.Name = "PT_formStart";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PT_formEnd";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PT_formEnd_FormClosed);
-            this.Load += new System.EventHandler(this.PT_formEnd_Load);
-            this.Shown += new System.EventHandler(this.PT_formEnd_Shown);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_formEnd_Paint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_formEnd_KeyDown);
-            this.Resize += new System.EventHandler(this.PT_formEnd_Resize);
+            this.Text = "PT_formStart";
+            this.Load += new System.EventHandler(this.PT_formStart_Load);
+            this.Shown += new System.EventHandler(this.PT_formStart_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PT_formStart_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PT_formStart_KeyDown);
+            this.Resize += new System.EventHandler(this.PT_formStart_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Logo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Student_Attendees.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -250,10 +310,13 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer timer2;
         private DevExpress.XtraEditors.LabelControl lb_ClubName;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.PictureEdit pictureEdit_Student_Attendees;
         private DevExpress.XtraEditors.LabelControl lb_Student_Name;
         private DevExpress.XtraEditors.LabelControl lb_Student_RGP;
-        public DevExpress.XtraEditors.LabelControl lb_productName;
+        private DevExpress.XtraEditors.LabelControl lb_Room;
+        private System.Windows.Forms.ComboBox cmb_Room;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }
