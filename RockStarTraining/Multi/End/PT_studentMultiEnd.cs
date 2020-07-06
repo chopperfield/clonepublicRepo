@@ -71,8 +71,10 @@ namespace RockStar.Training
         {
             try
             {
-                splashScreenManager1.ShowWaitForm();
-                splashScreenManager1.SetWaitFormDescription("Getting Url address");
+                //splashScreenManager1.ShowWaitForm();
+                //splashScreenManager1.SetWaitFormDescription("Getting Url address");
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(form_Wait));
+
                 Img_member_Url = utils.get_Student_Image_URL();
 
                 //set image
@@ -98,15 +100,16 @@ namespace RockStar.Training
             }
             catch (Exception ex)
             {
-                splashScreenManager1.CloseWaitForm();
+                //splashScreenManager1.CloseWaitForm();
                 MessageBox.Show(ex.Message);
             }
             finally
             {
-                if (splashScreenManager1.IsSplashFormVisible == true)
-                {
-                    splashScreenManager1.CloseWaitForm();
-                }
+                //if (splashScreenManager1.IsSplashFormVisible == true)
+                //{
+                //    splashScreenManager1.CloseWaitForm();
+                //}
+                DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
             }
         }
 

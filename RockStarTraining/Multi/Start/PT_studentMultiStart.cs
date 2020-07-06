@@ -59,8 +59,10 @@ namespace RockStar.Training
         {           
             try
             {
-                splashScreenManager1.ShowWaitForm();
-                splashScreenManager1.SetWaitFormDescription("Getting Url address");
+                //splashScreenManager1.ShowWaitForm();
+                //splashScreenManager1.SetWaitFormDescription("Getting Url address");
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(typeof(form_Wait));
+
                 Img_member_Url = utils.get_Student_Image_URL();
                 foreach (Control ctl in this.Controls)
                 {
@@ -76,7 +78,8 @@ namespace RockStar.Training
             }
             finally
             {
-                splashScreenManager1.CloseWaitForm();
+                //splashScreenManager1.CloseWaitForm();
+                DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm();
             }
         }
 
