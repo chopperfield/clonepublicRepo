@@ -129,7 +129,7 @@
       <HintPath>D:\Projects\1.Axioma\RockStar\RockStar\bin\Debug\DevExpress.XtraVerticalGrid.v12.2.dll</HintPath>
     </Reference>
     <Reference Include="FastCodeSDK">
-      <HintPath>D:\Projects\1.Axioma\RockStar\RockStar\bin\Debug\FastCodeSDK.dll</HintPath>
+      <HintPath>..\..\..\..\Dummy ClubManagement - Dummy - NEW DLL\FastCodeSDK.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
