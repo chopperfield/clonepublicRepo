@@ -353,6 +353,19 @@ namespace RockStar.Training
             }
         }
 
+        private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            //if (e.Column.FieldName == "isVerified")
+            //{
+            //    //if (!string.IsNullOrEmpty(e.DisplayText))
+            //    //{
+            //    //    e.DisplayText = e.DisplayText == "1" ? "Verified" : "-";
+            //    //}
+            //    //if (e.Column.FieldName == "isVerified")
+            //        if (Convert.ToDecimal(e.Value) == 1) e.DisplayText = "Verified";
+            //}
+        }
+
 
 
         public void clear_repo()
@@ -1281,13 +1294,20 @@ namespace RockStar.Training
             if (e.Column.FieldName == "isVerified")
             {
                 string voidBy = view.GetRowCellDisplayText(e.RowHandle, view.Columns["voidBy"]).ToString().Trim();
-                string txt = view.GetRowCellValue(e.RowHandle, "isVerified").ToString();
 
-                if (txt == "1" && string.IsNullOrEmpty(voidBy))
+                string txt = view.GetRowCellDisplayText(e.RowHandle, view.Columns["isVerified"]).ToString().Trim().ToUpper();
+
+                if (txt == "VERIFIED" && string.IsNullOrEmpty(voidBy))
                 {
                     e.Appearance.ForeColor = Color.MediumSeaGreen;
                     FontStyle fs = e.Appearance.Font.Style;
-                    fs |= FontStyle.Bold;                    
+                    fs |= FontStyle.Bold;
+                    e.Appearance.Font = new Font(e.Appearance.Font, fs);
+                }
+                else if (txt == "VERIFIED" && !string.IsNullOrEmpty(voidBy)) //void setelah verified
+                {
+                    FontStyle fs = e.Appearance.Font.Style;
+                    fs |= FontStyle.Strikeout;
                     e.Appearance.Font = new Font(e.Appearance.Font, fs);
                 }
             }
@@ -1319,6 +1339,8 @@ namespace RockStar.Training
         {
             timer1.Stop();
         }
+
+     
     } 
 
     
