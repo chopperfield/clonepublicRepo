@@ -349,7 +349,7 @@ namespace RockStar.Training
         {
             if (!string.IsNullOrEmpty(e.DisplayText))
             {
-                e.DisplayText = e.DisplayText == "1" ? "Verified" : "-";
+                e.DisplayText = e.DisplayText == "1" ? "Verified" : "-";                
             }
         }
 
