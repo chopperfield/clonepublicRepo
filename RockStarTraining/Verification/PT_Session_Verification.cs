@@ -229,6 +229,26 @@ namespace RockStar.Training
 
             if (dt != null || dt.Rows.Count != 0)
             {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (!string.IsNullOrEmpty(dr["voidBy"].ToString().Trim()) && dr["voidBy"] != DBNull.Value)
+                    {
+                        if (dr["date"] != DBNull.Value)
+                        {
+                            DateTime trainingStart = Convert.ToDateTime(dr["trainingStart"]);
+                            DateTime todayTime = DateTime.Now;
+                            TimeSpan x1 = todayTime - trainingStart;
+                            if (x1.TotalHours >= 1) //diatas 1 jam, maka di remove
+                            {
+                                //MessageBox.Show(dr["counter"].ToString() + ", " + x1.ToString());
+                                dr.Delete();
+                            }
+                        }
+                    }
+                }
+                dt.AcceptChanges();
+
+
                 gridControl1.DataSource = dt;
                 fill_repo();
             }
