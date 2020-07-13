@@ -222,9 +222,45 @@ namespace RockStar.Training
             }
             return dt;
         }
+        /// <summary>
+        /// Retrieve list of student's Private instruction - for multi 
+        /// </summary>
+        /// <param name="RGP"></param>
+        /// <returns></returns>
+        public DataTable datatable_PrivateInstruction_multi(int RGP)
+        {
+            SqlCommand command = new SqlCommand();
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            if (myConnection.State == ConnectionState.Open)
+            {
+                myConnection.Close();
+            }
+            try
+            {
+                dt.Clear();
+                myConnection.Open();
+                command.CommandTimeout = 180;
 
+                command.Connection = myConnection;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = " Module.SP_Training_Help_MemberControl_multi";
+                command.Parameters.Add("@member", SqlDbType.BigInt).Value = RGP;
+                adapter.SelectCommand = command;
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error" + ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return dt;
+        }
 
-         /// <summary>
+        /// <summary>
         /// Retrieve finger Print, 1 = isAll, 0 = specific
         /// </summary>
         /// <returns>Datatable</returns>

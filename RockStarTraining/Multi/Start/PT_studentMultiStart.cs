@@ -151,7 +151,7 @@ namespace RockStar.Training
                     }
 
 
-                    dt_listPrivateInstruction = setup_Datatable.datatable_PrivateInstruction(RGP);
+                    dt_listPrivateInstruction = setup_Datatable.datatable_PrivateInstruction_multi(RGP);
 
                     if(dt_listPrivateInstruction.Rows.Count != 0)
                     {
