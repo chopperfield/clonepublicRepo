@@ -57,7 +57,7 @@
             this.gridControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(631, 180);
+            this.gridControl1.Size = new System.Drawing.Size(799, 180);
             this.gridControl1.TabIndex = 65;
             this.gridControl1.TabStop = false;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -90,7 +90,7 @@
             // btn_Save
             // 
             this.btn_Save.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_Save.Location = new System.Drawing.Point(282, 288);
+            this.btn_Save.Location = new System.Drawing.Point(366, 288);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(75, 32);
             this.btn_Save.TabIndex = 66;
@@ -111,7 +111,7 @@
             this.lb_productName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lb_productName.Location = new System.Drawing.Point(302, 41);
             this.lb_productName.Name = "lb_productName";
-            this.lb_productName.Size = new System.Drawing.Size(341, 23);
+            this.lb_productName.Size = new System.Drawing.Size(509, 23);
             this.lb_productName.TabIndex = 72;
             this.lb_productName.Text = "Gymnastic U/8";
             this.lb_productName.UseMnemonic = false;
@@ -126,7 +126,7 @@
             this.lb_ClubName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lb_ClubName.Location = new System.Drawing.Point(302, 12);
             this.lb_ClubName.Name = "lb_ClubName";
-            this.lb_ClubName.Size = new System.Drawing.Size(341, 23);
+            this.lb_ClubName.Size = new System.Drawing.Size(509, 23);
             this.lb_ClubName.TabIndex = 71;
             this.lb_ClubName.Text = "Kota Kasablanka";
             // 
@@ -167,7 +167,7 @@
             this.lb_Instructor_Room.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lb_Instructor_Room.Location = new System.Drawing.Point(302, 69);
             this.lb_Instructor_Room.Name = "lb_Instructor_Room";
-            this.lb_Instructor_Room.Size = new System.Drawing.Size(341, 23);
+            this.lb_Instructor_Room.Size = new System.Drawing.Size(509, 23);
             this.lb_Instructor_Room.TabIndex = 74;
             this.lb_Instructor_Room.Text = "Sunaryo - Studio 1";
             // 
@@ -182,7 +182,7 @@
             this.panelControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(656, 26);
+            this.panelControl1.Size = new System.Drawing.Size(824, 26);
             this.panelControl1.TabIndex = 75;
             // 
             // lb_Info
@@ -212,7 +212,7 @@
             this.lb_Student_Name.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.lb_Student_Name.Location = new System.Drawing.Point(12, 59);
             this.lb_Student_Name.Name = "lb_Student_Name";
-            this.lb_Student_Name.Size = new System.Drawing.Size(245, 21);
+            this.lb_Student_Name.Size = new System.Drawing.Size(413, 21);
             this.lb_Student_Name.TabIndex = 89;
             this.lb_Student_Name.Text = "Student Name";
             // 
@@ -220,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 352);
+            this.ClientSize = new System.Drawing.Size(824, 352);
             this.ControlBox = false;
             this.Controls.Add(this.lb_Student_Name);
             this.Controls.Add(this.panelControl1);

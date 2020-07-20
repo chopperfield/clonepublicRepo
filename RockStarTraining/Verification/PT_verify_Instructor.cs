@@ -116,6 +116,16 @@ namespace RockStar.Training
             column2.ColumnEdit = checkEdit2;
             gridView1.EndUpdate();
 
+            gridView1.BeginUpdate();
+            DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repo_textEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            gridControl1.RepositoryItems.Add(repo_textEdit);            
+            DataColumn col3 = _dt_verify.Columns.Add("note", typeof(string));
+            DevExpress.XtraGrid.Columns.GridColumn column3 = gridView1.Columns.AddVisible(col3.ColumnName);
+            column3.Caption = col3.Caption;
+            column3.Name = col3.ColumnName;
+            column3.ColumnEdit = repo_textEdit;
+            gridView1.EndUpdate();
+
 
             gridView1.Columns["counter"].Caption = "Usage No.";
             gridView1.Columns["counter"].Width = 100;
@@ -151,6 +161,10 @@ namespace RockStar.Training
                 gridView1.SetRowCellValue(i, "isGenre", false);
                 gridView1.SetRowCellValue(i, "isUniform", false);
             }
+
+
+            gridView1.Columns["note"].Width = 230;
+            gridView1.Columns["note"].Caption = "Note";
         }
        
       
@@ -177,13 +191,14 @@ namespace RockStar.Training
                 command.Connection = myConnection;
                 command.Parameters.Clear();
 
-                command.CommandText = "insert into module.instructorTrainingVerification (date, trainingUsage, employee, isGenre, isUniform, time, recid) values" +
-                " (@date, @trainingUsage, @employee, @isGenre, @isUniform, GETDATE(), @recid)";
+                command.CommandText = "insert into module.instructorTrainingVerification (date, trainingUsage, employee, isGenre, isUniform, time, recid, note) values" +
+                " (@date, @trainingUsage, @employee, @isGenre, @isUniform, GETDATE(), @recid, @note)";
                 command.Parameters.AddWithValue("@date", DateTime.Today.Date);
                 command.Parameters.AddWithValue("@trainingUsage", gridView1.GetRowCellValue(0,"counter").ToString().Trim());
                 command.Parameters.AddWithValue("@employee", gridView1.GetRowCellValue(0, "employeeStart").ToString().Trim());
                 command.Parameters.AddWithValue("@isGenre", Convert.ToBoolean(gridView1.GetRowCellValue(0, gridView1.Columns["isGenre"])));
                 command.Parameters.AddWithValue("@isUniform", Convert.ToBoolean(gridView1.GetRowCellValue(0, gridView1.Columns["isUniform"])));
+                command.Parameters.AddWithValue("@note", gridView1.GetRowCellDisplayText(0, gridView1.Columns["note"]));
                 command.Parameters.AddWithValue("@recid", Partner.Userid);
                 command.ExecuteNonQuery();
 
