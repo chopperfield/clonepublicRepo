@@ -162,9 +162,18 @@ namespace RockStar.Training
                 gridView1.Columns["firstName"].Visible = false;
                 gridView1.Columns["lastName"].Visible = false;
 
-                gridView1.Columns["voidDate"].Visible = false;
-                gridView1.Columns["voidBy"].Visible = false;
-                gridView1.Columns["voidNote"].Visible = false;
+
+                gridView1.Columns["voidDate"].VisibleIndex = 9;
+                gridView1.Columns["voidDate"].Caption = "Void Date";
+                gridView1.Columns["voidDate"].Width = 150;
+
+                gridView1.Columns["voidBy"].VisibleIndex = 10;
+                gridView1.Columns["voidBy"].Caption = "Void By";
+                gridView1.Columns["voidBy"].Width = 80;
+
+                gridView1.Columns["voidNote"].VisibleIndex = 11;
+                gridView1.Columns["voidNote"].Caption = "Void Note";
+                gridView1.Columns["voidNote"].Width = 150;
             }
         }
 
@@ -187,6 +196,12 @@ namespace RockStar.Training
             {
                 return;
             }
+            if (!string.IsNullOrEmpty(gridView1.GetFocusedRowCellDisplayText("voidBy").ToString().Trim()))
+            {
+                MessageBox.Show(gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim() + "'s private usage has been voided", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
             string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
             string product_Name = gridView1.GetFocusedRowCellDisplayText("productName").ToString().Trim();
@@ -277,6 +292,13 @@ namespace RockStar.Training
                 if (Check == true)
                 {
                     e.Appearance.BackColor = Color.MediumSeaGreen;
+                }
+                string voidBy = View.GetRowCellDisplayText(e.RowHandle, View.Columns["voidBy"]);
+                if (voidBy.Trim() != string.Empty)
+                {
+                    e.Appearance.ForeColor = Color.DimGray;
+                    e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
+                    View.Appearance.HideSelectionRow.ForeColor = Color.DimGray;
                 }
             }
         }

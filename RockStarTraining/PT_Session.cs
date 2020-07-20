@@ -1344,6 +1344,13 @@ namespace RockStar.Training
         private void endPI_Finger()
         {
             if (gridView1.RowCount == 0) { return; }
+
+            if (!string.IsNullOrEmpty(gridView1.GetFocusedRowCellDisplayText("voidBy").ToString().Trim())) 
+            {
+                MessageBox.Show(gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim() + "'s private usage has been voided","Axioma Agent",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
             string counter_Session = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
             string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
             string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
@@ -1372,6 +1379,12 @@ namespace RockStar.Training
         private void endPI_Card()
         {
             if (gridView1.RowCount == 0) { return; }
+            if (!string.IsNullOrEmpty(gridView1.GetFocusedRowCellDisplayText("voidBy").ToString().Trim()))
+            {
+                MessageBox.Show(gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim() + "'s private usage has been voided", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string counter_Session = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
             string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
             string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
