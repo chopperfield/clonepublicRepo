@@ -508,20 +508,18 @@ namespace RockStar.Training
 
         private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-            //GridView View = sender as GridView;
-           
-            //if (e.RowHandle >= 0)
-            //{ 
-            //    string voidBy = View.GetRowCellDisplayText(e.RowHandle, View.Columns["voidBy"]);
-            //    if (voidBy.Trim() != string.Empty)
-            //    {
-            //        e.Appearance.ForeColor = Color.DimGray;
-            //        e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
-            //        View.Appearance.HideSelectionRow.ForeColor = Color.DimGray;
-
-            //    }
-            //}
-            
+            GridView View = sender as GridView;
+            if (View == null) return;
+            if (e.RowHandle >= 0)
+            {
+                string voidBy = View.GetRowCellDisplayText(e.RowHandle, View.Columns["voidBy"]);
+                if (voidBy.Trim() != string.Empty)
+                {
+                    e.Appearance.ForeColor = Color.DimGray;
+                    e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Italic);
+                    View.Appearance.HideSelectionRow.ForeColor = Color.DimGray;
+                }
+            }
         }
 
 
@@ -1516,32 +1514,32 @@ namespace RockStar.Training
 
         private void pictureEdit_End_Alt_Click(object sender, EventArgs e)
         {
-            if (gridView1.RowCount == 0) { return; }
+            //if (gridView1.RowCount == 0) { return; }
         
-            DataTable dt = new DataTable();
-            dt = (DataTable)gridControl1.DataSource;       
+            //DataTable dt = new DataTable();
+            //dt = (DataTable)gridControl1.DataSource;       
 
-            using (PT_listMultiEnd_Alt pt_formEndAlt = new PT_listMultiEnd_Alt(code_UserClubName, dt_ins_fingerPrint, true, dt))
-            {
-                if (pt_formEndAlt.ShowDialog() == DialogResult.OK)
-                {
-                    splashScreenManager1.ShowWaitForm();
-                    load_PrivateSession();
-                    if (pt_formEndAlt.ModelsCollection.Count != 0)
-                    {
-                        foreach (RockStar.Training.PT_listMultiEnd_Alt.model item in pt_formEndAlt.ModelsCollection)
-                        {
-                            Report report = new Report(item.TrainingUsage.ToString());
-                            report.Text = "Report -  " + item.StudentName + "(" + item.StudentRGP + ") || Training Usage: " + item.TrainingUsage;
-                            report.Show();
-                        }
-                    }
-                    else { MessageBox.Show("Report not shown. \n Please contact IT Dept", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                    splashScreenManager1.CloseWaitForm();
-                    alertControl1.Show(this, "Data center", "Training has end", gbr_inf);
-                    alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
-                }
-            }
+            //using (PT_listMultiEnd_Alt pt_formEndAlt = new PT_listMultiEnd_Alt(code_UserClubName, dt_ins_fingerPrint, true, dt))
+            //{
+            //    if (pt_formEndAlt.ShowDialog() == DialogResult.OK)
+            //    {
+            //        splashScreenManager1.ShowWaitForm();
+            //        load_PrivateSession();
+            //        if (pt_formEndAlt.ModelsCollection.Count != 0)
+            //        {
+            //            foreach (RockStar.Training.PT_listMultiEnd_Alt.model item in pt_formEndAlt.ModelsCollection)
+            //            {
+            //                Report report = new Report(item.TrainingUsage.ToString());
+            //                report.Text = "Report -  " + item.StudentName + "(" + item.StudentRGP + ") || Training Usage: " + item.TrainingUsage;
+            //                report.Show();
+            //            }
+            //        }
+            //        else { MessageBox.Show("Report not shown. \n Please contact IT Dept", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            //        splashScreenManager1.CloseWaitForm();
+            //        alertControl1.Show(this, "Data center", "Training has end", gbr_inf);
+            //        alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
+            //    }
+            //}
         }
 
 
