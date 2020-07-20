@@ -244,7 +244,7 @@ namespace RockStar.Training
 
                 command.Connection = myConnection;
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = " Module.SP_Training_Help_MemberControl_multi";
+                command.CommandText = "Module.SP_Training_Help_MemberControl_Multi";
                 command.Parameters.Add("@member", SqlDbType.BigInt).Value = RGP;
                 adapter.SelectCommand = command;
                 adapter.Fill(dt);
