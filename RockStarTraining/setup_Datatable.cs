@@ -27,8 +27,6 @@ namespace RockStar.Training
     class setup_Datatable
     {
         SqlConnection myConnection = new SqlConnection(Partner.configConnection);
-        Axioma.Celebrity.Fitness.Partner partner = new Partner();
-
             
         /// <summary>
         /// Retrieve ALL Stundent Private Session that is currently running
