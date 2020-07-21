@@ -1450,7 +1450,7 @@ namespace RockStar.Training
             DataTable dt = new DataTable();
             dt = (DataTable) gridControl1.DataSource;
             DataTable dtFilter = new DataTable();            
-            string expression = "productName = '" + product_Name+"' and employeeStart = '"+employee_Start+"' and room= '"+room+"'";        
+            string expression = "productName = '" + product_Name+"' and employeeStart = '"+employee_Start+"' ";        
             DataRow[] datarow = dt.Select(expression);
             if (datarow.Length == 0)
             {                
@@ -1493,7 +1493,7 @@ namespace RockStar.Training
             DataTable dt = new DataTable();
             dt = (DataTable)gridControl1.DataSource;
             DataTable dtFilter = new DataTable();
-            string expression = "productName = '" + product_Name + "' and employeeStart = '" + employee_Start + "' and room = '"+room+"'";
+            string expression = "productName = '" + product_Name + "' and employeeStart = '" + employee_Start + "' ";
             DataRow[] datarow = dt.Select(expression);
             if (datarow.Length == 0)
             {
