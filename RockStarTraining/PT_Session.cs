@@ -20,6 +20,7 @@ namespace RockStar.Training
     {
         SqlConnection myConnection = new SqlConnection(Partner.configConnection);
         setup_Datatable setup_Datatable;
+        check_Integrity check_Integrity;
 
         private ToolStripProgressBar myProgressBar4;
         private NotifyIcon myNotify4;
@@ -85,6 +86,7 @@ namespace RockStar.Training
         private void PT_Session_Load(object sender, EventArgs e)
         {
             setup_Datatable = new setup_Datatable();
+            check_Integrity = new check_Integrity();
 
             Bitmap logo = new Bitmap(Properties.Resources.Logo_RSG);
             pictureEdit_Logo.Image = logo;
@@ -1351,6 +1353,17 @@ namespace RockStar.Training
                 return;
             }
 
+            //check integrity
+            if (check_integrity_voidPI(gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim()))
+            {
+                //true
+                MessageBox.Show(gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim() + "'s private usage has been voided", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            
+            
+
             string counter_Session = gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim();
             string student_Name = gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim();
             string student_RGP = gridView1.GetFocusedRowCellDisplayText("code").ToString().Trim();
@@ -1381,6 +1394,13 @@ namespace RockStar.Training
             if (gridView1.RowCount == 0) { return; }
             if (!string.IsNullOrEmpty(gridView1.GetFocusedRowCellDisplayText("voidBy").ToString().Trim()))
             {
+                MessageBox.Show(gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim() + "'s private usage has been voided", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //check integrity
+            if (check_integrity_voidPI(gridView1.GetFocusedRowCellDisplayText("counter").ToString().Trim()))
+            {
+                //true
                 MessageBox.Show(gridView1.GetFocusedRowCellDisplayText("memberName").ToString().Trim() + "'s private usage has been voided", "Axioma Agent", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -1553,6 +1573,21 @@ namespace RockStar.Training
             //        alertControl1.Show(this, "Data center", "Data refreshed", gbr_inf);
             //    }
             //}
+        }
+
+        private bool check_integrity_voidPI(string counter)
+        {
+            try
+            {
+                DataTable dt = check_Integrity.integrity_void_PI(Convert.ToInt32(counter.Trim()));
+                int found = Convert.ToInt16(dt.Rows[0][0].ToString());
+                return Convert.ToBoolean(found);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return true;// 0==proceed
+            }
         }
 
 

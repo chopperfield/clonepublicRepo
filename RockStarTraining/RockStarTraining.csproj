@@ -154,6 +154,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="check_Integrity.cs" />
     <Compile Include="Cst_Form_Long.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -289,7 +289,6 @@ namespace RockStar.Training
             audio.Stream = Properties.Resources.msg_ins;
             audio.Play();
             DialogResult = DialogResult.OK;
-            this.Close();
         }
 
         private void alertControl1_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)

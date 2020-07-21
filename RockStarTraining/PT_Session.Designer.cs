@@ -41,15 +41,6 @@
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
@@ -62,6 +53,15 @@
             DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
@@ -86,13 +86,13 @@
             this.pictureEdit_PI_End_Finger = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_PI_Start_Card = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_PI_End_Card = new DevExpress.XtraEditors.PictureEdit();
-            this.pictureEdit_Print = new DevExpress.XtraEditors.PictureEdit();
-            this.pictureEdit_Sheet = new DevExpress.XtraEditors.PictureEdit();
-            this.pictureEdit_Exit = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_PI_Start_Finger_Multi = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_PI_End_Finger_Multi = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_PI_Start_Card_Multi = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_PI_End_Card_Multi = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_Print = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_Sheet = new DevExpress.XtraEditors.PictureEdit();
+            this.pictureEdit_Exit = new DevExpress.XtraEditors.PictureEdit();
             this.pictureEdit_End_Alt = new DevExpress.XtraEditors.PictureEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.filterControl1 = new DevExpress.XtraEditors.FilterControl();
@@ -111,13 +111,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Finger.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Card.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Card.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Print.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Sheet.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Exit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Finger_Multi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Finger_Multi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Card_Multi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Card_Multi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Print.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Sheet.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Exit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_End_Alt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -157,10 +157,11 @@
             this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
             this.gridView1.OptionsPrint.AutoWidth = false;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedRow = false;
+            this.gridView1.OptionsSelection.EnableAppearanceHideSelection = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
             this.gridView1.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gridView1_CustomRowCellEdit);
             this.gridView1.CustomRowCellEditForEditing += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gridView1_CustomRowCellEditForEditing);
@@ -394,70 +395,6 @@
             this.pictureEdit_PI_End_Card.TabIndex = 7;
             this.pictureEdit_PI_End_Card.Click += new System.EventHandler(this.pictureEdit_PI_End_Card_Click);
             // 
-            // pictureEdit_Print
-            // 
-            this.pictureEdit_Print.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureEdit_Print.EditValue = global::RockStar.Training.Properties.Resources.Print_f;
-            this.pictureEdit_Print.Location = new System.Drawing.Point(571, 3);
-            this.pictureEdit_Print.Name = "pictureEdit_Print";
-            this.pictureEdit_Print.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit_Print.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit_Print.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit_Print.Properties.ShowMenu = false;
-            this.pictureEdit_Print.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit_Print.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem9.Text = "Print (Ctrl + P)";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "Print Table";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.pictureEdit_Print.SuperTip = superToolTip9;
-            this.pictureEdit_Print.TabIndex = 1;
-            this.pictureEdit_Print.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit2_MouseClick);
-            // 
-            // pictureEdit_Sheet
-            // 
-            this.pictureEdit_Sheet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureEdit_Sheet.EditValue = global::RockStar.Training.Properties.Resources.Sheet_f;
-            this.pictureEdit_Sheet.Location = new System.Drawing.Point(642, 3);
-            this.pictureEdit_Sheet.Name = "pictureEdit_Sheet";
-            this.pictureEdit_Sheet.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit_Sheet.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit_Sheet.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit_Sheet.Properties.ShowMenu = false;
-            this.pictureEdit_Sheet.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit_Sheet.Size = new System.Drawing.Size(65, 65);
-            superToolTip10.AllowHtmlText = DevExpress.Utils.DefaultBoolean.False;
-            toolTipTitleItem10.Text = "Sheet (Ctrl + T)";
-            toolTipItem10.LeftIndent = 6;
-            toolTipItem10.Text = "Save Table into Worksheet";
-            superToolTip10.Items.Add(toolTipTitleItem10);
-            superToolTip10.Items.Add(toolTipItem10);
-            this.pictureEdit_Sheet.SuperTip = superToolTip10;
-            this.pictureEdit_Sheet.TabIndex = 2;
-            this.pictureEdit_Sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit3_MouseClick);
-            // 
-            // pictureEdit_Exit
-            // 
-            this.pictureEdit_Exit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureEdit_Exit.EditValue = global::RockStar.Training.Properties.Resources.close_f;
-            this.pictureEdit_Exit.Location = new System.Drawing.Point(713, 3);
-            this.pictureEdit_Exit.Name = "pictureEdit_Exit";
-            this.pictureEdit_Exit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit_Exit.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit_Exit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit_Exit.Properties.ShowMenu = false;
-            this.pictureEdit_Exit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit_Exit.Size = new System.Drawing.Size(65, 65);
-            toolTipTitleItem11.Text = "Exit (Ctrl + Q)";
-            toolTipItem11.LeftIndent = 6;
-            toolTipItem11.Text = "Close Form";
-            superToolTip11.Items.Add(toolTipTitleItem11);
-            superToolTip11.Items.Add(toolTipItem11);
-            this.pictureEdit_Exit.SuperTip = superToolTip11;
-            this.pictureEdit_Exit.TabIndex = 3;
-            this.pictureEdit_Exit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit4_MouseClick);
-            // 
             // pictureEdit_PI_Start_Finger_Multi
             // 
             this.pictureEdit_PI_Start_Finger_Multi.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -541,6 +478,70 @@
             this.pictureEdit_PI_End_Card_Multi.SuperTip = superToolTip8;
             this.pictureEdit_PI_End_Card_Multi.TabIndex = 11;
             this.pictureEdit_PI_End_Card_Multi.Click += new System.EventHandler(this.pictureEdit_PI_End_Card_Multi_Click);
+            // 
+            // pictureEdit_Print
+            // 
+            this.pictureEdit_Print.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_Print.EditValue = global::RockStar.Training.Properties.Resources.Print_f;
+            this.pictureEdit_Print.Location = new System.Drawing.Point(571, 3);
+            this.pictureEdit_Print.Name = "pictureEdit_Print";
+            this.pictureEdit_Print.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_Print.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_Print.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_Print.Properties.ShowMenu = false;
+            this.pictureEdit_Print.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_Print.Size = new System.Drawing.Size(65, 65);
+            toolTipTitleItem9.Text = "Print (Ctrl + P)";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "Print Table";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.pictureEdit_Print.SuperTip = superToolTip9;
+            this.pictureEdit_Print.TabIndex = 1;
+            this.pictureEdit_Print.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit2_MouseClick);
+            // 
+            // pictureEdit_Sheet
+            // 
+            this.pictureEdit_Sheet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_Sheet.EditValue = global::RockStar.Training.Properties.Resources.Sheet_f;
+            this.pictureEdit_Sheet.Location = new System.Drawing.Point(642, 3);
+            this.pictureEdit_Sheet.Name = "pictureEdit_Sheet";
+            this.pictureEdit_Sheet.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_Sheet.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_Sheet.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_Sheet.Properties.ShowMenu = false;
+            this.pictureEdit_Sheet.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_Sheet.Size = new System.Drawing.Size(65, 65);
+            superToolTip10.AllowHtmlText = DevExpress.Utils.DefaultBoolean.False;
+            toolTipTitleItem10.Text = "Sheet (Ctrl + T)";
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "Save Table into Worksheet";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.pictureEdit_Sheet.SuperTip = superToolTip10;
+            this.pictureEdit_Sheet.TabIndex = 2;
+            this.pictureEdit_Sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit3_MouseClick);
+            // 
+            // pictureEdit_Exit
+            // 
+            this.pictureEdit_Exit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_Exit.EditValue = global::RockStar.Training.Properties.Resources.close_f;
+            this.pictureEdit_Exit.Location = new System.Drawing.Point(713, 3);
+            this.pictureEdit_Exit.Name = "pictureEdit_Exit";
+            this.pictureEdit_Exit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_Exit.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_Exit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_Exit.Properties.ShowMenu = false;
+            this.pictureEdit_Exit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_Exit.Size = new System.Drawing.Size(65, 65);
+            toolTipTitleItem11.Text = "Exit (Ctrl + Q)";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "Close Form";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.pictureEdit_Exit.SuperTip = superToolTip11;
+            this.pictureEdit_Exit.TabIndex = 3;
+            this.pictureEdit_Exit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureEdit4_MouseClick);
             // 
             // pictureEdit_End_Alt
             // 
@@ -684,13 +685,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Finger.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Card.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Card.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Print.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Sheet.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Exit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Finger_Multi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Finger_Multi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_Start_Card_Multi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_PI_End_Card_Multi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Print.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Sheet.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_Exit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_End_Alt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);

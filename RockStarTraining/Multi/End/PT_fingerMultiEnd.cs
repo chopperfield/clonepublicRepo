@@ -306,7 +306,6 @@ namespace RockStar.Training
             audio.Stream = Properties.Resources.msg_ins;
             audio.Play();
             DialogResult = DialogResult.OK;
-            this.Close();
         }
 
 
