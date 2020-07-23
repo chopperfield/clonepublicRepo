@@ -71,6 +71,7 @@ namespace RockStar.Training
             repositoryItemComboBox23.ButtonClick += RepositoryItemComboBox23_ButtonClick;
             repositoryItemComboBox24.ButtonClick += RepositoryItemComboBox24_ButtonClick;
 
+            repositoryItemTextEdit1.CustomDisplayText += RepositoryItemTextEdit1_CustomDisplayText;
 
             ci.DateTimeFormat.ShortDatePattern = "dd MMM yyyy";
             ci.DateTimeFormat.LongDatePattern = "dd MMM yyyy";
@@ -401,10 +402,21 @@ namespace RockStar.Training
             gridView1.Columns["firstName"].Caption = "First Name";
             gridView1.Columns["firstName"].Visible = false;
             gridView1.Columns["lastName"].Caption = "Last Name";
-            gridView1.Columns["lastName"].Visible = false;      
+            gridView1.Columns["lastName"].Visible = false;
+
+            gridView1.Columns["isVerified"].VisibleIndex = 0;
+            gridView1.Columns["isVerified"].Caption = "Verification";
+            gridView1.Columns["isVerified"].Width = 80;
+            gridView1.Columns["isVerified"].ColumnEdit = repositoryItemTextEdit1;
         }
 
-                
+        private void RepositoryItemTextEdit1_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(e.DisplayText))
+            {
+                e.DisplayText = e.DisplayText == "1" ? "Verified" : "-";
+            }
+        }
 
 
         public void clear_repo()
@@ -524,6 +536,31 @@ namespace RockStar.Training
             }
         }
 
+        private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName == "isVerified")
+            {
+                string voidBy = view.GetRowCellDisplayText(e.RowHandle, view.Columns["voidBy"]).ToString().Trim();
+
+                string txt = view.GetRowCellDisplayText(e.RowHandle, view.Columns["isVerified"]).ToString().Trim().ToUpper();
+
+                if (txt == "VERIFIED" && string.IsNullOrEmpty(voidBy))
+                {
+                    e.Appearance.ForeColor = Color.MediumSeaGreen;
+                    FontStyle fs = e.Appearance.Font.Style;
+                    fs |= FontStyle.Bold;
+                    e.Appearance.Font = new Font(e.Appearance.Font, fs);
+                }
+                else if (txt == "VERIFIED" && !string.IsNullOrEmpty(voidBy)) //void setelah verified
+                {
+                    FontStyle fs = e.Appearance.Font.Style;
+                    fs |= FontStyle.Strikeout;
+                    e.Appearance.Font = new Font(e.Appearance.Font, fs);
+                }
+            }
+        }
 
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
@@ -655,6 +692,8 @@ namespace RockStar.Training
         RepositoryItemComboBox repositoryItemComboBox22 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox23 = new RepositoryItemComboBox();
         RepositoryItemComboBox repositoryItemComboBox24 = new RepositoryItemComboBox();
+        RepositoryItemTextEdit repositoryItemTextEdit1 = new RepositoryItemTextEdit();
+
 
         EditorButton clr = new EditorButton(ButtonPredefines.Close);
 
@@ -1589,8 +1628,7 @@ namespace RockStar.Training
                 return true;// 0==proceed
             }
         }
-
-
+       
     }
 
     

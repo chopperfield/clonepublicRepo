@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using Axioma.Celebrity.Fitness;
 using System.Media;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraEditors.Controls;
 
 namespace RockStar.Training
 {
@@ -19,6 +21,7 @@ namespace RockStar.Training
         Bitmap gbr_warn = new Bitmap(Properties.Resources.warning, 25, 25);
         Bitmap gbr_error = new Bitmap(Properties.Resources.close, 25, 25);
 
+        RepositoryItemTextEdit repositoryItemTextEdit1 = new RepositoryItemTextEdit();
 
         DataTable _dt_finger_employees;
         private string _code_UserClubName;
@@ -39,7 +42,12 @@ namespace RockStar.Training
 
             _dt_student = new DataTable();
             _dt_student = dt_student;
+
+            repositoryItemTextEdit1.CustomDisplayText += RepositoryItemTextEdit1_CustomDisplayText;
+
+
         }
+
 
         private void PT_listMultiEnd_Load(object sender, EventArgs e)
         {
@@ -59,6 +67,8 @@ namespace RockStar.Training
             arrangeCol();
             lb_Instructor_Room.Text = _dt_student.Rows[0]["employeeStartName"].ToString() + " - " + _dt_student.Rows[0]["room"].ToString();                         
             str_room = _dt_student.Rows[0]["room"].ToString().Trim();
+
+
         }
 
         //======= agar form yang muncul, bisa di drag
@@ -177,8 +187,24 @@ namespace RockStar.Training
                 gridView1.Columns["voidNote"].VisibleIndex = 11;
                 gridView1.Columns["voidNote"].Caption = "Void Note";
                 gridView1.Columns["voidNote"].Width = 150;
+
+                gridView1.Columns["isVerified"].VisibleIndex = 0;
+                gridView1.Columns["isVerified"].Caption = "Verification";
+                gridView1.Columns["isVerified"].Width = 80;
+                gridView1.Columns["isVerified"].ColumnEdit = repositoryItemTextEdit1;
+
+                
             }
         }
+
+        private void RepositoryItemTextEdit1_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(e.DisplayText))
+            {
+                e.DisplayText = e.DisplayText == "1" ? "Verified" : "-";
+            }
+        }
+
 
         private void gridView1_CustomDrawColumnHeader(object sender, DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventArgs e)
         {
@@ -314,6 +340,37 @@ namespace RockStar.Training
             }
         }
 
+        private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.FieldName == "isVerified")
+            {
+                string voidBy = view.GetRowCellDisplayText(e.RowHandle, view.Columns["voidBy"]).ToString().Trim();
+                string txt = view.GetRowCellDisplayText(e.RowHandle, view.Columns["isVerified"]).ToString().Trim().ToUpper();
+
+                if (txt == "VERIFIED" && string.IsNullOrEmpty(voidBy))
+                {
+                    e.Appearance.ForeColor = Color.MediumSeaGreen;
+                    FontStyle fs = e.Appearance.Font.Style;
+                    fs |= FontStyle.Bold;
+                    e.Appearance.Font = new Font(e.Appearance.Font, fs);
+
+                    bool Check = Convert.ToBoolean(view.GetRowCellValue(e.RowHandle, view.Columns["Check"]));
+                    if (Check == true)
+                    {
+                        e.Appearance.ForeColor = Color.Black;
+                    }
+                }
+                else if (txt == "VERIFIED" && !string.IsNullOrEmpty(voidBy)) //void setelah verified
+                {
+                    FontStyle fs = e.Appearance.Font.Style;
+                    fs |= FontStyle.Strikeout;
+                    e.Appearance.Font = new Font(e.Appearance.Font, fs);
+                }
+            }
+        }
+
         public List<model> ModelsCollection = new List<model>();//untuk report, after dialog result=ok
         public class model
         {
@@ -342,6 +399,8 @@ namespace RockStar.Training
                 return true;// 0==proceed
             }
         }
+
+       
     }   
 }
 
