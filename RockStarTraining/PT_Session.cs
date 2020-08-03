@@ -372,6 +372,8 @@ namespace RockStar.Training
             gridView1.Columns["voidDate"].VisibleIndex = 14;
             gridView1.Columns["voidDate"].Caption = "Void Date";
             gridView1.Columns["voidDate"].Width = 150;
+            gridView1.Columns["voidDate"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            gridView1.Columns["voidDate"].DisplayFormat.FormatString = "dd MMM yyyy HH:mm:ss";
 
             gridView1.Columns["voidBy"].VisibleIndex = 15;
             gridView1.Columns["voidBy"].Caption = "Void By";
