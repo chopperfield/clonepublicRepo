@@ -146,7 +146,7 @@
             this.lb_Info.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lb_Info.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.lb_Info.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.lb_Info.Location = new System.Drawing.Point(106, 41);
+            this.lb_Info.Location = new System.Drawing.Point(106, 62);
             this.lb_Info.Name = "lb_Info";
             this.lb_Info.Size = new System.Drawing.Size(282, 16);
             this.lb_Info.TabIndex = 86;
