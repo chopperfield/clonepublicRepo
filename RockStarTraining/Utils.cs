@@ -27,7 +27,8 @@ namespace RockStar.Training
     public class Utils
     {
       
-        // test comment, new comment, fork comment 2ez4rst- clone signature commnet
+        // test comment, new comment, fork comment 2ez4rst- clone signature commnet,
+        // add new comment from new bracnh to try pull request
         /// <summary>
         /// get Student image URL
         /// </summary>
