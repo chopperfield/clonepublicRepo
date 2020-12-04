@@ -27,7 +27,7 @@ namespace RockStar.Training
     public class Utils
     {
       
-        // test comment
+        // test comment, new comment
         /// <summary>
         /// get Student image URL
         /// </summary>
